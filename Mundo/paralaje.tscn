@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ftr7fpqn7hgk"]
 
-[ext_resource type="Texture2D" uid="uid://ceqtbbgkuakgq" path="res://assets/Background/5/Night/1.png" id="1_bs3rs"]
-[ext_resource type="Texture2D" uid="uid://dyhbp6dfrb2pu" path="res://assets/Background/5/Night/2.png" id="2_43bas"]
-[ext_resource type="Texture2D" uid="uid://ba1m8k1t0sr42" path="res://assets/Background/5/Night/3.png" id="3_dllkj"]
-[ext_resource type="Texture2D" uid="uid://7cb0bgwqur2x" path="res://assets/Background/5/Night/5.png" id="4_u68ww"]
+[ext_resource type="Texture2D" uid="uid://ceqtbbgkuakgq" path="res://Recursos/Background/5/Night/1.png" id="1_bs3rs"]
+[ext_resource type="Texture2D" uid="uid://dyhbp6dfrb2pu" path="res://Recursos/Background/5/Night/2.png" id="2_43bas"]
+[ext_resource type="Texture2D" uid="uid://ba1m8k1t0sr42" path="res://Recursos/Background/5/Night/3.png" id="3_dllkj"]
+[ext_resource type="Texture2D" uid="uid://7cb0bgwqur2x" path="res://Recursos/Background/5/Night/5.png" id="4_u68ww"]
 
 [node name="Paralaje" type="Node2D"]
 

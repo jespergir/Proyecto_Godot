@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=4 uid="uid://cwfsiro15oswg"]
+[gd_scene load_steps=14 format=4 uid="uid://cwfsiro15oswg"]
 
 [ext_resource type="PackedScene" uid="uid://cnl2jj2i7ksmi" path="res://Mapeado/terreno2.tscn" id="1_ru27n"]
 [ext_resource type="PackedScene" uid="uid://c8mmgp3r8skl7" path="res://Protagonista/protagonista.tscn" id="2_aeujy"]
 [ext_resource type="PackedScene" uid="uid://cnyb01nulbj6y" path="res://Mapeado/terreno1.tscn" id="2_k2w8l"]
+[ext_resource type="PackedScene" uid="uid://cr6giuf2m3w57" path="res://Mapeado/plataforma_movil_y.tscn" id="2_nu0ts"]
 [ext_resource type="PackedScene" uid="uid://47b50m2gxwuq" path="res://Mapeado/terreno3.tscn" id="4_xlri1"]
 [ext_resource type="PackedScene" uid="uid://bolhks72y5tje" path="res://Mapeado/rampa1.tscn" id="5_xlri1"]
 [ext_resource type="PackedScene" uid="uid://bug433lnnx4wv" path="res://Mapeado/plataforma1.tscn" id="6_odmxj"]
-[ext_resource type="Texture2D" uid="uid://bduns0b52sy07" path="res://assets/Assets/Buildings.png" id="7_33n85"]
-[ext_resource type="Texture2D" uid="uid://iypwhqb3txo0" path="res://assets/Assets/Props-01.png" id="8_crb8b"]
+[ext_resource type="Texture2D" uid="uid://bduns0b52sy07" path="res://Recursos/Tiles/Buildings.png" id="7_33n85"]
+[ext_resource type="Texture2D" uid="uid://iypwhqb3txo0" path="res://Recursos/Tiles/Props-01.png" id="8_crb8b"]
 [ext_resource type="PackedScene" uid="uid://ftr7fpqn7hgk" path="res://Mundo/paralaje.tscn" id="8_x2j2t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_crb8b"]
@@ -417,3 +418,6 @@ position = Vector2(1392, 448)
 
 [node name="Terreno31" parent="." instance=ExtResource("2_k2w8l")]
 position = Vector2(1424, 448)
+
+[node name="Terreno32" parent="." instance=ExtResource("2_nu0ts")]
+position = Vector2(288, 312)
