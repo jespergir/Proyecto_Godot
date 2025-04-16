@@ -1,0 +1,419 @@
+[gd_scene load_steps=13 format=4 uid="uid://cwfsiro15oswg"]
+
+[ext_resource type="PackedScene" uid="uid://cnl2jj2i7ksmi" path="res://Mapeado/terreno2.tscn" id="1_ru27n"]
+[ext_resource type="PackedScene" uid="uid://c8mmgp3r8skl7" path="res://Protagonista/protagonista.tscn" id="2_aeujy"]
+[ext_resource type="PackedScene" uid="uid://cnyb01nulbj6y" path="res://Mapeado/terreno1.tscn" id="2_k2w8l"]
+[ext_resource type="PackedScene" uid="uid://47b50m2gxwuq" path="res://Mapeado/terreno3.tscn" id="4_xlri1"]
+[ext_resource type="PackedScene" uid="uid://bolhks72y5tje" path="res://Mapeado/rampa1.tscn" id="5_xlri1"]
+[ext_resource type="PackedScene" uid="uid://bug433lnnx4wv" path="res://Mapeado/plataforma1.tscn" id="6_odmxj"]
+[ext_resource type="Texture2D" uid="uid://bduns0b52sy07" path="res://assets/Assets/Buildings.png" id="7_33n85"]
+[ext_resource type="Texture2D" uid="uid://iypwhqb3txo0" path="res://assets/Assets/Props-01.png" id="8_crb8b"]
+[ext_resource type="PackedScene" uid="uid://ftr7fpqn7hgk" path="res://Mundo/paralaje.tscn" id="8_x2j2t"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_crb8b"]
+texture = ExtResource("7_33n85")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+22:0/0 = 0
+23:0/0 = 0
+24:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+24:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+24:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+20:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+20:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+20:5/0 = 0
+21:5/0 = 0
+22:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+18:6/0 = 0
+19:6/0 = 0
+20:6/0 = 0
+21:6/0 = 0
+22:6/0 = 0
+23:6/0 = 0
+24:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+16:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+19:7/0 = 0
+20:7/0 = 0
+21:7/0 = 0
+22:7/0 = 0
+23:7/0 = 0
+24:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+16:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+20:8/0 = 0
+21:8/0 = 0
+22:8/0 = 0
+23:8/0 = 0
+24:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+16:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+20:9/0 = 0
+21:9/0 = 0
+22:9/0 = 0
+23:9/0 = 0
+24:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+16:10/0 = 0
+17:10/0 = 0
+18:10/0 = 0
+19:10/0 = 0
+20:10/0 = 0
+21:10/0 = 0
+22:10/0 = 0
+23:10/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+16:11/0 = 0
+17:11/0 = 0
+18:11/0 = 0
+19:11/0 = 0
+20:11/0 = 0
+21:11/0 = 0
+22:11/0 = 0
+23:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+16:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+22:12/0 = 0
+23:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nu0ts"]
+texture = ExtResource("8_crb8b")
+
+[sub_resource type="TileSet" id="TileSet_nu0ts"]
+sources/0 = SubResource("TileSetAtlasSource_crb8b")
+sources/1 = SubResource("TileSetAtlasSource_nu0ts")
+
+[node name="Mundo" type="Node2D"]
+
+[node name="Protagonista" parent="." instance=ExtResource("2_aeujy")]
+position = Vector2(48, 288)
+
+[node name="Camera2D" type="Camera2D" parent="Protagonista"]
+position = Vector2(0, -64)
+scale = Vector2(0.882794, 0.860034)
+zoom = Vector2(1.2, 1.2)
+
+[node name="Terreno1" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(16, 384)
+
+[node name="Terreno2" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(48, 384)
+
+[node name="Terreno3" parent="." instance=ExtResource("4_xlri1")]
+position = Vector2(80, 384)
+
+[node name="Terreno4" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(112, 384)
+
+[node name="Terreno5" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(144, 384)
+
+[node name="Terreno6" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(176, 384)
+
+[node name="Terreno7" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(208, 384)
+
+[node name="Rampa1" parent="." instance=ExtResource("5_xlri1")]
+position = Vector2(240, 384)
+
+[node name="Terreno8" parent="." instance=ExtResource("6_odmxj")]
+position = Vector2(416, 264)
+
+[node name="Terreno9" parent="." instance=ExtResource("6_odmxj")]
+position = Vector2(608, 200)
+
+[node name="Terreno10" parent="." instance=ExtResource("6_odmxj")]
+position = Vector2(736, 288)
+
+[node name="DetallesFondo" type="TileMapLayer" parent="."]
+z_index = 4
+tile_map_data = PackedByteArray("AAAIABIAAAAKAAcAAAAIABMAAAAKAAgAAAAJABIAAAALAAcAAAAJABMAAAALAAgAAAAKABIAAAAMAAcAAAAKABMAAAAMAAgAAAA=")
+tile_set = SubResource("TileSet_nu0ts")
+
+[node name="Paralaje" parent="." instance=ExtResource("8_x2j2t")]
+z_index = -5
+
+[node name="Terreno11" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(784, 448)
+
+[node name="Terreno12" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(816, 448)
+
+[node name="Terreno13" parent="." instance=ExtResource("4_xlri1")]
+position = Vector2(848, 448)
+
+[node name="Terreno14" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(880, 448)
+
+[node name="Terreno15" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(912, 448)
+
+[node name="Terreno16" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(944, 448)
+
+[node name="Terreno17" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(976, 448)
+
+[node name="Terreno18" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(1008, 448)
+
+[node name="Terreno19" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(1040, 448)
+
+[node name="Terreno20" parent="." instance=ExtResource("4_xlri1")]
+position = Vector2(1072, 448)
+
+[node name="Terreno21" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(1104, 448)
+
+[node name="Terreno22" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(1136, 448)
+
+[node name="Terreno23" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(1168, 448)
+
+[node name="Terreno24" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(1200, 448)
+
+[node name="Terreno25" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(1232, 448)
+
+[node name="Terreno26" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(1264, 448)
+
+[node name="Terreno27" parent="." instance=ExtResource("4_xlri1")]
+position = Vector2(1296, 448)
+
+[node name="Terreno28" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(1328, 448)
+
+[node name="Terreno29" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(1360, 448)
+
+[node name="Terreno30" parent="." instance=ExtResource("1_ru27n")]
+position = Vector2(1392, 448)
+
+[node name="Terreno31" parent="." instance=ExtResource("2_k2w8l")]
+position = Vector2(1424, 448)
