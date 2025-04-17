@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://hwjnj4b8lx4t"]
+
+[ext_resource type="Script" uid="uid://cfls8xr0tlsdp" path="res://Protagonista/Control_Protagonista/state_machine.gd" id="1_lixa7"]
+
+[node name="StateMachine" type="Node" node_paths=PackedStringArray("default_state")]
+script = ExtResource("1_lixa7")
+default_state = NodePath("")

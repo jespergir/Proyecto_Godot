@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=4 uid="uid://cepnbkjojxty5"]
+
+[ext_resource type="Texture2D" uid="uid://d1bvxwfsr6uje" path="res://Recursos/Tiles/Tiles.png" id="1_gs1og"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3a2v"]
+texture = ExtResource("1_gs1og")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_28o8x"]
+sources/0 = SubResource("TileSetAtlasSource_p3a2v")
+
+[node name="Rampa2" type="StaticBody2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, -16)
+tile_map_data = PackedByteArray("AAD///3/AAACAAcAAAAAAP3/AAADAAcAAAAAAP7/AAADAAgAAAD///7/AAACAAgAAAAAAP//AAABAAEAAAD/////AAAAAAEAAAAAAAAAAAAFAAAAAAD//wAAAAADAAEAAAD//wEAAAADAAMAAAAAAAEAAAAFAAEAAAAAAAIAAAAFAAMAAAD//wIAAAADAAEAAAD//wMAAAADAAIAAAD//wQAAAADAAIAAAAAAAQAAAACAAEAAAAAAAMAAAACAAEAAAA=")
+tile_set = SubResource("TileSet_28o8x")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-8, -56)
+polygon = PackedVector2Array(8, 0, 24, -8, 24, 24, -8, 24, -8, 8)

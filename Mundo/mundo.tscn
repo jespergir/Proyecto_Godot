@@ -1,15 +1,23 @@
-[gd_scene load_steps=14 format=4 uid="uid://cwfsiro15oswg"]
+[gd_scene load_steps=23 format=4 uid="uid://cwfsiro15oswg"]
 
-[ext_resource type="PackedScene" uid="uid://cnl2jj2i7ksmi" path="res://Mapeado/terreno2.tscn" id="1_ru27n"]
+[ext_resource type="AudioStream" uid="uid://o4nit6bgu4uf" path="res://Music/Floating Dream.wav" id="1_js5jr"]
+[ext_resource type="PackedScene" uid="uid://cnl2jj2i7ksmi" path="res://Mapeado/Suelos/terreno2.tscn" id="1_ru27n"]
+[ext_resource type="Script" uid="uid://c3mqqbe5eddgd" path="res://Mundo/audio_stream_player.gd" id="2_a8hev"]
 [ext_resource type="PackedScene" uid="uid://c8mmgp3r8skl7" path="res://Protagonista/protagonista.tscn" id="2_aeujy"]
-[ext_resource type="PackedScene" uid="uid://cnyb01nulbj6y" path="res://Mapeado/terreno1.tscn" id="2_k2w8l"]
-[ext_resource type="PackedScene" uid="uid://cr6giuf2m3w57" path="res://Mapeado/plataforma_movil_y.tscn" id="2_nu0ts"]
-[ext_resource type="PackedScene" uid="uid://47b50m2gxwuq" path="res://Mapeado/terreno3.tscn" id="4_xlri1"]
-[ext_resource type="PackedScene" uid="uid://bolhks72y5tje" path="res://Mapeado/rampa1.tscn" id="5_xlri1"]
-[ext_resource type="PackedScene" uid="uid://bug433lnnx4wv" path="res://Mapeado/plataforma1.tscn" id="6_odmxj"]
+[ext_resource type="PackedScene" uid="uid://cnyb01nulbj6y" path="res://Mapeado/Suelos/terreno1.tscn" id="2_k2w8l"]
+[ext_resource type="PackedScene" uid="uid://cr6giuf2m3w57" path="res://Mapeado/Plataformas/plataforma_movil_y.tscn" id="2_nu0ts"]
+[ext_resource type="PackedScene" uid="uid://sjpj4t7m2nbt" path="res://Mapeado/Paredes/pared1.tscn" id="3_2331j"]
+[ext_resource type="PackedScene" uid="uid://47b50m2gxwuq" path="res://Mapeado/Suelos/terreno3.tscn" id="4_xlri1"]
+[ext_resource type="PackedScene" uid="uid://bolhks72y5tje" path="res://Mapeado/Suelos/rampa1.tscn" id="5_xlri1"]
+[ext_resource type="PackedScene" uid="uid://b06ui37g2prpg" path="res://Mapeado/Suelos/suelo1.tscn" id="6_5len5"]
+[ext_resource type="PackedScene" uid="uid://bug433lnnx4wv" path="res://Mapeado/Plataformas/plataforma1.tscn" id="6_odmxj"]
+[ext_resource type="PackedScene" uid="uid://cct13a4qij6ab" path="res://Mapeado/Paredes/pared_esquina.tscn" id="7_3xl74"]
 [ext_resource type="Texture2D" uid="uid://bduns0b52sy07" path="res://Recursos/Tiles/Buildings.png" id="7_33n85"]
+[ext_resource type="PackedScene" uid="uid://b2lvd06mk0jlt" path="res://Mapeado/Suelos/suelo2.tscn" id="7_ipnm5"]
 [ext_resource type="Texture2D" uid="uid://iypwhqb3txo0" path="res://Recursos/Tiles/Props-01.png" id="8_crb8b"]
 [ext_resource type="PackedScene" uid="uid://ftr7fpqn7hgk" path="res://Mundo/paralaje.tscn" id="8_x2j2t"]
+[ext_resource type="PackedScene" uid="uid://3hlnbss0a84y" path="res://Mapeado/Techos/techo1.tscn" id="11_5len5"]
+[ext_resource type="PackedScene" uid="uid://dab808f18h73l" path="res://Mapeado/Techos/techo_esquina.tscn" id="16_u3lmj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_crb8b"]
 texture = ExtResource("7_33n85")
@@ -300,124 +308,316 @@ texture = ExtResource("7_33n85")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nu0ts"]
 texture = ExtResource("8_crb8b")
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+1:2/0 = 0
+0:2/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:2/0 = 0
+5:3/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+7:5/0 = 0
+7:6/0 = 0
+6:6/0 = 0
+6:5/0 = 0
+7:13/0 = 0
+6:13/0 = 0
+5:13/0 = 0
+4:13/0 = 0
+3:13/0 = 0
+2:13/0 = 0
+1:13/0 = 0
+1:12/0 = 0
+0:12/0 = 0
+0:13/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+1:10/0 = 0
+1:9/0 = 0
+1:8/0 = 0
+0:10/0 = 0
+0:9/0 = 0
+0:8/0 = 0
+0:7/0 = 0
+0:6/0 = 0
+0:5/0 = 0
+1:1/0 = 0
+1:5/0 = 0
+1:6/0 = 0
+1:7/0 = 0
+2:10/0 = 0
+2:9/0 = 0
+2:8/0 = 0
+2:7/0 = 0
+2:6/0 = 0
+2:5/0 = 0
+2:4/0 = 0
+2:2/0 = 0
+3:4/0 = 0
+3:3/0 = 0
+3:5/0 = 0
+3:6/0 = 0
+3:7/0 = 0
+3:8/0 = 0
+3:9/0 = 0
+3:10/0 = 0
+3:11/0 = 0
+2:12/0 = 0
+2:11/0 = 0
+3:12/0 = 0
+4:10/0 = 0
+4:9/0 = 0
+4:8/0 = 0
+4:7/0 = 0
+4:6/0 = 0
+4:5/0 = 0
+4:4/0 = 0
+4:3/0 = 0
+4:11/0 = 0
+4:12/0 = 0
+5:5/0 = 0
+5:6/0 = 0
+5:7/0 = 0
+5:8/0 = 0
+5:9/0 = 0
+6:10/0 = 0
+6:11/0 = 0
+6:12/0 = 0
+6:9/0 = 0
+6:8/0 = 0
+6:7/0 = 0
+7:10/0 = 0
+7:9/0 = 0
+7:8/0 = 0
+7:7/0 = 0
+7:11/0 = 0
+5:10/0 = 0
+5:11/0 = 0
+7:12/0 = 0
+5:12/0 = 0
+7:3/0 = 0
+7:2/0 = 0
+7:1/0 = 0
+6:1/0 = 0
+6:2/0 = 0
+6:3/0 = 0
+6:0/0 = 0
+5:1/0 = 0
+5:2/0 = 0
+7:0/0 = 0
+5:0/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_nu0ts"]
 sources/0 = SubResource("TileSetAtlasSource_crb8b")
 sources/1 = SubResource("TileSetAtlasSource_nu0ts")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk5ky"]
+size = Vector2(96, 80)
+
 [node name="Mundo" type="Node2D"]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_js5jr")
+script = ExtResource("2_a8hev")
+
 [node name="Protagonista" parent="." instance=ExtResource("2_aeujy")]
-position = Vector2(48, 288)
+position = Vector2(256, -1376)
 
 [node name="Camera2D" type="Camera2D" parent="Protagonista"]
 position = Vector2(0, -64)
 scale = Vector2(0.882794, 0.860034)
 zoom = Vector2(1.2, 1.2)
 
-[node name="Terreno1" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(16, 384)
+[node name="Techos" type="Node2D" parent="."]
 
-[node name="Terreno2" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(48, 384)
+[node name="Terreno1" parent="Techos" instance=ExtResource("11_5len5")]
+position = Vector2(768, -384)
 
-[node name="Terreno3" parent="." instance=ExtResource("4_xlri1")]
-position = Vector2(80, 384)
+[node name="Terreno2" parent="Techos" instance=ExtResource("11_5len5")]
+position = Vector2(1280, -384)
 
-[node name="Terreno4" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(112, 384)
+[node name="Terreno3" parent="Techos" instance=ExtResource("11_5len5")]
+position = Vector2(1792, -384)
 
-[node name="Terreno5" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(144, 384)
+[node name="Paredes" type="Node2D" parent="."]
 
-[node name="Terreno6" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(176, 384)
+[node name="Terreno1" parent="Paredes" instance=ExtResource("3_2331j")]
+position = Vector2(-256, 64)
 
-[node name="Terreno7" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(208, 384)
+[node name="Terreno2" parent="Paredes" instance=ExtResource("3_2331j")]
+position = Vector2(-256, -416)
 
-[node name="Rampa1" parent="." instance=ExtResource("5_xlri1")]
-position = Vector2(240, 384)
+[node name="Terreno3" parent="Paredes" instance=ExtResource("3_2331j")]
+position = Vector2(-256, -928)
 
-[node name="Terreno8" parent="." instance=ExtResource("6_odmxj")]
-position = Vector2(416, 264)
+[node name="Terreno4" parent="Paredes" instance=ExtResource("3_2331j")]
+position = Vector2(-256, -1440)
 
-[node name="Terreno9" parent="." instance=ExtResource("6_odmxj")]
-position = Vector2(608, 200)
+[node name="Terreno5" parent="Paredes" instance=ExtResource("3_2331j")]
+position = Vector2(768, -928)
+rotation = 3.14159
 
-[node name="Terreno10" parent="." instance=ExtResource("6_odmxj")]
-position = Vector2(736, 288)
+[node name="Terreno6" parent="Paredes" instance=ExtResource("3_2331j")]
+position = Vector2(768, -1440)
+rotation = 3.14159
 
-[node name="DetallesFondo" type="TileMapLayer" parent="."]
-z_index = 4
-tile_map_data = PackedByteArray("AAAIABIAAAAKAAcAAAAIABMAAAAKAAgAAAAJABIAAAALAAcAAAAJABMAAAALAAgAAAAKABIAAAAMAAcAAAAKABMAAAAMAAgAAAA=")
+[node name="Terreno7" parent="Paredes" instance=ExtResource("7_3xl74")]
+position = Vector2(-256, 576)
+
+[node name="Terreno8" parent="Paredes" instance=ExtResource("3_2331j")]
+position = Vector2(768, -416)
+rotation = 3.14159
+
+[node name="Suelos" type="Node2D" parent="."]
+
+[node name="Terreno1" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(1872, -1952)
+
+[node name="Terreno2" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(1904, -1952)
+
+[node name="Terreno3" parent="Suelos" instance=ExtResource("4_xlri1")]
+position = Vector2(1936, -1952)
+
+[node name="Terreno4" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(1968, -1952)
+
+[node name="Terreno5" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(2000, -1952)
+
+[node name="Terreno6" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(2032, -1952)
+
+[node name="Terreno7" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(2064, -1952)
+
+[node name="Rampa1" parent="Suelos" instance=ExtResource("5_xlri1")]
+position = Vector2(2096, -1952)
+
+[node name="Terreno11" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(1856, -1728)
+
+[node name="Terreno12" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(1888, -1728)
+
+[node name="Terreno13" parent="Suelos" instance=ExtResource("4_xlri1")]
+position = Vector2(1920, -1728)
+
+[node name="Terreno14" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(1952, -1728)
+
+[node name="Terreno15" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(1984, -1728)
+
+[node name="Terreno16" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(2016, -1728)
+
+[node name="Terreno17" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(2048, -1728)
+
+[node name="Terreno18" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(2080, -1728)
+
+[node name="Terreno19" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(2112, -1728)
+
+[node name="Terreno20" parent="Suelos" instance=ExtResource("4_xlri1")]
+position = Vector2(2144, -1728)
+
+[node name="Terreno21" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(2176, -1728)
+
+[node name="Terreno22" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(2208, -1728)
+
+[node name="Terreno23" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(2240, -1728)
+
+[node name="Terreno24" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(2272, -1728)
+
+[node name="Terreno25" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(2304, -1728)
+
+[node name="Terreno26" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(2336, -1728)
+
+[node name="Terreno27" parent="Suelos" instance=ExtResource("4_xlri1")]
+position = Vector2(2368, -1728)
+
+[node name="Terreno28" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(2400, -1728)
+
+[node name="Terreno29" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(2432, -1728)
+
+[node name="Terreno30" parent="Suelos" instance=ExtResource("1_ru27n")]
+position = Vector2(2464, -1728)
+
+[node name="Terreno31" parent="Suelos" instance=ExtResource("2_k2w8l")]
+position = Vector2(2496, -1728)
+
+[node name="Terreno8" parent="Suelos" instance=ExtResource("6_5len5")]
+position = Vector2(256, 576)
+
+[node name="Terreno9" parent="Suelos" instance=ExtResource("6_5len5")]
+position = Vector2(1280, 576)
+
+[node name="Terreno10" parent="Suelos" instance=ExtResource("7_ipnm5")]
+position = Vector2(768, 576)
+
+[node name="Terreno32" parent="Suelos" instance=ExtResource("7_ipnm5")]
+position = Vector2(1792, 576)
+
+[node name="Terreno33" parent="Suelos" instance=ExtResource("7_ipnm5")]
+position = Vector2(2304, 576)
+
+[node name="Plataformas" type="Node2D" parent="."]
+
+[node name="Plataforma" parent="Plataformas" instance=ExtResource("6_odmxj")]
+position = Vector2(2912, -1872)
+
+[node name="Plataforma2" parent="Plataformas" instance=ExtResource("6_odmxj")]
+position = Vector2(3104, -1936)
+
+[node name="Plataforma3" parent="Plataformas" instance=ExtResource("6_odmxj")]
+position = Vector2(3232, -1848)
+
+[node name="Plataforma_Movil_Y" parent="Plataformas" instance=ExtResource("2_nu0ts")]
+position = Vector2(2784, -1824)
+
+[node name="Fondo" type="Node2D" parent="."]
+position = Vector2(0, -128)
+
+[node name="DetallesFondo" type="TileMapLayer" parent="Fondo"]
+visible = false
+z_index = -1
+tile_map_data = PackedByteArray("AAAJABEAAQAAAAIAAAAJABIAAQAAAAMAAAAJABMAAQAAAAQAAAAKABEAAQABAAIAAAAKABIAAQABAAMAAAAKABMAAQABAAQAAAA=")
 tile_set = SubResource("TileSet_nu0ts")
 
-[node name="Paralaje" parent="." instance=ExtResource("8_x2j2t")]
+[node name="Paralaje" parent="Fondo" instance=ExtResource("8_x2j2t")]
 z_index = -5
 
-[node name="Terreno11" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(784, 448)
+[node name="Terreno1" parent="." instance=ExtResource("16_u3lmj")]
+position = Vector2(2304, -32)
 
-[node name="Terreno12" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(816, 448)
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(256, 256)
 
-[node name="Terreno13" parent="." instance=ExtResource("4_xlri1")]
-position = Vector2(848, 448)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_sk5ky")
 
-[node name="Terreno14" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(880, 448)
-
-[node name="Terreno15" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(912, 448)
-
-[node name="Terreno16" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(944, 448)
-
-[node name="Terreno17" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(976, 448)
-
-[node name="Terreno18" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(1008, 448)
-
-[node name="Terreno19" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(1040, 448)
-
-[node name="Terreno20" parent="." instance=ExtResource("4_xlri1")]
-position = Vector2(1072, 448)
-
-[node name="Terreno21" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(1104, 448)
-
-[node name="Terreno22" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(1136, 448)
-
-[node name="Terreno23" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(1168, 448)
-
-[node name="Terreno24" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(1200, 448)
-
-[node name="Terreno25" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(1232, 448)
-
-[node name="Terreno26" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(1264, 448)
-
-[node name="Terreno27" parent="." instance=ExtResource("4_xlri1")]
-position = Vector2(1296, 448)
-
-[node name="Terreno28" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(1328, 448)
-
-[node name="Terreno29" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(1360, 448)
-
-[node name="Terreno30" parent="." instance=ExtResource("1_ru27n")]
-position = Vector2(1392, 448)
-
-[node name="Terreno31" parent="." instance=ExtResource("2_k2w8l")]
-position = Vector2(1424, 448)
-
-[node name="Terreno32" parent="." instance=ExtResource("2_nu0ts")]
-position = Vector2(288, 312)
+[connection signal="body_entered" from="Area2D" to="AudioStreamPlayer" method="_on_area_2d_body_entered"]
