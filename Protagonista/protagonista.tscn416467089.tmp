@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://qv4uiomvqwa3" path="res://Recursos/Knight/Knight_player/Fall_KG_2.png" id="3_y74jy"]
 [ext_resource type="Texture2D" uid="uid://dnrxbdstpeffa" path="res://Recursos/Knight/Knight_player/Jump_KG_2.png" id="5_y74jy"]
 [ext_resource type="Texture2D" uid="uid://dxv5itqgdphti" path="res://Recursos/Knight/Knight_player/Landing_KG_2.png" id="6_y74jy"]
-[ext_resource type="Script" uid="uid://8h081b1nesba" path="res://Protagonista/Control_Protagonista/FSM/state_machine.gd" id="9_31hdc"]
+[ext_resource type="PackedScene" uid="uid://hwjnj4b8lx4t" path="res://Enemigos/Control_Enemigos/FSM/state_machine.tscn" id="7_6hlvo"]
 [ext_resource type="Script" uid="uid://vwt7g14rvsx7" path="res://Protagonista/Control_Protagonista/FSM/EstadosProtagonista/Idle.gd" id="9_y74jy"]
 [ext_resource type="Script" uid="uid://dr63vbsquu301" path="res://Protagonista/Control_Protagonista/FSM/EstadosProtagonista/Walk.gd" id="10_31hdc"]
 [ext_resource type="Script" uid="uid://cti6pyscixue4" path="res://Protagonista/Control_Protagonista/FSM/EstadosProtagonista/Jump.gd" id="11_wwtkg"]
@@ -298,8 +298,7 @@ target_position = Vector2(0, 48)
 position = Vector2(-8, 0)
 target_position = Vector2(0, 48)
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
-script = ExtResource("9_31hdc")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("7_6hlvo")]
 default_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
@@ -320,6 +319,7 @@ script = ExtResource("13_4jmt6")
 [node name="Attack1" type="Node" parent="StateMachine"]
 script = ExtResource("14_xubla")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/Jump" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/Land" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/Attack1" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack1" method="_on_animated_sprite_2d_frame_changed"]

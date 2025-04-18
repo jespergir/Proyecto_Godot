@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhu2i142ibd2e"]
+
+[ext_resource type="Script" uid="uid://cfls8xr0tlsdp" path="res://Enemigos/Control_Enemigos/FSM/state_machine.gd" id="1_wdhw4"]
+
+[node name="StateMachine" type="Node"]
+script = ExtResource("1_wdhw4")
