@@ -295,19 +295,9 @@ animation = &"Attack"
 position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_682ol")
 
-[node name="VisionEnemigo" type="Node2D" parent="."]
-
-[node name="RayCastVision" type="RayCast2D" parent="VisionEnemigo"]
-position = Vector2(-8, -8)
-target_position = Vector2(160, 0)
-
-[node name="RayCastVision2" type="RayCast2D" parent="VisionEnemigo"]
-position = Vector2(-8, 40)
-target_position = Vector2(160, 0)
-
-[node name="RayCastVision3" type="RayCast2D" parent="VisionEnemigo"]
-position = Vector2(-8, 16)
-target_position = Vector2(160, 0)
+[node name="RayCastVision" type="RayCast2D" parent="."]
+position = Vector2(0, -16)
+target_position = Vector2(160, 40)
 
 [node name="AttackRangeArea" type="Area2D" parent="."]
 
