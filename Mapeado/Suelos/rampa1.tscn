@@ -71,4 +71,4 @@ tile_set = SubResource("TileSet_28o8x")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-8, -56)
-polygon = PackedVector2Array(8, 0, 24, 8, 24, 24, -8, 24, -8, -8)
+polygon = PackedVector2Array(8, 0, 24, 8, 24, 120, -8, 120, -8, -8)

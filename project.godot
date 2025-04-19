@@ -21,6 +21,11 @@ window/size/viewport_height=540
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[global_group]
+
+Protagonista=""
+Enemigo=""
+
 [input]
 
 Left={

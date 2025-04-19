@@ -1,10 +1,10 @@
-[gd_scene load_steps=50 format=3 uid="uid://djtxcxdftb7bc"]
+[gd_scene load_steps=41 format=3 uid="uid://djtxcxdftb7bc"]
 
 [ext_resource type="Script" uid="uid://cs40w6kjxoh43" path="res://Enemigos/enemigo.gd" id="1_oeg2k"]
 [ext_resource type="Texture2D" uid="uid://c8j8t0mm5b8io" path="res://Recursos/mr dude/mr_punch.png" id="2_bnwb0"]
 [ext_resource type="Texture2D" uid="uid://byhfhc5g0cvmd" path="res://Recursos/mr dude/mr_idle.png" id="2_jjl0l"]
-[ext_resource type="Texture2D" uid="uid://cnbgoh2q8824h" path="res://Recursos/mr dude/mr_run.png" id="4_bnwb0"]
 [ext_resource type="Texture2D" uid="uid://4m858764gxbx" path="res://Recursos/mr dude/mr_walk.png" id="4_m8b2l"]
+[ext_resource type="Script" uid="uid://8h081b1nesba" path="res://Protagonista/Control_Protagonista/FSM/state_machine.gd" id="5_mo184"]
 [ext_resource type="Script" uid="uid://bcfj4uqjpkrl1" path="res://Enemigos/Control_Enemigo/idle.gd" id="6_6l6xy"]
 [ext_resource type="Script" uid="uid://cvjqtocu5xpph" path="res://Enemigos/Control_Enemigo/walk.gd" id="7_6l6xy"]
 [ext_resource type="Script" uid="uid://ct53mfallt3vw" path="res://Enemigos/Control_Enemigo/Attack.gd" id="8_oeg2k"]
@@ -85,38 +85,6 @@ region = Rect2(0, 378, 126, 126)
 [sub_resource type="AtlasTexture" id="AtlasTexture_n2hpr"]
 atlas = ExtResource("2_jjl0l")
 region = Rect2(126, 378, 126, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fubkh"]
-atlas = ExtResource("4_bnwb0")
-region = Rect2(0, 0, 126, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ub6rm"]
-atlas = ExtResource("4_bnwb0")
-region = Rect2(126, 0, 126, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gbw7u"]
-atlas = ExtResource("4_bnwb0")
-region = Rect2(252, 0, 126, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_opakg"]
-atlas = ExtResource("4_bnwb0")
-region = Rect2(0, 126, 126, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_341rg"]
-atlas = ExtResource("4_bnwb0")
-region = Rect2(126, 126, 126, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e6ktk"]
-atlas = ExtResource("4_bnwb0")
-region = Rect2(252, 126, 126, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tg2bg"]
-atlas = ExtResource("4_bnwb0")
-region = Rect2(0, 252, 126, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ustfp"]
-atlas = ExtResource("4_bnwb0")
-region = Rect2(126, 252, 126, 126)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wuvu0"]
 atlas = ExtResource("4_m8b2l")
@@ -221,35 +189,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fubkh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ub6rm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gbw7u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_opakg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_341rg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e6ktk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tg2bg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ustfp")
-}],
-"loop": true,
-"name": &"Run",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_wuvu0")
 }, {
 "duration": 1.0,
@@ -283,68 +222,10 @@ radius = 16.0
 height = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oeg2k"]
-size = Vector2(56, 40)
+size = Vector2(32, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y74jy"]
-size = Vector2(56, 40)
-
-[sub_resource type="GDScript" id="GDScript_jjl0l"]
-script/source = "class_name StateMachine extends Node
-
-# Nodo que vamos a controlar.
-@onready var controlled_node = self.owner
-
-# Estado por defecto
-@export var default_state : BaseState
-
-#Estado en ejecución en cada momento
-var current_state : BaseState = null
-
-func _ready() -> void:
-	call_deferred(\"_default_state_start\")
-	
-func _default_state_start() -> void:
-	current_state = default_state
-	_state_start()
-
-# Función que prepara las variables para el nuevo estado y lanza su start
-func _state_start() -> void:
-	prints(\"StateMachine \", controlled_node.name, \" start state \", current_state)
-	## Configuramos el estado
-	current_state.controlled_node = controlled_node
-	current_state.state_machine = self
-	current_state.start()
-
-# Método para cambiar a un estado nuevo
-func change_to(new_state : String) -> void:
-		if current_state and current_state.has_method(\"end\"): current_state.end()
-		current_state = get_node(new_state)
-		_state_start()
-
-## Región métodos que se ejecutan solos
-
-func _process(delta: float) -> void:
-	if current_state and current_state.has_method(\"on_process\"):
-		current_state.on_process(delta)
-
-func _physics_process(delta: float) -> void:
-	if current_state and current_state.has_method(\"on_physics_process\"):
-		current_state.on_physics_process(delta)
-
-func _input(event: InputEvent) -> void:
-	if current_state and current_state.has_method(\"on_input\"):
-		current_state.on_input(event)
-
-func _unhandled_input(event: InputEvent) -> void:
-	if current_state and current_state.has_method(\"on_unhandled_input\"):
-		current_state.on_unhandled_input(event)
-
-func _unhandled_key_input(event: InputEvent) -> void:
-	if current_state and current_state.has_method(\"on_unhandled_key_input\"):
-		current_state.on_unhandled_key_input(event)
-
-## Fin Región
-"
+size = Vector2(32, 40)
 
 [node name="Enemigo1" type="CharacterBody2D" groups=["Enemigo"]]
 script = ExtResource("1_oeg2k")
@@ -352,6 +233,7 @@ script = ExtResource("1_oeg2k")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_76546")
 animation = &"Attack"
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
@@ -364,18 +246,18 @@ target_position = Vector2(160, 40)
 [node name="AttackRangeArea" type="Area2D" parent="."]
 
 [node name="AttackRange" type="CollisionShape2D" parent="AttackRangeArea"]
-position = Vector2(44, 4)
+position = Vector2(56, 4)
 shape = SubResource("RectangleShape2D_oeg2k")
 
 [node name="AttackCollisionArea" type="Area2D" parent="."]
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AttackCollisionArea"]
-position = Vector2(44, 4)
+position = Vector2(56, 4)
 shape = SubResource("RectangleShape2D_y74jy")
 disabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
-script = SubResource("GDScript_jjl0l")
+script = ExtResource("5_mo184")
 default_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
@@ -394,8 +276,4 @@ script = ExtResource("9_jjl0l")
 [connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="AttackRangeArea" to="StateMachine/Idle" method="_on_attack_range_body_entered"]
 [connection signal="body_entered" from="AttackRangeArea" to="StateMachine/Walk" method="_on_attack_range_body_entered"]
-[connection signal="body_entered" from="AttackRangeArea" to="StateMachine/Chase" method="_on_attack_range_area_body_entered"]
-[connection signal="body_exited" from="AttackRangeArea" to="StateMachine/Idle" method="_on_attack_range_area_body_exited"]
-[connection signal="body_exited" from="AttackRangeArea" to="StateMachine/Walk" method="_on_attack_range_area_body_exited"]
-[connection signal="body_exited" from="AttackRangeArea" to="StateMachine/Chase" method="_on_attack_range_area_body_exited"]
 [connection signal="body_entered" from="AttackCollisionArea" to="StateMachine/Attack" method="_on_attack_collision_body_entered"]
