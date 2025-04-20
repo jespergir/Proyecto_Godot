@@ -1,10 +1,16 @@
-[gd_scene load_steps=45 format=3 uid="uid://djtxcxdftb7bc"]
+[gd_scene load_steps=54 format=3 uid="uid://djtxcxdftb7bc"]
 
 [ext_resource type="Script" uid="uid://cs40w6kjxoh43" path="res://Enemigos/enemigo.gd" id="1_oeg2k"]
 [ext_resource type="Texture2D" uid="uid://c8j8t0mm5b8io" path="res://Recursos/mr dude/mr_punch.png" id="2_bnwb0"]
 [ext_resource type="Texture2D" uid="uid://byhfhc5g0cvmd" path="res://Recursos/mr dude/mr_idle.png" id="2_jjl0l"]
+[ext_resource type="Texture2D" uid="uid://dbmv6pncobp0j" path="res://Recursos/mr dude/mr_damage.png" id="3_m8b2l"]
 [ext_resource type="Texture2D" uid="uid://cnbgoh2q8824h" path="res://Recursos/mr dude/mr_run.png" id="4_bnwb0"]
 [ext_resource type="Texture2D" uid="uid://4m858764gxbx" path="res://Recursos/mr dude/mr_walk.png" id="4_m8b2l"]
+[ext_resource type="PackedScene" uid="uid://d3fxokq75pqtm" path="res://Protagonista/Control_Protagonista/state_machine.tscn" id="6_mo184"]
+[ext_resource type="Script" uid="uid://bcfj4uqjpkrl1" path="res://Enemigos/Control_Enemigo/Estados_Enemigo/idle.gd" id="7_6l6xy"]
+[ext_resource type="Script" uid="uid://cvjqtocu5xpph" path="res://Enemigos/Control_Enemigo/Estados_Enemigo/walk.gd" id="8_oeg2k"]
+[ext_resource type="Script" uid="uid://ct53mfallt3vw" path="res://Enemigos/Control_Enemigo/Estados_Enemigo/attack.gd" id="10_bnwb0"]
+[ext_resource type="Script" uid="uid://cidy57f8owpne" path="res://Enemigos/Control_Enemigo/Estados_Enemigo/damage.gd" id="12_vfl7f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76546"]
 atlas = ExtResource("2_bnwb0")
@@ -24,6 +30,22 @@ region = Rect2(0, 126, 126, 126)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdtnx"]
 atlas = ExtResource("2_bnwb0")
+region = Rect2(126, 126, 126, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj003"]
+atlas = ExtResource("3_m8b2l")
+region = Rect2(0, 0, 126, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwch1"]
+atlas = ExtResource("3_m8b2l")
+region = Rect2(126, 0, 126, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbebu"]
+atlas = ExtResource("3_m8b2l")
+region = Rect2(0, 126, 126, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgcql"]
+atlas = ExtResource("3_m8b2l")
 region = Rect2(126, 126, 126, 126)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnwb0"]
@@ -156,6 +178,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_k67qs")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_k67qs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k67qs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k67qs")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_n7872")
 }, {
 "duration": 1.0,
@@ -167,6 +198,23 @@ animations = [{
 "loop": false,
 "name": &"Attack",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj003")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwch1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbebu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgcql")
+}],
+"loop": false,
+"name": &"Damage",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -275,24 +323,21 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_682ol"]
-radius = 16.0
-height = 64.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeg2k"]
-size = Vector2(56, 40)
+radius = 12.0
+height = 60.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y74jy"]
-size = Vector2(56, 40)
+size = Vector2(45, 31)
 
 [node name="Enemigo1" type="CharacterBody2D" groups=["Enemigo"]]
 script = ExtResource("1_oeg2k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_76546")
-animation = &"Attack"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_682ol")
 
 [node name="VisionEnemigo" type="Node2D" parent="."]
@@ -314,20 +359,30 @@ position = Vector2(32, 8)
 position = Vector2(17, -24)
 target_position = Vector2(0, 48)
 
-[node name="AttackRangeArea" type="Area2D" parent="."]
-
-[node name="AttackRange" type="CollisionShape2D" parent="AttackRangeArea"]
-position = Vector2(44, 4)
-shape = SubResource("RectangleShape2D_oeg2k")
-
 [node name="AttackCollisionArea" type="Area2D" parent="."]
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AttackCollisionArea"]
-position = Vector2(44, 4)
+position = Vector2(40.5, -0.5)
 shape = SubResource("RectangleShape2D_y74jy")
 disabled = true
 
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="body_entered" from="AttackRangeArea" to="." method="_on_attack_range_area_body_entered"]
-[connection signal="body_exited" from="AttackRangeArea" to="." method="_on_attack_range_area_body_exited"]
-[connection signal="body_entered" from="AttackCollisionArea" to="." method="_on_attack_collision_area_body_entered"]
+[node name="State_Machine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("6_mo184")]
+default_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State_Machine"]
+script = ExtResource("7_6l6xy")
+
+[node name="Walk" type="Node" parent="State_Machine"]
+script = ExtResource("8_oeg2k")
+
+[node name="Attack" type="Node" parent="State_Machine"]
+script = ExtResource("10_bnwb0")
+
+[node name="Damage" type="Node" parent="State_Machine"]
+script = ExtResource("12_vfl7f")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Attack" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Damage" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="State_Machine/Attack" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="AttackCollisionArea" to="State_Machine/Attack" method="_on_attack_collision_area_body_entered"]
+[connection signal="body_exited" from="AttackCollisionArea" to="State_Machine/Attack" method="_on_attack_collision_area_body_exited"]

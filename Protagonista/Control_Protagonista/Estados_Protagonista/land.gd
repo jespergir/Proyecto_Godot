@@ -1,7 +1,12 @@
 class_name Land extends PlayerStatesBaseState
 
 func on_physics_process(delta: float) -> void:
-		
+#region Land
+	# Si la velocidad en y es mayor que 0 y el raycast está colistionando, aterriza
+	if protagonista.velocity.y > 0 and (protagonista.raycast_suelo1.is_colliding() or protagonista.raycast_suelo2.is_colliding()):
+		protagonista.animated_sprite.play("Land")
+#endregion
+#region MoveX
 	# Controla la dirección en x mientras se aterriza
 	var direction := Input.get_axis("Left", "Right")
 	if direction:
@@ -9,15 +14,20 @@ func on_physics_process(delta: float) -> void:
 		protagonista.animated_sprite.scale.x = sign(direction)
 	else:
 		protagonista.velocity.x = move_toward(protagonista.velocity.x, 0, protagonista.SPEED)
-		
+#endregion
+	
+#region Jump
 	if protagonista.jump_buffer_timer > 0 and protagonista.coyote_timer > 0:
 		state_machine.change_to("Jump")
 		return
-
-	# Si la velocidad en y es mayor que 0 y el raycast está colistionando, aterriza
-	if protagonista.velocity.y > 0 and (protagonista.raycast_suelo1.is_colliding() or protagonista.raycast_suelo2.is_colliding()):
-		protagonista.animated_sprite.play("Land")
-		
+#endregion
+	
+#region Attack1
+	# Si se pulsa la acción saltar, la almacena en búfer y si pasa poco rato hasta que se puede saltar, cambia a Saltar
+	if Input.is_action_just_pressed("Attack1"):
+		state_machine.change_to("Attack1")
+		return
+#endregion
 	handle_states(delta)
 	protagonista.move_and_slide()
 
