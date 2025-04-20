@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3fxokq75pqtm"]
+
+[ext_resource type="Script" uid="uid://cu4po5s4endh1" path="res://Protagonista/Control_Protagonista/state_machine.gd" id="1_upjvu"]
+
+[node name="State_Machine1" type="Node"]
+script = ExtResource("1_upjvu")

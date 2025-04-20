@@ -327,6 +327,7 @@ position = Vector2(44, 4)
 shape = SubResource("RectangleShape2D_y74jy")
 disabled = true
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="AttackRangeArea" to="." method="_on_attack_range_area_body_entered"]
 [connection signal="body_exited" from="AttackRangeArea" to="." method="_on_attack_range_area_body_exited"]

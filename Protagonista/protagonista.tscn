@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c8mmgp3r8skl7"]
+[gd_scene load_steps=54 format=3 uid="uid://c8mmgp3r8skl7"]
 
 [ext_resource type="Script" uid="uid://c1lxgi5xqgdt6" path="res://Protagonista/protagonista.gd" id="1_0nl2c"]
 [ext_resource type="Texture2D" uid="uid://b5boduif34ogy" path="res://Recursos/Knight/Knight_player/Walking_KG_2.png" id="2_31hdc"]
@@ -8,6 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://qv4uiomvqwa3" path="res://Recursos/Knight/Knight_player/Fall_KG_2.png" id="3_y74jy"]
 [ext_resource type="Texture2D" uid="uid://dnrxbdstpeffa" path="res://Recursos/Knight/Knight_player/Jump_KG_2.png" id="5_y74jy"]
 [ext_resource type="Texture2D" uid="uid://dxv5itqgdphti" path="res://Recursos/Knight/Knight_player/Landing_KG_2.png" id="6_y74jy"]
+[ext_resource type="Script" uid="uid://cu4po5s4endh1" path="res://Protagonista/Control_Protagonista/state_machine.gd" id="9_ygnkn"]
+[ext_resource type="Script" uid="uid://8q3nswuq3k7m" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/idle.gd" id="10_o08mt"]
+[ext_resource type="Script" uid="uid://dtj0nns50hkyv" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/walk.gd" id="11_3o5k7"]
+[ext_resource type="Script" uid="uid://blmj27js6iajw" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/jump.gd" id="12_sdfh0"]
+[ext_resource type="Script" uid="uid://b34edjakhxlvs" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/fall.gd" id="13_ytoek"]
+[ext_resource type="Script" uid="uid://ul7av5u4mnvo" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/land.gd" id="14_y74jy"]
+[ext_resource type="Script" uid="uid://d3woqmec1e275" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/attack1.gd" id="15_31hdc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xftmy"]
 atlas = ExtResource("2_ytoek")
@@ -327,4 +334,27 @@ target_position = Vector2(0, 48)
 position = Vector2(-8, 0)
 target_position = Vector2(0, 48)
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="State_Machine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
+script = ExtResource("9_ygnkn")
+default_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State_Machine"]
+script = ExtResource("10_o08mt")
+
+[node name="Walk" type="Node" parent="State_Machine"]
+script = ExtResource("11_3o5k7")
+
+[node name="Jump" type="Node" parent="State_Machine"]
+script = ExtResource("12_sdfh0")
+
+[node name="Fall" type="Node" parent="State_Machine"]
+script = ExtResource("13_ytoek")
+
+[node name="Land" type="Node" parent="State_Machine"]
+script = ExtResource("14_y74jy")
+
+[node name="Attack1" type="Node" parent="State_Machine"]
+script = ExtResource("15_31hdc")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Land" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Attack1" method="_on_animated_sprite_2d_animation_finished"]
