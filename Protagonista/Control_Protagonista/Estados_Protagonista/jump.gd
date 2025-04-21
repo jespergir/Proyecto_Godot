@@ -32,6 +32,12 @@ func on_physics_process(delta: float) -> void:
 		return
 #endregion
 	
+#region Damage
+	if protagonista.damage_just_received:
+		state_machine.change_to("Damage")
+		return
+#endregion
+	
 #region Fall
 	# Después de un segundo de caída, cambiar a Fall
 	if protagonista.velocity.y>=0 and !(protagonista.raycast_suelo1.is_colliding() or protagonista.raycast_suelo2.is_colliding()) and protagonista.coyote_timer<=0:

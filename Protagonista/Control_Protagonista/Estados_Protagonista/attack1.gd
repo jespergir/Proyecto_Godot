@@ -23,6 +23,12 @@ func on_physics_process(delta: float) -> void:
 			return
 #endregion
 	
+#region Damage
+	if protagonista.damage_just_received:
+		state_machine.change_to("Damage")
+		return
+#endregion
+	
 #region Fall
 	if attack_animation_finished:
 		# Después de un segundo de caída (al caer mientras andas)

@@ -16,6 +16,12 @@ func on_physics_process(delta: float) -> void:
 		protagonista.velocity.x = move_toward(protagonista.velocity.x, 0, protagonista.SPEED)
 #endregion
 	
+#region Damage
+	if protagonista.damage_just_received:
+		state_machine.change_to("Damage")
+		return
+#endregion
+	
 #region Jump
 	if protagonista.jump_buffer_timer > 0 and protagonista.coyote_timer > 0:
 		state_machine.change_to("Jump")
