@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://djtxcxdftb7bc"]
+[gd_scene load_steps=54 format=3 uid="uid://djtxcxdftb7bc"]
 
 [ext_resource type="Script" uid="uid://cs40w6kjxoh43" path="res://Enemigos/Enemigo_Rana/enemigo_rana.gd" id="1_oeg2k"]
 [ext_resource type="Texture2D" uid="uid://c8j8t0mm5b8io" path="res://Recursos/mr dude/mr_punch.png" id="2_bnwb0"]
@@ -7,9 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cnbgoh2q8824h" path="res://Recursos/mr dude/mr_run.png" id="4_bnwb0"]
 [ext_resource type="Texture2D" uid="uid://4m858764gxbx" path="res://Recursos/mr dude/mr_walk.png" id="4_m8b2l"]
 [ext_resource type="PackedScene" uid="uid://d3fxokq75pqtm" path="res://Protagonista/Control_Protagonista/state_machine.tscn" id="6_mo184"]
-[ext_resource type="Script" uid="uid://b30omu1r3rl5e" path="res://Enemigos/Enemigo_Rana/Control/Estados/idle.gd" id="7_6l6xy"]
-[ext_resource type="Script" uid="uid://booox4etr3khr" path="res://Enemigos/Enemigo_Rana/Control/Estados/walk.gd" id="8_oeg2k"]
-[ext_resource type="Script" uid="uid://drtdg6gvb11vc" path="res://Enemigos/Enemigo_Rana/Control/Estados/attack.gd" id="10_bnwb0"]
+[ext_resource type="Script" uid="uid://bcfj4uqjpkrl1" path="res://Enemigos/Enemigo_Rana/Control/Estados/idle.gd" id="7_6l6xy"]
+[ext_resource type="Script" uid="uid://cvjqtocu5xpph" path="res://Enemigos/Enemigo_Rana/Control/Estados/walk.gd" id="8_oeg2k"]
+[ext_resource type="Script" uid="uid://ct53mfallt3vw" path="res://Enemigos/Enemigo_Rana/Control/Estados/attack.gd" id="10_bnwb0"]
+[ext_resource type="Script" uid="uid://cidy57f8owpne" path="res://Enemigos/Enemigo_Rana/Control/Estados/damage.gd" id="12_vfl7f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76546"]
 atlas = ExtResource("2_bnwb0")
@@ -369,7 +370,11 @@ script = ExtResource("8_oeg2k")
 [node name="Attack" type="Node" parent="State_Machine"]
 script = ExtResource("10_bnwb0")
 
+[node name="Damage" type="Node" parent="State_Machine"]
+script = ExtResource("12_vfl7f")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Attack" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Damage" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="State_Machine/Attack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="AttackCollisionArea" to="State_Machine/Attack" method="_on_attack_collision_area_body_entered"]
 [connection signal="body_exited" from="AttackCollisionArea" to="State_Machine/Attack" method="_on_attack_collision_area_body_exited"]

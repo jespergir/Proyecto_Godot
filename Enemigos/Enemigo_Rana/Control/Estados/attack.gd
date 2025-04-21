@@ -1,4 +1,4 @@
-class_name EnemyAttack extends EnemyStatesBaseState
+class_name EnemigoRanaAttack extends EnemigoRanaParametersBaseState
 
 var body_exited = false
 var attack = false

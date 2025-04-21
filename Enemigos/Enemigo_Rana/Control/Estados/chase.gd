@@ -1,4 +1,4 @@
-class_name  EnemyChase extends EnemyStatesBaseState
+class_name  EnemigoRanaChase extends EnemigoRanaParametersBaseState
 
 func start():	
 	enemigo.chasing_time = enemigo.CHASE_TIME

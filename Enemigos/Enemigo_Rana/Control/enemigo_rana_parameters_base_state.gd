@@ -1,4 +1,4 @@
-class_name EnemyStatesBaseState extends EnemyBaseState
+class_name EnemigoRanaParametersBaseState extends EnemigoRanaBaseState
 
 var gravity:float = ProjectSettings.get_setting("physics/2d/default_gravity")
 

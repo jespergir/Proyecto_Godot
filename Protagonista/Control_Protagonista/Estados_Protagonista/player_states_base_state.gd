@@ -14,5 +14,11 @@ func handle_states(delta):
 	if Input.is_action_just_pressed("Jump"):
 		protagonista.jump_buffer_timer = protagonista.JUMP_BUFFER_TIME
 		
+	for i in protagonista.get_slide_collision_count():
+		var collision = protagonista.get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider.is_in_group("Enemigo"):
+			protagonista.damage(collider.get_enemy_position())
+		
 	if protagonista.jump_buffer_timer > 0:
 		protagonista.jump_buffer_timer -=delta

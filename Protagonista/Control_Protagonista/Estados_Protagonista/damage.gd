@@ -6,11 +6,14 @@ func start():
 	protagonista.animated_sprite.play("Damage")
 	protagonista.knockback_timer = protagonista.KNOCKBACK_TIME
 	protagonista.damage_just_received = false
+	protagonista.velocity.x = protagonista.knockback_direction * (protagonista.SPEED)
+	protagonista.velocity.y = protagonista.SPEED * -1
 
 func on_physics_process(delta: float) -> void:
 	
-	protagonista.velocity.x = protagonista.knockback_direction * (protagonista.SPEED/3)
+
 	protagonista.knockback_timer -= delta
+	
 	
 	if protagonista.knockback_timer <=0 and damage_animation_finished:
 	#region Walk

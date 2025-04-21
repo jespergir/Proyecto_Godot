@@ -1,13 +1,17 @@
-class_name EnemyStatesBaseState extends EnemyBaseState
+class_name EnemigoRinoParametersBaseState extends EnemigoRanaBaseState
 
 var gravity:float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func handle_states(delta):
 	
+	for i in enemigo.get_slide_collision_count():
+		var collision = enemigo.get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider.is_in_group("Protagonista"):
+			collider.damage(enemigo.get_enemy_position())
+	
 	if !enemigo.is_on_floor():
 		enemigo.velocity.y += gravity * delta
-	enemigo.attack_cooldown_time -= delta
-	enemigo.chasing_time -= delta
 
 
 #func go_chase():

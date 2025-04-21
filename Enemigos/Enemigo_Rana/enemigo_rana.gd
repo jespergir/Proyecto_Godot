@@ -1,4 +1,4 @@
-class_name Enemigo extends CharacterBody2D
+class_name EnemigoRana extends CharacterBody2D
 
 enum States { IDLE, WALK, CHASE, ATTACK }
 var current_state: States = States.IDLE
@@ -8,7 +8,6 @@ var current_state: States = States.IDLE
 @onready var node_raycast_entorno : Node2D = $NodeRayCastEntorno
 @onready var raycast_suelo : RayCast2D = $NodeRayCastEntorno/RayCastSuelo
 @onready var raycast_pared : RayCast2D = $NodeRayCastEntorno/RayCastPared
-@onready var moving_collision_area : Area2D = $MovingCollisionArea
 @onready var attack_collision_area : Area2D = $AttackCollisionArea
 @onready var attack_collision : CollisionShape2D = $AttackCollisionArea/AttackCollision
 @onready var protagonista = get_tree().get_nodes_in_group("Protagonista")[0]

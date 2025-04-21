@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://iypwhqb3txo0" path="res://Recursos/Tiles/Props-01.png" id="16_u0n4a"]
 [ext_resource type="PackedScene" uid="uid://ftr7fpqn7hgk" path="res://Mundo/paralaje.tscn" id="17_b8qxj"]
 [ext_resource type="PackedScene" uid="uid://dab808f18h73l" path="res://Mapeado/Techos/techo_esquina.tscn" id="18_wqexn"]
-[ext_resource type="PackedScene" uid="uid://bc58het8axtq8" path="res://Enemigos/Enemigo_Rino/enemigo_rino.tscn" id="20_u8dlb"]
+[ext_resource type="PackedScene" uid="uid://djtxcxdftb7bc" path="res://Enemigos/Enemigo_Rana/enemigo_rana.tscn" id="19_187wa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_crb8b"]
 texture = ExtResource("15_08c86")
@@ -621,8 +621,8 @@ position = Vector2(256, 256)
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_sk5ky")
 
-[node name="Enemigo_Rino" parent="." instance=ExtResource("20_u8dlb")]
-position = Vector2(2184, 304)
+[node name="Enemigo1" parent="." instance=ExtResource("19_187wa")]
+position = Vector2(1176, 280)
 
 [connection signal="area_entered" from="Area2D" to="AudioStreamPlayer" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="AudioStreamPlayer" method="_on_area_2d_body_entered"]

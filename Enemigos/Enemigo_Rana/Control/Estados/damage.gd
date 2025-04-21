@@ -1,4 +1,4 @@
-class_name EnemyDamage extends EnemyStatesBaseState
+class_name EnemigoRanaDamage extends EnemigoRanaParametersBaseState
 
 func on_physics_process(delta: float) -> void:
 	
