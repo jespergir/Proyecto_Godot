@@ -1,13 +1,13 @@
 [gd_scene load_steps=54 format=3 uid="uid://c8mmgp3r8skl7"]
 
 [ext_resource type="Script" uid="uid://c1lxgi5xqgdt6" path="res://Protagonista/protagonista.gd" id="1_0nl2c"]
-[ext_resource type="Texture2D" uid="uid://b5boduif34ogy" path="res://Recursos/Knight/Knight_player/Walking_KG_2.png" id="2_31hdc"]
-[ext_resource type="Texture2D" uid="uid://jk8khnr5bmp7" path="res://Recursos/Knight/Knight_player/Idle_KG_2.png" id="2_wwtkg"]
-[ext_resource type="Texture2D" uid="uid://c3igtoi2chuvf" path="res://Recursos/Knight/Knight_player/Attack_KG_1.png" id="2_ytoek"]
-[ext_resource type="Texture2D" uid="uid://bksiesv4r2p88" path="res://Recursos/Knight/Knight_player/Hurt_KG_2.png" id="3_31hdc"]
-[ext_resource type="Texture2D" uid="uid://qv4uiomvqwa3" path="res://Recursos/Knight/Knight_player/Fall_KG_2.png" id="3_y74jy"]
-[ext_resource type="Texture2D" uid="uid://dnrxbdstpeffa" path="res://Recursos/Knight/Knight_player/Jump_KG_2.png" id="5_y74jy"]
-[ext_resource type="Texture2D" uid="uid://dxv5itqgdphti" path="res://Recursos/Knight/Knight_player/Landing_KG_2.png" id="6_y74jy"]
+[ext_resource type="Texture2D" uid="uid://b5boduif34ogy" path="res://Recursos/Knight/Walking_KG_2.png" id="2_31hdc"]
+[ext_resource type="Texture2D" uid="uid://jk8khnr5bmp7" path="res://Recursos/Knight/Idle_KG_2.png" id="2_wwtkg"]
+[ext_resource type="Texture2D" uid="uid://c3igtoi2chuvf" path="res://Recursos/Knight/Attack_KG_1.png" id="2_ytoek"]
+[ext_resource type="Texture2D" uid="uid://bksiesv4r2p88" path="res://Recursos/Knight/Hurt_KG_2.png" id="3_31hdc"]
+[ext_resource type="Texture2D" uid="uid://qv4uiomvqwa3" path="res://Recursos/Knight/Fall_KG_2.png" id="3_y74jy"]
+[ext_resource type="Texture2D" uid="uid://dnrxbdstpeffa" path="res://Recursos/Knight/Jump_KG_2.png" id="5_y74jy"]
+[ext_resource type="Texture2D" uid="uid://dxv5itqgdphti" path="res://Recursos/Knight/Landing_KG_2.png" id="6_y74jy"]
 [ext_resource type="Script" uid="uid://cu4po5s4endh1" path="res://Protagonista/Control_Protagonista/state_machine.gd" id="9_ygnkn"]
 [ext_resource type="Script" uid="uid://8q3nswuq3k7m" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/idle.gd" id="10_o08mt"]
 [ext_resource type="Script" uid="uid://dtj0nns50hkyv" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/walk.gd" id="11_3o5k7"]
@@ -304,8 +304,7 @@ script = ExtResource("1_0nl2c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qd3w3")
-animation = &"Attack1"
-frame = 2
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bov0gtekoq78m"]
+
+[ext_resource type="Texture2D" uid="uid://d0yyc72fib8qa" path="res://Recursos/health_bar.png" id="1_xxcah"]
+[ext_resource type="Texture2D" uid="uid://cxthh20n6a88t" path="res://Recursos/health_bar_background.png" id="2_wncx7"]
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(22, 22)
+scale = Vector2(0.11, 0.11)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Node2D"]
+offset_left = -14.0
+offset_top = -18.0
+offset_right = 1982.0
+offset_bottom = 222.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 50
+stretch_margin_right = 50
+texture_over = ExtResource("1_xxcah")
+texture_progress = ExtResource("2_wncx7")

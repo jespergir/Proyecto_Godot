@@ -1,6 +1,7 @@
 class_name EnemigoRino extends CharacterBody2D
 
-@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite1 : AnimatedSprite2D = $AnimatedNode2D/AnimatedSprite2D
+@onready var animated_sprite2 : AnimatedSprite2D = $AnimatedSprite2D2
 @onready var node_raycast_entorno : Node2D = $NodeRayCastEntorno
 @onready var raycast_suelo : RayCast2D = $NodeRayCastEntorno/RayCastSuelo
 @onready var raycast_pared : RayCast2D = $NodeRayCastEntorno/RayCastPared
@@ -28,7 +29,8 @@ func get_enemy_position():
 	return global_position
 
 func invert_scale():
-	animated_sprite.scale.x *= -1
+	animated_sprite1.scale.x *= -1
+	animated_sprite2.scale.x *= -1
 	node_raycast_entorno.scale.x *= -1
 	raycast_suelo.force_raycast_update()
 	raycast_pared.force_raycast_update()

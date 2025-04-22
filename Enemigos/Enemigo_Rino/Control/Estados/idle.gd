@@ -9,8 +9,9 @@ func on_physics_process(delta: float) -> void:
 	
 #region Idle
 	#Si no se está reproduciendo ninguna animación o la animación no es idle, reproduce idle.
-	if not enemigo.animated_sprite.is_playing() or enemigo.animated_sprite.animation != "Idle":
-		enemigo.animated_sprite.play("Idle")
+	if not enemigo.animated_sprite1.is_playing() or enemigo.animated_sprite1.animation != "Idle":
+		enemigo.animated_sprite1.play("Idle")
+		enemigo.animated_sprite2.play("Idle")
 	enemigo.idling_time-=delta
 #endregion
 	

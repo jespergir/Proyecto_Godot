@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cwfsiro15oswg"]
+[gd_scene load_steps=25 format=4 uid="uid://cwfsiro15oswg"]
 
 [ext_resource type="AudioStream" uid="uid://o4nit6bgu4uf" path="res://Music/Floating Dream.wav" id="1_jk831"]
 [ext_resource type="Script" uid="uid://c3mqqbe5eddgd" path="res://Mundo/audio_stream_player.gd" id="2_187wa"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://iypwhqb3txo0" path="res://Recursos/Tiles/Props-01.png" id="16_u0n4a"]
 [ext_resource type="PackedScene" uid="uid://ftr7fpqn7hgk" path="res://Mundo/paralaje.tscn" id="17_b8qxj"]
 [ext_resource type="PackedScene" uid="uid://dab808f18h73l" path="res://Mapeado/Techos/techo_esquina.tscn" id="18_wqexn"]
+[ext_resource type="PackedScene" uid="uid://bov0gtekoq78m" path="res://HUD/Hud.tscn" id="20_4lna0"]
 [ext_resource type="PackedScene" uid="uid://bc58het8axtq8" path="res://Enemigos/Enemigo_Rino/enemigo_rino.tscn" id="20_u8dlb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_crb8b"]
@@ -622,7 +623,9 @@ position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_sk5ky")
 
 [node name="Enemigo_Rino" parent="." instance=ExtResource("20_u8dlb")]
-position = Vector2(2184, 304)
+position = Vector2(1176, 296)
+
+[node name="Hud" parent="." instance=ExtResource("20_4lna0")]
 
 [connection signal="area_entered" from="Area2D" to="AudioStreamPlayer" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="AudioStreamPlayer" method="_on_area_2d_body_entered"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=53 format=3 uid="uid://djtxcxdftb7bc"]
 
 [ext_resource type="Script" uid="uid://cs40w6kjxoh43" path="res://Enemigos/Enemigo_Rana/enemigo_rana.gd" id="1_oeg2k"]
-[ext_resource type="Texture2D" uid="uid://c8j8t0mm5b8io" path="res://Recursos/mr dude/mr_punch.png" id="2_bnwb0"]
-[ext_resource type="Texture2D" uid="uid://byhfhc5g0cvmd" path="res://Recursos/mr dude/mr_idle.png" id="2_jjl0l"]
-[ext_resource type="Texture2D" uid="uid://dbmv6pncobp0j" path="res://Recursos/mr dude/mr_damage.png" id="3_m8b2l"]
-[ext_resource type="Texture2D" uid="uid://cnbgoh2q8824h" path="res://Recursos/mr dude/mr_run.png" id="4_bnwb0"]
-[ext_resource type="Texture2D" uid="uid://4m858764gxbx" path="res://Recursos/mr dude/mr_walk.png" id="4_m8b2l"]
+[ext_resource type="Texture2D" uid="uid://c8j8t0mm5b8io" path="res://Recursos/Enemigos/MrDude/mr_punch.png" id="2_bnwb0"]
+[ext_resource type="Texture2D" uid="uid://byhfhc5g0cvmd" path="res://Recursos/Enemigos/MrDude/mr_idle.png" id="2_jjl0l"]
+[ext_resource type="Texture2D" uid="uid://dbmv6pncobp0j" path="res://Recursos/Enemigos/MrDude/mr_damage.png" id="3_m8b2l"]
+[ext_resource type="Texture2D" uid="uid://cnbgoh2q8824h" path="res://Recursos/Enemigos/MrDude/mr_run.png" id="4_bnwb0"]
+[ext_resource type="Texture2D" uid="uid://4m858764gxbx" path="res://Recursos/Enemigos/MrDude/mr_walk.png" id="4_m8b2l"]
 [ext_resource type="PackedScene" uid="uid://d3fxokq75pqtm" path="res://Protagonista/Control_Protagonista/state_machine.tscn" id="6_mo184"]
 [ext_resource type="Script" uid="uid://b30omu1r3rl5e" path="res://Enemigos/Enemigo_Rana/Control/Estados/idle.gd" id="7_6l6xy"]
 [ext_resource type="Script" uid="uid://booox4etr3khr" path="res://Enemigos/Enemigo_Rana/Control/Estados/walk.gd" id="8_oeg2k"]
@@ -324,7 +324,9 @@ script = ExtResource("1_oeg2k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_76546")
-animation = &"Attack"
+animation = &"Damage"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)
