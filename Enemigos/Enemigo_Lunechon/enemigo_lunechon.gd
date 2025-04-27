@@ -8,6 +8,7 @@ class_name EnemigoRino extends CharacterBody2D
 @onready var protagonista = get_tree().get_nodes_in_group("Protagonista")[0]
 
 const SPEED = 150.0 #Velocidad del personaje
+const DAMAGE = 20
 const WALK_TIME = 3
 const IDLE_TIME = 2
 const KNOCKBACK_TIME = 0.5

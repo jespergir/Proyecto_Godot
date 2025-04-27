@@ -1,4 +1,4 @@
-class_name  EnemigoRinoWalk extends EnemigoRinoParametersBaseState
+class_name  EnemigoLunechonWalk extends EnemigoLunechonBaseState
 
 func start():	
 	enemigo.walking_time = enemigo.WALK_TIME

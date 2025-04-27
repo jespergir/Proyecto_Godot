@@ -1,14 +1,14 @@
-class_name Jump extends PlayerStatesBaseState
+class_name Jump extends PlayerBaseState
 
 func on_physics_process(delta: float) -> void:
 #region Jump
-	if protagonista.jump_buffer_timer > 0 and protagonista.coyote_timer > 0 and protagonista.velocity.y >= 0:
+	if protagonista.protagonista.jump_buffer_timer > 0 and protagonista.protagonista.coyote_timer > 0 and protagonista.velocity.y >= 0:
 		protagonista.velocity.y = protagonista.JUMP_VELOCITY
 		if protagonista.animated_sprite.animation != "Attack1":
 			protagonista.animated_sprite.play("Jump")
 		protagonista.falling_time=0
-		protagonista.jump_buffer_timer = 0
-		protagonista.coyote_timer = 0
+		protagonista.protagonista.jump_buffer_timer = 0
+		protagonista.protagonista.coyote_timer = 0
 		
 	# Salto variable: si soltó el salto, cortar el salto
 	if Input.is_action_just_released("Jump") and protagonista.velocity.y < 0:
@@ -40,7 +40,7 @@ func on_physics_process(delta: float) -> void:
 	
 #region Fall
 	# Después de un segundo de caída, cambiar a Fall
-	if protagonista.velocity.y>=0 and !(protagonista.raycast_suelo1.is_colliding() or protagonista.raycast_suelo2.is_colliding()) and protagonista.coyote_timer<=0:
+	if protagonista.velocity.y>=0 and !(protagonista.raycast_suelo1.is_colliding() or protagonista.raycast_suelo2.is_colliding()) and protagonista.protagonista.coyote_timer<=0:
 		protagonista.falling_time +=delta
 		if protagonista.falling_time>1:
 			protagonista.falling_time=0

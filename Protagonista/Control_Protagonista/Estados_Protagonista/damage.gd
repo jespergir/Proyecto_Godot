@@ -1,10 +1,10 @@
-class_name Damage extends PlayerStatesBaseState
+class_name Damage extends PlayerBaseState
 
 var damage_animation_finished = false
 
 func start():	
 	protagonista.animated_sprite.play("Damage")
-	protagonista.knockback_timer = protagonista.KNOCKBACK_TIME
+	protagonista.KNOCKBACK_TIMEr = protagonista.KNOCKBACK_TIME
 	protagonista.damage_just_received = false
 	protagonista.velocity.x = protagonista.knockback_direction * (protagonista.SPEED)
 	protagonista.velocity.y = protagonista.SPEED * -1
@@ -12,10 +12,10 @@ func start():
 func on_physics_process(delta: float) -> void:
 	
 
-	protagonista.knockback_timer -= delta
+	protagonista.KNOCKBACK_TIMEr -= delta
 	
 	
-	if protagonista.knockback_timer <=0 and damage_animation_finished:
+	if protagonista.KNOCKBACK_TIMEr <=0 and damage_animation_finished:
 	#region Walk
 		# Si se pulsa Izquierda o Derecha, cambia a walk
 		var direction := Input.get_axis("Left", "Right")
@@ -27,14 +27,14 @@ func on_physics_process(delta: float) -> void:
 	#endregion
 		
 	#region Jump
-		if protagonista.jump_buffer_timer > 0 and protagonista.coyote_timer > 0:
+		if protagonista.protagonista.jump_buffer_time > 0 and protagonista.protagonista.coyote_time > 0:
 			state_machine.change_to("Jump")
 			return	
 	#endregion
 		
 	#region Fall
 		# Después de un segundo de caída (al caer mientras andas)
-		if protagonista.velocity.y>=0 and (!protagonista.raycast_suelo1.is_colliding() or !protagonista.raycast_suelo2.is_colliding()) and protagonista.coyote_timer<=0:
+		if protagonista.velocity.y>=0 and (!protagonista.raycast_suelo1.is_colliding() or !protagonista.raycast_suelo2.is_colliding()) and protagonista.protagonista.coyote_time<=0:
 			protagonista.falling_time +=delta
 			if protagonista.falling_time>0.2:
 				protagonista.falling_time=0

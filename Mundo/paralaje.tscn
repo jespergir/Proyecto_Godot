@@ -8,7 +8,7 @@
 [node name="Paralaje" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0, 0)
+scroll_scale = Vector2(0, 1)
 repeat_size = Vector2(979, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
@@ -17,7 +17,7 @@ scale = Vector2(1.7, 1.7)
 texture = ExtResource("1_bs3rs")
 
 [node name="Parallax2D2" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.5, 1)
+scroll_scale = Vector2(0.3, 1)
 repeat_size = Vector2(979, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
@@ -26,7 +26,7 @@ scale = Vector2(1.7, 1.7)
 texture = ExtResource("2_43bas")
 
 [node name="Parallax2D3" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.8, 1)
+scroll_scale = Vector2(0.6, 1)
 repeat_size = Vector2(979, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D3"]

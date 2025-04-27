@@ -1,4 +1,4 @@
-class_name Land extends PlayerStatesBaseState
+class_name Land extends PlayerBaseState
 
 func on_physics_process(delta: float) -> void:
 #region Land
@@ -23,7 +23,7 @@ func on_physics_process(delta: float) -> void:
 #endregion
 	
 #region Jump
-	if protagonista.jump_buffer_timer > 0 and protagonista.coyote_timer > 0:
+	if protagonista.protagonista.jump_buffer_timer > 0 and protagonista.protagonista.coyote_timer > 0:
 		state_machine.change_to("Jump")
 		return
 #endregion

@@ -1,4 +1,4 @@
-class_name EnemigoRinoIdle extends EnemigoRinoParametersBaseState
+class_name EnemigoLunechonIdle extends EnemigoLunechonBaseState
 
 func start():
 	enemigo.idling_time = enemigo.IDLE_TIME

@@ -1,4 +1,4 @@
-class_name Idle extends PlayerStatesBaseState
+class_name Idle extends PlayerBaseState
 
 func start():	
 	if not protagonista.animated_sprite.is_playing() or protagonista.animated_sprite.animation != "Idle":
@@ -26,14 +26,14 @@ func on_physics_process(delta: float) -> void:
 	
 #region Jump
 	# Si se pulsa la acción saltar, la almacena en búfer y si pasa poco rato hasta que se puede saltar, cambia a Saltar
-	if protagonista.jump_buffer_timer > 0 and protagonista.coyote_timer > 0:
+	if protagonista.protagonista.jump_buffer_timer > 0 and protagonista.protagonista.coyote_timer > 0:
 		state_machine.change_to("Jump")
 		return
 #endregion
 	
 #region Fall
 	# Después de un segundo de caída (al caer mientras andas)
-	if protagonista.velocity.y>=0 and (!protagonista.raycast_suelo1.is_colliding() or !protagonista.raycast_suelo2.is_colliding()) and protagonista.coyote_timer<=0:
+	if protagonista.velocity.y>=0 and (!protagonista.raycast_suelo1.is_colliding() or !protagonista.raycast_suelo2.is_colliding()) and protagonista.protagonista.coyote_timer:
 		protagonista.falling_time +=delta
 		if protagonista.falling_time>0.2:
 			protagonista.falling_time=0

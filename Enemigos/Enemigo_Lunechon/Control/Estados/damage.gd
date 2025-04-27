@@ -1,4 +1,4 @@
-class_name EnemigoRinoDamage extends EnemigoRinoParametersBaseState
+class_name EnemigoLunechonDamage extends EnemigoLunechonBaseState
 
 func start():
 	enemigo.knockback_timer = enemigo.KNOCKBACK_TIME
