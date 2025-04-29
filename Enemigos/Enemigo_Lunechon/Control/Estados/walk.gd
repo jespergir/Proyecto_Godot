@@ -2,12 +2,12 @@ class_name  EnemigoLunechonWalk extends EnemigoLunechonBaseState
 
 func start():	
 	enemigo.walking_time = enemigo.WALK_TIME
-	enemigo.last_direction = enemigo.animated_sprite1.scale.x
+	enemigo.last_direction = enemigo.animations.scale.x
 	if not enemigo.hitted:
-		enemigo.direction = enemigo.animated_sprite1.scale.x * -1
+		enemigo.direction = enemigo.animations.scale.x * -1
 		enemigo.invert_scale()
 	else:
-		enemigo.direction = enemigo.animated_sprite1.scale.x
+		enemigo.direction = enemigo.animations.scale.x
 		enemigo.hitted=false
 	
 func on_physics_process(delta: float) -> void:
@@ -28,7 +28,7 @@ func on_physics_process(delta: float) -> void:
 	if enemigo.raycast_pared.is_colliding():
 		var collider = enemigo.raycast_pared.get_collider()
 		if !collider.is_in_group("Protagonista"):
-			enemigo.direction = -enemigo.animated_sprite1.scale.x
+			enemigo.direction = -enemigo.animations.scale.x
 			state_machine.change_to("Idle")
 			return
 	if enemigo.walking_time <= 0:

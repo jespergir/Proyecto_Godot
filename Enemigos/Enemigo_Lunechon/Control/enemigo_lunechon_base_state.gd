@@ -1,6 +1,6 @@
 class_name EnemigoLunechonBaseState extends BaseState
 
-var enemigo : EnemigoRino:
+var enemigo : EnemigoLunechon:
 	set(value):
 		controlled_node = value
 	get:

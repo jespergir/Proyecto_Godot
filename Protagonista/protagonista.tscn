@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://c8mmgp3r8skl7"]
+[gd_scene load_steps=56 format=3 uid="uid://c8mmgp3r8skl7"]
 
 [ext_resource type="Script" uid="uid://c1lxgi5xqgdt6" path="res://Protagonista/protagonista.gd" id="1_0nl2c"]
 [ext_resource type="Texture2D" uid="uid://b5boduif34ogy" path="res://Recursos/Knight/Walking_KG_2.png" id="2_31hdc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dnrxbdstpeffa" path="res://Recursos/Knight/Jump_KG_2.png" id="5_y74jy"]
 [ext_resource type="Texture2D" uid="uid://dxv5itqgdphti" path="res://Recursos/Knight/Landing_KG_2.png" id="6_y74jy"]
 [ext_resource type="Script" uid="uid://cu4po5s4endh1" path="res://Protagonista/Control_Protagonista/state_machine.gd" id="9_ygnkn"]
+[ext_resource type="Script" uid="uid://d0rtvq1woiv0w" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/player_base_state.gd" id="10_hqylf"]
 [ext_resource type="Script" uid="uid://8q3nswuq3k7m" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/idle.gd" id="10_o08mt"]
 [ext_resource type="Script" uid="uid://dtj0nns50hkyv" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/walk.gd" id="11_3o5k7"]
 [ext_resource type="Script" uid="uid://blmj27js6iajw" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/jump.gd" id="12_sdfh0"]
@@ -294,7 +295,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_682ol"]
+radius = 9.0
 height = 60.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwtkg"]
+radius = 11.0
+height = 62.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y74jy"]
 size = Vector2(24, 64)
@@ -309,6 +315,12 @@ animation = &"Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_682ol")
+
+[node name="AreaDamage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDamage"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_wwtkg")
 
 [node name="Attack1" type="Area2D" parent="."]
 
@@ -328,6 +340,9 @@ target_position = Vector2(0, 48)
 [node name="State_Machine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
 script = ExtResource("9_ygnkn")
 default_state = NodePath("Idle")
+
+[node name="PlayerBaseState" type="Node" parent="State_Machine"]
+script = ExtResource("10_hqylf")
 
 [node name="Idle" type="Node" parent="State_Machine"]
 script = ExtResource("10_o08mt")
@@ -354,4 +369,5 @@ script = ExtResource("16_wwtkg")
 [connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Attack1" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Damage" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="State_Machine/Attack1" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="AreaDamage" to="State_Machine/PlayerBaseState" method="_on_area_damage_body_entered"]
 [connection signal="body_entered" from="Attack1" to="State_Machine/Attack1" method="_on_attack_1_body_entered"]

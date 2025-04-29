@@ -20,19 +20,22 @@ func handle_states(delta):
 		protagonista.protagonista.jump_buffer_timer = protagonista.JUMP_BUFFER_TIME
 	if protagonista.protagonista.jump_buffer_timer > 0:
 		protagonista.protagonista.jump_buffer_timer -=delta
+	if protagonista.knockback_timer > 0:
+		protagonista.knockback_timer -= delta
+	else:
+		protagonista.invulnerable=false
+		
+
+func damage(attacker_position, damage):
+	protagonista.health-=damage
+	protagonista.hud.health_bar.value=protagonista.health
+	if protagonista.knockback_timer <=0:
+		protagonista.knockback_direction = sign(protagonista.global_position.x - attacker_position.x)
+		protagonista.damage_just_received=true
 
 
-	#for i in protagonista.get_slide_collision_count():
-		#var collision = protagonista.get_slide_collision(i)
-		#var collider = collision.get_collider()
-		#if collider.is_in_group("Enemigo") and damage_cooldown:
-			#damage(collider.get_enemy_position(), collider.DAMAGE)
-			#damage_cooldowm=true
 
-
-#func damage(attacker_position, damage):
-	#protagonista.health-=damage
-	#protagonista.hud.health_bar.value=protagonista.health
-	#if protagonista.KNOCKBACK_TIMEr <=0:
-		#protagonista.knockback_direction = sign(protagonista.global_position.x - attacker_position.x)
-		#protagonista.damage_just_received=true
+func _on_area_damage_body_entered(body: Node2D) -> void:
+	if not protagonista.invulnerable and body.is_in_group("Enemigo"):
+		damage(body.global_position, body.DAMAGE)
+		protagonista.invulnerable = true

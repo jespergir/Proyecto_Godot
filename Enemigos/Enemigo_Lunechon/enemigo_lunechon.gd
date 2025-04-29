@@ -1,7 +1,13 @@
-class_name EnemigoRino extends CharacterBody2D
+class_name EnemigoLunechon extends CharacterBody2D
 
-@onready var animated_sprite1 : AnimatedSprite2D = $AnimatedNode2D/AnimatedSprite2D
-@onready var animated_sprite2 : AnimatedSprite2D = $AnimatedSprite2D2
+var cristal : PackedScene = load("res://Items/Cristal.tscn")
+
+
+@onready var animations : Node2D = $Animations
+@onready var animated_node_up : Node2D = $Animations/AnimatedNodeUp
+@onready var animated_sprite1 : AnimatedSprite2D = $Animations/AnimatedNodeUp/AnimatedSpriteUp
+@onready var animated_sprite2 : AnimatedSprite2D = $Animations/AnimatedNodeDown/AnimatedSpriteDown
+@onready var animation_player : AnimationPlayer = $Animations/AnimationPlayer
 @onready var node_raycast_entorno : Node2D = $NodeRayCastEntorno
 @onready var raycast_suelo : RayCast2D = $NodeRayCastEntorno/RayCastSuelo
 @onready var raycast_pared : RayCast2D = $NodeRayCastEntorno/RayCastPared
@@ -26,21 +32,19 @@ var hitted = false
 var knockback_direction
 var protagonista_position
 
+var health = 50
+
 func get_enemy_position():
 	return global_position
 
 func invert_scale():
-	animated_sprite1.scale.x *= -1
-	animated_sprite2.scale.x *= -1
+	animations.scale.x *= -1
 	node_raycast_entorno.scale.x *= -1
 	raycast_suelo.force_raycast_update()
 	raycast_pared.force_raycast_update()
 
-func damage(attacker_position):
+func damage(attacker_position, damage):
+	health -= damage
 	knockback_direction = sign(global_position.x - attacker_position.x)
 	damage_just_received=true
-
-
-func _on_area_damage_area_entered(area: Area2D) -> void:
-	protagonista_position = area.global_position
-	damage(area.position)
+	

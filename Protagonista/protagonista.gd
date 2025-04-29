@@ -2,6 +2,7 @@ class_name Protagonista extends CharacterBody2D
 
 @onready var protagonista : Protagonista = self
 
+@onready var area_damage : Area2D = $AreaDamage
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var raycast_suelo1 : RayCast2D = $RayCastSuelo1
@@ -12,6 +13,7 @@ class_name Protagonista extends CharacterBody2D
 
 var health = 100
 var coins = 0
+var damage = 25
 const SPEED = 300.0 #Velocidad del personaje
 const JUMP_VELOCITY = -475.0 #Fuerza del salto
 
@@ -26,4 +28,5 @@ var falling_time : float = 0.0
 var knockback_timer = 0
 
 var damage_just_received = false
+var invulnerable = false
 var knockback_direction

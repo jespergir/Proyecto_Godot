@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://1kl65tpgodcv"]
+[gd_scene load_steps=4 format=3 uid="uid://1kl65tpgodcv"]
 
 [ext_resource type="Texture2D" uid="uid://pyojldouqbds" path="res://Recursos/Currency1.png" id="1_fjoja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6nsg"]
 size = Vector2(16, 18)
 
-[node name="Cristal" type="Area2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjoja"]
+radius = 8.0
+height = 18.0
+
+[node name="Cristal" type="RigidBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i6nsg")
@@ -13,3 +17,8 @@ shape = SubResource("RectangleShape2D_i6nsg")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("1_fjoja")
+
+[node name="RigidBody2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CapsuleShape2D_fjoja")

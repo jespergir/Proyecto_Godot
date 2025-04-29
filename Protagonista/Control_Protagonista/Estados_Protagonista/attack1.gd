@@ -71,4 +71,4 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func _on_attack_1_body_entered(body: Node2D) -> void:
 	if  body.is_in_group("Enemigo"):
-		body.damage(protagonista.global_position)
+		body.damage(protagonista.global_position, protagonista.damage)

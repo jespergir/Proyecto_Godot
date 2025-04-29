@@ -1,12 +1,74 @@
-[gd_scene load_steps=26 format=3 uid="uid://bc58het8axtq8"]
+[gd_scene load_steps=44 format=3 uid="uid://bc58het8axtq8"]
 
 [ext_resource type="Script" uid="uid://dm8nnohx7d5bb" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.gd" id="1_sku32"]
 [ext_resource type="Texture2D" uid="uid://c5b6gcpieqt5h" path="res://Recursos/Lunechon_u.png" id="2_lkxyf"]
+[ext_resource type="Texture2D" uid="uid://jgf1kgbvtcd6" path="res://Recursos/Particulas/25.png" id="2_usiae"]
+[ext_resource type="Shader" uid="uid://cf0ru8idodw4d" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.gdshader" id="3_eh0v0"]
 [ext_resource type="Texture2D" uid="uid://oe4smwj0h0yu" path="res://Recursos/Lunechon_d2.png" id="3_lkxyf"]
 [ext_resource type="Script" uid="uid://chaic8ncr4g01" path="res://Enemigos/Enemigo_Lunechon/Control/Estados/idle.gd" id="4_hvnms"]
 [ext_resource type="Script" uid="uid://bn8l0lgm75w5m" path="res://Enemigos/Enemigo_Lunechon/Control/Estados/walk.gd" id="5_tnmmy"]
 [ext_resource type="PackedScene" uid="uid://d3fxokq75pqtm" path="res://Protagonista/Control_Protagonista/state_machine.tscn" id="7_ikxw4"]
 [ext_resource type="Script" uid="uid://dv3jesmc8qmx6" path="res://Enemigos/Enemigo_Lunechon/Control/Estados/damage.gd" id="7_lkxyf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p4kmm"]
+radius = 14.5
+height = 62.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j558x"]
+atlas = ExtResource("2_usiae")
+region = Rect2(0, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hiny"]
+atlas = ExtResource("2_usiae")
+region = Rect2(64, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mi3v"]
+atlas = ExtResource("2_usiae")
+region = Rect2(128, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4yip"]
+atlas = ExtResource("2_usiae")
+region = Rect2(192, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm3vq"]
+atlas = ExtResource("2_usiae")
+region = Rect2(256, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lec1l"]
+atlas = ExtResource("2_usiae")
+region = Rect2(320, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl66w"]
+atlas = ExtResource("2_usiae")
+region = Rect2(384, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4ec8"]
+atlas = ExtResource("2_usiae")
+region = Rect2(448, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4hwd"]
+atlas = ExtResource("2_usiae")
+region = Rect2(512, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkvj6"]
+atlas = ExtResource("2_usiae")
+region = Rect2(576, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68wqb"]
+atlas = ExtResource("2_usiae")
+region = Rect2(640, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecvsf"]
+atlas = ExtResource("2_usiae")
+region = Rect2(704, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_456mk"]
+atlas = ExtResource("2_usiae")
+region = Rect2(768, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp7g2"]
+atlas = ExtResource("2_usiae")
+region = Rect2(832, 448, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mabec"]
 atlas = ExtResource("2_lkxyf")
@@ -36,6 +98,53 @@ region = Rect2(74, 0, 37, 38)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_j558x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hiny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mi3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4yip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm3vq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lec1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl66w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4ec8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4hwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkvj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68wqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecvsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_456mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qp7g2")
+}],
+"loop": false,
+"name": &"Explosion",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mabec")
 }, {
 "duration": 1.0,
@@ -62,6 +171,11 @@ animations = [{
 "name": &"Run",
 "speed": 6.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_usiae"]
+shader = ExtResource("3_eh0v0")
+shader_parameter/cutoff_x = 1.0
+shader_parameter/cutoff_y = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p4kmm"]
 atlas = ExtResource("3_lkxyf")
@@ -125,7 +239,7 @@ step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedNode2D:position")
+tracks/0/path = NodePath("Animations/AnimatedNodeUp:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -140,7 +254,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedNode2D:position")
+tracks/0/path = NodePath("Animations/AnimatedNodeUp:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -149,50 +263,110 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animations/AnimatedNodeUp:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animations/AnimatedNodeDown:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_j558x"]
+resource_name = "Death"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations/AnimatedNodeUp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animations/AnimatedNodeUp:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.57079, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animations/AnimatedNodeDown:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.104917),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6mkkk"]
 _data = {
+&"Death": SubResource("Animation_j558x"),
 &"Levitate": SubResource("Animation_0gmt2"),
 &"RESET": SubResource("Animation_4whhn")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p4kmm"]
-radius = 14.5
-height = 62.0
-
 [node name="Enemigo_Lunechon" type="CharacterBody2D" groups=["Enemigo"]]
 script = ExtResource("1_sku32")
-
-[node name="AnimatedNode2D" type="Node2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedNode2D"]
-position = Vector2(0, 5.64)
-sprite_frames = SubResource("SpriteFrames_76546")
-animation = &"Run"
-frame_progress = 0.453144
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-z_index = -1
-position = Vector2(0, 33)
-sprite_frames = SubResource("SpriteFrames_wjbk8")
-animation = &"Run"
-frame = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_6mkkk")
-}
-autoplay = "Levitate"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_p4kmm")
 
-[node name="AreaDamage" type="Area2D" parent="."]
+[node name="Animations" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDamage"]
-position = Vector2(0, 16)
-shape = SubResource("CapsuleShape2D_p4kmm")
+[node name="AnimatedNodeUp" type="Node2D" parent="Animations"]
+rotation = 1.5708
+
+[node name="AnimatedSpriteUp" type="AnimatedSprite2D" parent="Animations/AnimatedNodeUp"]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_76546")
+animation = &"Explosion"
+
+[node name="AnimatedNodeDown" type="Node2D" parent="Animations"]
+
+[node name="AnimatedSpriteDown" type="AnimatedSprite2D" parent="Animations/AnimatedNodeDown"]
+z_index = -1
+material = SubResource("ShaderMaterial_usiae")
+position = Vector2(0, 32)
+sprite_frames = SubResource("SpriteFrames_wjbk8")
+animation = &"Run"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_6mkkk")
+}
+autoplay = "Levitate"
 
 [node name="NodeRayCastEntorno" type="Node2D" parent="."]
 
@@ -216,4 +390,5 @@ script = ExtResource("5_tnmmy")
 [node name="Damage" type="Node" parent="State_Machine"]
 script = ExtResource("7_lkxyf")
 
-[connection signal="area_entered" from="AreaDamage" to="." method="_on_area_damage_area_entered"]
+[connection signal="animation_finished" from="Animations/AnimatedNodeUp/AnimatedSpriteUp" to="State_Machine/Damage" method="_on_animated_sprite_up_animation_finished"]
+[connection signal="animation_finished" from="Animations/AnimationPlayer" to="State_Machine/Damage" method="_on_animation_player_animation_finished"]
