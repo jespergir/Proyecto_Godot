@@ -4,6 +4,8 @@ var cristal : PackedScene = load("res://Items/Cristal.tscn")
 
 
 @onready var animations : Node2D = $Animations
+@onready var collision_shape : CollisionShape2D = $CollisionShape2D
+@onready var item_spawn : Marker2D = $Marker2D
 @onready var animated_node_up : Node2D = $Animations/AnimatedNodeUp
 @onready var animated_sprite1 : AnimatedSprite2D = $Animations/AnimatedNodeUp/AnimatedSpriteUp
 @onready var animated_sprite2 : AnimatedSprite2D = $Animations/AnimatedNodeDown/AnimatedSpriteDown
