@@ -33,7 +33,7 @@ func on_physics_process(delta: float) -> void:
 	
 #region Fall
 	# Después de un segundo de caída (al caer mientras andas)
-	if protagonista.velocity.y>=0 and (!protagonista.raycast_suelo1.is_colliding() or !protagonista.raycast_suelo2.is_colliding()) and protagonista.protagonista.coyote_timer:
+	if protagonista.velocity.y>=0 and (!protagonista.raycast_suelo1.is_colliding() and !protagonista.raycast_suelo2.is_colliding()) and protagonista.protagonista.coyote_timer:
 		protagonista.falling_time +=delta
 		if protagonista.falling_time>0.2:
 			protagonista.falling_time=0

@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://chc2jnmcxq16j"]
+
+[ext_resource type="PackedScene" uid="uid://3hlnbss0a84y" path="res://Mapeado/Techos/techo1.tscn" id="3_rpm7y"]
+[ext_resource type="PackedScene" uid="uid://dab808f18h73l" path="res://Mapeado/Techos/techo_esquina.tscn" id="4_fwf7u"]
+[ext_resource type="PackedScene" uid="uid://sjpj4t7m2nbt" path="res://Mapeado/Paredes/pared1.tscn" id="5_064ln"]
+[ext_resource type="PackedScene" uid="uid://cct13a4qij6ab" path="res://Mapeado/Paredes/pared_esquina.tscn" id="6_afyun"]
+[ext_resource type="PackedScene" uid="uid://bqhguokb41hfi" path="res://Mapeado/Paredes/pared1_techo.tscn" id="7_cqxah"]
+[ext_resource type="PackedScene" uid="uid://b06ui37g2prpg" path="res://Mapeado/Suelos/suelo1.tscn" id="8_1ntsy"]
+[ext_resource type="PackedScene" uid="uid://b2lvd06mk0jlt" path="res://Mapeado/Suelos/suelo2.tscn" id="9_geduo"]
+[ext_resource type="PackedScene" uid="uid://bug433lnnx4wv" path="res://Mapeado/Plataformas/plataforma1.tscn" id="10_rx481"]
+[ext_resource type="PackedScene" uid="uid://cr6giuf2m3w57" path="res://Mapeado/Plataformas/plataforma_movil_y.tscn" id="11_6sbff"]
+[ext_resource type="PackedScene" uid="uid://bc58het8axtq8" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.tscn" id="12_pp8v1"]
+[ext_resource type="PackedScene" uid="uid://ftr7fpqn7hgk" path="res://Mapeado/Fondos/paralaje.tscn" id="13_l1sc6"]
+
+[sub_resource type="GDScript" id="GDScript_4mw1m"]
+script/source = "
+extends Area2D
+
+@export var next_room: String
+@export var spawn_position: Vector2  # Donde aparece la nueva sala
+@export var player_spawn_in_next_room: Vector2  # Donde cae el jugador
+
+func _on_body_entered(body):
+	if body.name != \"Player\":
+		return
+
+	WorldManager.load_room(next_room, spawn_position)
+	body.global_position = player_spawn_in_next_room
+"
+
+[node name="Sala2" type="Node2D"]
+
+[node name="Techos" type="Node2D" parent="."]
+position = Vector2(0, 1216)
+
+[node name="Terreno2" parent="Techos" instance=ExtResource("3_rpm7y")]
+position = Vector2(768, -448)
+
+[node name="Terreno3" parent="Techos" instance=ExtResource("3_rpm7y")]
+position = Vector2(1280, -448)
+
+[node name="Terreno4" parent="Techos" instance=ExtResource("4_fwf7u")]
+position = Vector2(256, -32)
+
+[node name="Paredes" type="Node2D" parent="."]
+position = Vector2(0, 1216)
+
+[node name="Terreno1" parent="Paredes" instance=ExtResource("5_064ln")]
+position = Vector2(2816, -448)
+rotation = 3.14159
+
+[node name="Terreno2" parent="Paredes" instance=ExtResource("5_064ln")]
+position = Vector2(2816, 64)
+rotation = 3.14159
+
+[node name="Terreno3" parent="Paredes" instance=ExtResource("5_064ln")]
+position = Vector2(2816, -960)
+rotation = 3.14159
+
+[node name="Terreno5" parent="Paredes" instance=ExtResource("5_064ln")]
+position = Vector2(1792, -960)
+
+[node name="Terreno7" parent="Paredes" instance=ExtResource("6_afyun")]
+position = Vector2(2816, 576)
+rotation = -1.5708
+
+[node name="Terreno4" parent="Paredes" instance=ExtResource("7_cqxah")]
+position = Vector2(1792, -448)
+
+[node name="Suelos" type="Node2D" parent="."]
+position = Vector2(0, 1216)
+
+[node name="Terreno8" parent="Suelos" instance=ExtResource("8_1ntsy")]
+position = Vector2(256, 576)
+
+[node name="Terreno9" parent="Suelos" instance=ExtResource("8_1ntsy")]
+position = Vector2(1280, 576)
+
+[node name="Terreno10" parent="Suelos" instance=ExtResource("9_geduo")]
+position = Vector2(768, 576)
+
+[node name="Terreno32" parent="Suelos" instance=ExtResource("9_geduo")]
+position = Vector2(1792, 576)
+
+[node name="Terreno33" parent="Suelos" instance=ExtResource("9_geduo")]
+position = Vector2(2304, 576)
+
+[node name="Plataformas" type="Node2D" parent="."]
+position = Vector2(0, 1216)
+
+[node name="Plataforma" parent="Plataformas" instance=ExtResource("10_rx481")]
+position = Vector2(1376, 272)
+
+[node name="Plataforma2" parent="Plataformas" instance=ExtResource("10_rx481")]
+position = Vector2(1568, 208)
+
+[node name="Plataforma3" parent="Plataformas" instance=ExtResource("10_rx481")]
+position = Vector2(1696, 296)
+
+[node name="Plataforma_Movil_Y" parent="Plataformas" instance=ExtResource("11_6sbff")]
+position = Vector2(1952, 304)
+
+[node name="Enemigo_Lunechon" parent="." instance=ExtResource("12_pp8v1")]
+position = Vector2(1176, 1488)
+
+[node name="Paralaje" parent="." instance=ExtResource("13_l1sc6")]
+z_index = -5
+position = Vector2(1514, 1364)
+
+[node name="GestionMapa" type="Node2D" parent="."]
+position = Vector2(1024, 1088)
+
+[node name="DeteccionJugador" type="Node2D" parent="GestionMapa"]
+script = SubResource("GDScript_4mw1m")
+
+[node name="Salidas" type="Node2D" parent="GestionMapa/DeteccionJugador"]
+
+[node name="SalidaIzquierda" type="Marker2D" parent="GestionMapa/DeteccionJugador/Salidas"]
+position = Vector2(-1024, 400)

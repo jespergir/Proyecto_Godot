@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://fgvd2m3q6pnw"]
+
+[ext_resource type="PackedScene" uid="uid://cwfsiro15oswg" path="res://Mundo/Salas/Sala1/Sala1.tscn" id="1_2vqma"]
+[ext_resource type="PackedScene" uid="uid://bov0gtekoq78m" path="res://HUD/Hud.tscn" id="1_7ywfl"]
+[ext_resource type="Script" uid="uid://hfbpay2j30yq" path="res://Mundo/world.gd" id="1_g1or7"]
+[ext_resource type="PackedScene" uid="uid://c8mmgp3r8skl7" path="res://Protagonista/protagonista.tscn" id="3_j40uv"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_g1or7")
+
+[node name="Mundo" parent="." instance=ExtResource("1_2vqma")]
+
+[node name="Hud" parent="." instance=ExtResource("1_7ywfl")]
+
+[node name="Protagonista" parent="." instance=ExtResource("3_j40uv")]
+position = Vector2(752, 1456)
+
+[node name="Camera2D" type="Camera2D" parent="Protagonista"]
+position = Vector2(0, -96)
+zoom = Vector2(0.1, 0.1)

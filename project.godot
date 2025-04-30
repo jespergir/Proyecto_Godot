@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="Project Metroidvania"
-run/main_scene="res://Mundo/Sala1.tscn"
+run/main_scene="uid://fgvd2m3q6pnw"
 config/features=PackedStringArray("4.4", "Forward Plus")
+
+[autoload]
+
+WorldManager="*res://Autoloads/world_manager.gd"
 
 [display]
 
