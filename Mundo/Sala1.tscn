@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cwfsiro15oswg"]
+[gd_scene load_steps=27 format=4 uid="uid://cwfsiro15oswg"]
 
 [ext_resource type="Script" uid="uid://vcjl2fu8a21o" path="res://Mundo/sala_1.gd" id="1_4lna0"]
 [ext_resource type="AudioStream" uid="uid://o4nit6bgu4uf" path="res://Music/Floating Dream.wav" id="1_jk831"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dab808f18h73l" path="res://Mapeado/Techos/techo_esquina.tscn" id="18_wqexn"]
 [ext_resource type="PackedScene" uid="uid://bov0gtekoq78m" path="res://HUD/Hud.tscn" id="20_4lna0"]
 [ext_resource type="PackedScene" uid="uid://bc58het8axtq8" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.tscn" id="21_4lna0"]
+[ext_resource type="PackedScene" uid="uid://1kl65tpgodcv" path="res://Items/Cristal.tscn" id="22_frep1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_crb8b"]
 texture = ExtResource("15_08c86")
@@ -628,6 +629,21 @@ shape = SubResource("RectangleShape2D_sk5ky")
 
 [node name="Enemigo_Lunechon" parent="." instance=ExtResource("21_4lna0")]
 position = Vector2(1176, 272)
+
+[node name="Cristal" parent="." instance=ExtResource("22_frep1")]
+position = Vector2(376, 104)
+
+[node name="Cristal2" parent="." instance=ExtResource("22_frep1")]
+position = Vector2(424, 48)
+
+[node name="Cristal3" parent="." instance=ExtResource("22_frep1")]
+position = Vector2(32, 112)
+
+[node name="Cristal4" parent="." instance=ExtResource("22_frep1")]
+position = Vector2(112, 208)
+
+[node name="Cristal5" parent="." instance=ExtResource("22_frep1")]
+position = Vector2(136, 104)
 
 [connection signal="area_entered" from="Area2D" to="AudioStreamPlayer" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="AudioStreamPlayer" method="_on_area_2d_body_entered"]

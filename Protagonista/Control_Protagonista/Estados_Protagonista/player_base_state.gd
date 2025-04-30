@@ -26,16 +26,29 @@ func handle_states(delta):
 		protagonista.invulnerable=false
 		
 
-func damage(attacker_position, damage):
+func receive_damage(attacker_position, damage):
 	protagonista.health-=damage
 	protagonista.hud.health_bar.value=protagonista.health
+
 	if protagonista.knockback_timer <=0:
 		protagonista.knockback_direction = sign(protagonista.global_position.x - attacker_position.x)
 		protagonista.damage_just_received=true
 
-
-
 func _on_area_damage_body_entered(body: Node2D) -> void:
 	if not protagonista.invulnerable and body.is_in_group("Enemigo"):
-		damage(body.global_position, body.DAMAGE)
+		receive_damage(body.global_position, body.DAMAGE)
 		protagonista.invulnerable = true
+
+
+#func _on_area_damage_area_entered(area: Area2D) -> void:
+	#print("Entró área: ", area.name, " | Padre: ", area.get_parent().name)
+	#print("¿Grupo recogible?: ", area.get_parent().is_in_group("Recogible"))
+	#if area.get_parent().is_in_group("Recogible"):
+		#protagonista.coins +=1
+		#protagonista.hud.contador_monedas.text = str(protagonista.coins)
+
+
+func _on_area_damage_area_entered(area: Area2D) -> void:
+	if area.get_parent().is_in_group("Recogible"):
+		protagonista.coins +=1
+		protagonista.hud.contador_monedas.text = str(protagonista.coins)

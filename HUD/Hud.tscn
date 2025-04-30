@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://vpifng0kfwa5" path="res://HUD/hud.gd" id="1_5mmha"]
 [ext_resource type="Texture2D" uid="uid://d0yyc72fib8qa" path="res://Recursos/health_bar.png" id="1_xxcah"]
 [ext_resource type="Texture2D" uid="uid://cxthh20n6a88t" path="res://Recursos/health_bar_background.png" id="2_wncx7"]
-[ext_resource type="Texture2D" uid="uid://pyojldouqbds" path="res://Recursos/Currency1.png" id="3_wncx7"]
+[ext_resource type="Texture2D" uid="uid://ck8m140spwlwg" path="res://Recursos/gema.png" id="4_5mmha"]
 [ext_resource type="FontFile" uid="uid://o3f8482haccu" path="res://Recursos/m6x11plus.ttf" id="4_yyvmb"]
 
 [node name="Hud" type="CanvasLayer"]
@@ -28,24 +28,18 @@ texture_progress = ExtResource("2_wncx7")
 [node name="Monedas" type="Node2D" parent="."]
 position = Vector2(89, 64)
 
-[node name="ColorRect" type="ColorRect" parent="Monedas"]
-offset_left = -24.0
-offset_top = -11.0
-offset_right = 15.0
-offset_bottom = 13.0
-color = Color(0, 0, 0, 0.5)
-metadata/_edit_use_anchors_ = true
-
 [node name="Sprite2D" type="Sprite2D" parent="Monedas"]
 position = Vector2(-42, 0)
 scale = Vector2(4, 4)
-texture = ExtResource("3_wncx7")
+texture = ExtResource("4_5mmha")
 
 [node name="Label" type="Label" parent="Monedas"]
-offset_left = -45.9999
-offset_top = -24.0
-offset_right = 40.0001
-offset_bottom = 24.0
+offset_left = -17.0
+offset_top = -16.0
+offset_right = 18.0
+offset_bottom = 14.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("4_yyvmb")
 theme_override_font_sizes/font_size = 30
 text = "0"

@@ -2,7 +2,6 @@ class_name EnemigoLunechon extends CharacterBody2D
 
 var cristal : PackedScene = load("res://Items/Cristal.tscn")
 
-
 @onready var animations : Node2D = $Animations
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 @onready var item_spawn : Marker2D = $Marker2D
@@ -35,18 +34,3 @@ var knockback_direction
 var protagonista_position
 
 var health = 50
-
-func get_enemy_position():
-	return global_position
-
-func invert_scale():
-	animations.scale.x *= -1
-	node_raycast_entorno.scale.x *= -1
-	raycast_suelo.force_raycast_update()
-	raycast_pared.force_raycast_update()
-
-func damage(attacker_position, damage):
-	health -= damage
-	knockback_direction = sign(global_position.x - attacker_position.x)
-	damage_just_received=true
-	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bc58het8axtq8"]
+[gd_scene load_steps=46 format=3 uid="uid://bc58het8axtq8"]
 
 [ext_resource type="Script" uid="uid://dm8nnohx7d5bb" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.gd" id="1_sku32"]
 [ext_resource type="Texture2D" uid="uid://c5b6gcpieqt5h" path="res://Recursos/Lunechon_u.png" id="2_lkxyf"]
@@ -8,11 +8,16 @@
 [ext_resource type="Script" uid="uid://chaic8ncr4g01" path="res://Enemigos/Enemigo_Lunechon/Control/Estados/idle.gd" id="4_hvnms"]
 [ext_resource type="Script" uid="uid://bn8l0lgm75w5m" path="res://Enemigos/Enemigo_Lunechon/Control/Estados/walk.gd" id="5_tnmmy"]
 [ext_resource type="PackedScene" uid="uid://d3fxokq75pqtm" path="res://Protagonista/Control_Protagonista/state_machine.tscn" id="7_ikxw4"]
+[ext_resource type="Script" uid="uid://da8j76mehbsxl" path="res://Enemigos/Enemigo_Lunechon/Control/enemigo_lunechon_base_state.gd" id="7_j558x"]
 [ext_resource type="Script" uid="uid://dv3jesmc8qmx6" path="res://Enemigos/Enemigo_Lunechon/Control/Estados/damage.gd" id="7_lkxyf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p4kmm"]
-radius = 14.5
+radius = 15.0
 height = 62.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usiae"]
+radius = 15.0
+height = 66.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j558x"]
 atlas = ExtResource("2_usiae")
@@ -351,11 +356,18 @@ _data = {
 }
 
 [node name="Enemigo_Lunechon" type="CharacterBody2D" groups=["Enemigo"]]
+collision_mask = 2147483649
 script = ExtResource("1_sku32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_p4kmm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 14)
+shape = SubResource("CapsuleShape2D_usiae")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 24)
@@ -399,6 +411,9 @@ target_position = Vector2(20.5, 0)
 [node name="State_Machine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("7_ikxw4")]
 default_state = NodePath("Idle")
 
+[node name="EnemigoLunechonBaseState" type="Node" parent="State_Machine"]
+script = ExtResource("7_j558x")
+
 [node name="Idle" type="Node" parent="State_Machine"]
 script = ExtResource("4_hvnms")
 
@@ -408,5 +423,6 @@ script = ExtResource("5_tnmmy")
 [node name="Damage" type="Node" parent="State_Machine"]
 script = ExtResource("7_lkxyf")
 
+[connection signal="area_entered" from="Area2D" to="State_Machine/EnemigoLunechonBaseState" method="_on_area_2d_area_entered"]
 [connection signal="animation_finished" from="Animations/AnimatedNodeUp/AnimatedSpriteUp" to="State_Machine/Damage" method="_on_animated_sprite_up_animation_finished"]
 [connection signal="animation_finished" from="Animations/AnimationPlayer" to="State_Machine/Damage" method="_on_animation_player_animation_finished"]

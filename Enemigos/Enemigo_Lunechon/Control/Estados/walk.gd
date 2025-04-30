@@ -5,7 +5,7 @@ func start():
 	enemigo.last_direction = enemigo.animations.scale.x
 	if not enemigo.hitted:
 		enemigo.direction = enemigo.animations.scale.x * -1
-		enemigo.invert_scale()
+		invert_scale()
 	else:
 		enemigo.direction = enemigo.animations.scale.x
 		enemigo.hitted=false
