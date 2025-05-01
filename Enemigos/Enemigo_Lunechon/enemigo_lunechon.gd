@@ -1,6 +1,6 @@
 class_name EnemigoLunechon extends CharacterBody2D
 
-var cristal : PackedScene = load("res://Items/Cristal.tscn")
+var cristal : PackedScene = load("res://Recogibles/Cristal.tscn")
 
 @onready var animations : Node2D = $Animations
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D

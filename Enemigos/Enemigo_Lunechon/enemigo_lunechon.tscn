@@ -1,9 +1,8 @@
-[gd_scene load_steps=46 format=3 uid="uid://bc58het8axtq8"]
+[gd_scene load_steps=44 format=3 uid="uid://bc58het8axtq8"]
 
 [ext_resource type="Script" uid="uid://dm8nnohx7d5bb" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.gd" id="1_sku32"]
 [ext_resource type="Texture2D" uid="uid://c5b6gcpieqt5h" path="res://Recursos/Enemigos/Lunechon/Lunechon_u.png" id="2_lkxyf"]
 [ext_resource type="Texture2D" uid="uid://jgf1kgbvtcd6" path="res://Recursos/Particulas/25.png" id="2_usiae"]
-[ext_resource type="Shader" uid="uid://cf0ru8idodw4d" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.gdshader" id="3_eh0v0"]
 [ext_resource type="Texture2D" uid="uid://oe4smwj0h0yu" path="res://Recursos/Enemigos/Lunechon/Lunechon_d2.png" id="3_lkxyf"]
 [ext_resource type="Script" uid="uid://chaic8ncr4g01" path="res://Enemigos/Enemigo_Lunechon/Control/Estados/idle.gd" id="4_hvnms"]
 [ext_resource type="Script" uid="uid://bn8l0lgm75w5m" path="res://Enemigos/Enemigo_Lunechon/Control/Estados/walk.gd" id="5_tnmmy"]
@@ -176,11 +175,6 @@ animations = [{
 "name": &"Run",
 "speed": 6.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_usiae"]
-shader = ExtResource("3_eh0v0")
-shader_parameter/cutoff_x = 1.0
-shader_parameter/cutoff_y = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p4kmm"]
 atlas = ExtResource("3_lkxyf")
@@ -386,7 +380,6 @@ animation = &"Idle"
 
 [node name="AnimatedSpriteDown" type="AnimatedSprite2D" parent="Animations/AnimatedNodeDown"]
 z_index = -1
-material = SubResource("ShaderMaterial_usiae")
 position = Vector2(0, 32)
 sprite_frames = SubResource("SpriteFrames_wjbk8")
 animation = &"Run"
