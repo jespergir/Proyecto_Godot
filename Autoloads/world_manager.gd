@@ -1,90 +1,73 @@
 extends Node
 
 var rooms: Dictionary = {}
-var precarga_pendiente : Dictionary = {}
-var salas_precargadas : Dictionary = {}
 
-#var pendiente = true
-#
-#var room_name : String
-#var ruta_sala : String
-#var ancho_sala_siguiente
-#var alto_sala_siguiente 
-#var posicion_sala_siguiente
-#var position_sala_actual
-#var ancho_sala_actual
-#var altoo_sala_siguiente
-#var instancia
+var protagonista : Protagonista #Se recibe desde el script de World
+enum posiciones {Derecha, Izquierda, Arriba, Abajo} #Enum para las direcciones de las salas a instanciar
 
-enum posiciones {Derecha, Izquierda, Arriba, Abajo}
-#
-#func _process(_delta):
-	#ResourceLoader.load_threaded_request("res://Mundo/Salas/Sala3/Sala3.tscn")
-	#precarga_pendiente["Sala3"] = true
-	#if pendiente:
-		#preaload_room()
-	#else:
-		#loado()
-#
-#
-#func preaload_room():
-	#if precarga_pendiente.has(room_name):
-		#var status = ResourceLoader.load_threaded_get_status(ruta_sala)
-		#print("jeu")
-		#if status == ResourceLoader.THREAD_LOAD_LOADED:
-			#var scene = ResourceLoader.load_threaded_get(ruta_sala)
-			#instancia = scene.instantiate()
-			#instancia.position = Vector2(99999, 99999)
-			#get_node("/root/World").call_deferred("add_child", instancia)
-			#precarga_pendiente.erase(room_name)
-			#salas_precargadas[room_name] = instancia
-			#ancho_sala_siguiente = instancia.ancho
-			#alto_sala_siguiente = instancia.alto
-			#pendiente = false
-#
-#func conf(room_name: String, position_sala_actual: Vector2, ancho_sala_actual, posicion_sala_siguiente, ruta_sala):
-	#self.room_name=room_name
-	#self.ruta_sala = ruta_sala
-	#self.position_sala_actual = position_sala_actual
-	#self.ancho_sala_actual = ancho_sala_actual
-	#self.posicion_sala_siguiente = posicion_sala_siguiente
-#
-#
-#func loado():
-	#match posicion_sala_siguiente:
-		#posiciones.Derecha:
-			#instancia.position = position_sala_actual + Vector2(ancho_sala_actual,0)
-		#posiciones.Izquierda:
-			#instancia.position = position_sala_actual - Vector2(ancho_sala_siguiente,0)
-		#posiciones.Arriba:
-			#instancia.position = position_sala_actual + Vector2(0,alto_sala_siguiente)
-		#posiciones.Abajo:
-			#instancia.position = position_sala_actual - Vector2(0,alto_sala_siguiente)
-			#
-	#rooms[room_name] = instancia
+var temporizador = 0.0
 
+func _process(delta): #Cada 2 segundos llama a unload_distant_rooms para descargar salas lejanas de la memoria.
+	temporizador += delta
+	if temporizador > 2.0:
+		temporizador = 0
+		unload_distant_rooms()
 
+func unload_distant_rooms(): #Función para liberar salas lejanas de la memoria
+	var posicion_protagonista = protagonista.global_position #Referencia la posición global de la protagonista.
+
+	for room_name in rooms.keys(): #Recorre el diccionario de las salas
+		var room = rooms[room_name]
+		if not is_instance_valid(room): #Si una sala del diccionario ya no es una instancia válida, salta esa vuelta del bucle
+			continue
+			
+		var distance = posicion_protagonista.distance_to(room.global_position) #Calcula la distancia de la protagonista a la sala
+		
+		if distance > 5000:  # Si está muy lejos, se elimina y la saca del diccionario rooms
+			room.queue_free()
+			rooms.erase(room_name)
+
+#Función para cargar salas en tiempo de ejecución
 func load_room(room_name: String, position_sala_actual: Vector2, ancho_sala_actual, posicion_sala_siguiente):
-	if rooms.has(room_name):
+	
+	if rooms.has(room_name): #Si la sala ya ha sido cargada, no hagas nada.
 		return
+
+	# Solicita la carga en segundo plano
 	ResourceLoader.load_threaded_request(room_name)
-	var scene = load(room_name)
+
+	# Espera hasta que la carga haya terminado
+	while ResourceLoader.load_threaded_get_status(room_name) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		await Engine.get_main_loop().process_frame
+
+	# Verifica si se cargó correctamente
+	if ResourceLoader.load_threaded_get_status(room_name) != ResourceLoader.THREAD_LOAD_LOADED:
+		printerr("Error al cargar la sala: ", room_name)
+		return
+
+	# Recupera la escena ya cargada
+	var scene := ResourceLoader.load_threaded_get(room_name)
 	var room_instance : Sala = scene.instantiate()
-	room_instance.position = Vector2(99999,99999)
+
+	# Posiciona inicialmente la sala fuera de la vista
+	room_instance.position = Vector2(99999, 99999)
 	get_node("/root/World").call_deferred("add_child", room_instance)
-	await room_instance.ready
+	await room_instance.ready  # Espera que el nodo esté listo
+
+	# Calcula su posición final
 	var ancho_sala_siguiente = room_instance.ancho
 	var alto_sala_siguiente = room_instance.alto
 	
+	#En función de la dirección donde toque instanciar la sala, hará una cosa u otra.
 	match posicion_sala_siguiente:
 		posiciones.Derecha:
-			room_instance.position = position_sala_actual + Vector2(ancho_sala_actual,0)
+			room_instance.position = position_sala_actual + Vector2(ancho_sala_actual, 0)
 		posiciones.Izquierda:
-			room_instance.position = position_sala_actual - Vector2(ancho_sala_siguiente,0)
+			room_instance.position = position_sala_actual - Vector2(ancho_sala_siguiente, 0)
 		posiciones.Arriba:
-			room_instance.position = position_sala_actual + Vector2(0,alto_sala_siguiente)
+			room_instance.position = position_sala_actual - Vector2(0, alto_sala_siguiente)
 		posiciones.Abajo:
-			room_instance.position = position_sala_actual - Vector2(0,alto_sala_siguiente)
-			
-	
+			room_instance.position = position_sala_actual + Vector2(0, alto_sala_siguiente)
+
+	# Registra la sala cargada en el diccionario
 	rooms[room_name] = room_instance
