@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://chc2jnmcxq16j"]
+[gd_scene load_steps=14 format=3 uid="uid://chc2jnmcxq16j"]
 
-[ext_resource type="Script" uid="uid://sfsuu110pcvf" path="res://Mundo/Salas/Sala2/area_salida_derecha.gd" id="3_4mw1m"]
+[ext_resource type="Script" uid="uid://c64xsnwqy1ive" path="res://Mundo/Salas/Sala2/sala_2.gd" id="1_griog"]
 [ext_resource type="PackedScene" uid="uid://3hlnbss0a84y" path="res://Mapeado/Techos/techo1.tscn" id="3_rpm7y"]
 [ext_resource type="PackedScene" uid="uid://dab808f18h73l" path="res://Mapeado/Techos/techo_esquina.tscn" id="4_fwf7u"]
 [ext_resource type="PackedScene" uid="uid://sjpj4t7m2nbt" path="res://Mapeado/Paredes/pared1.tscn" id="5_064ln"]
@@ -8,14 +8,21 @@
 [ext_resource type="PackedScene" uid="uid://b06ui37g2prpg" path="res://Mapeado/Suelos/suelo1.tscn" id="8_1ntsy"]
 [ext_resource type="PackedScene" uid="uid://b2lvd06mk0jlt" path="res://Mapeado/Suelos/suelo2.tscn" id="9_geduo"]
 [ext_resource type="PackedScene" uid="uid://bug433lnnx4wv" path="res://Mapeado/Plataformas/plataforma1.tscn" id="10_rx481"]
+[ext_resource type="Script" uid="uid://b564uy783cxcs" path="res://Mundo/Salas/Sala1/area_salida_derecha.gd" id="11_4mw1m"]
 [ext_resource type="PackedScene" uid="uid://cr6giuf2m3w57" path="res://Mapeado/Plataformas/plataforma_movil_y.tscn" id="11_6sbff"]
 [ext_resource type="PackedScene" uid="uid://bc58het8axtq8" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.tscn" id="12_pp8v1"]
 [ext_resource type="PackedScene" uid="uid://ftr7fpqn7hgk" path="res://Mapeado/Fondos/paralaje.tscn" id="13_l1sc6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xn47o"]
-size = Vector2(32, 96)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_griog"]
+size = Vector2(16, 96)
 
 [node name="Sala2" type="Node2D"]
+script = ExtResource("1_griog")
+
+[node name="Paralaje" parent="." instance=ExtResource("13_l1sc6")]
+visible = false
+z_index = -5
+position = Vector2(1514, 1364)
 
 [node name="Techos" type="Node2D" parent="."]
 position = Vector2(0, 1216)
@@ -29,22 +36,6 @@ position = Vector2(1280, -448)
 [node name="Terreno4" parent="Techos" instance=ExtResource("4_fwf7u")]
 position = Vector2(256, -32)
 rotation = 4.71239
-
-[node name="DeteccionJugador" type="Node2D" parent="."]
-position = Vector2(2816, 1792)
-
-[node name="Salidas" type="Node2D" parent="DeteccionJugador"]
-
-[node name="SalidaDerecha" type="Marker2D" parent="DeteccionJugador/Salidas"]
-position = Vector2(768, -1792)
-
-[node name="AreaSalidaDerecha" type="Area2D" parent="DeteccionJugador"]
-collision_mask = 2147483648
-script = ExtResource("3_4mw1m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeteccionJugador/AreaSalidaDerecha"]
-position = Vector2(272, -304)
-shape = SubResource("RectangleShape2D_xn47o")
 
 [node name="Paredes" type="Node2D" parent="."]
 position = Vector2(0, 1216)
@@ -109,9 +100,27 @@ position = Vector2(1952, 304)
 [node name="Enemigo_Lunechon" parent="." instance=ExtResource("12_pp8v1")]
 position = Vector2(1176, 1488)
 
-[node name="Paralaje" parent="." instance=ExtResource("13_l1sc6")]
-visible = false
-z_index = -5
-position = Vector2(1514, 1364)
+[node name="GestionMapa" type="Node2D" parent="."]
+position = Vector2(1536, 1088)
+script = ExtResource("11_4mw1m")
 
-[connection signal="body_entered" from="DeteccionJugador/AreaSalidaDerecha" to="DeteccionJugador/AreaSalidaDerecha" method="_on_body_entered"]
+[node name="AreaSalidaDerecha" type="Area2D" parent="GestionMapa"]
+position = Vector2(1552, 400)
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/AreaSalidaDerecha"]
+shape = SubResource("RectangleShape2D_griog")
+
+[node name="InicioSuperiorSala" type="Marker2D" parent="GestionMapa"]
+position = Vector2(-1536, -1088)
+
+[node name="InicioInferiorSala" type="Marker2D" parent="GestionMapa"]
+position = Vector2(-1536, 960)
+
+[node name="FinSuperiorSala" type="Marker2D" parent="GestionMapa"]
+position = Vector2(2048, -1088)
+
+[node name="FinInferiorSala" type="Marker2D" parent="GestionMapa"]
+position = Vector2(2048, 960)
+
+[connection signal="body_entered" from="GestionMapa/AreaSalidaDerecha" to="GestionMapa" method="_on_area_salida_derecha_body_entered"]

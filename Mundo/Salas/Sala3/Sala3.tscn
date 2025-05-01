@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://drt6iaf7wj0yd"]
 
+[ext_resource type="Script" uid="uid://cwif3nab8oq2l" path="res://Mundo/Salas/Sala3/sala_3.gd" id="1_q6t5b"]
 [ext_resource type="PackedScene" uid="uid://3hlnbss0a84y" path="res://Mapeado/Techos/techo1.tscn" id="1_v0lsn"]
 [ext_resource type="PackedScene" uid="uid://dab808f18h73l" path="res://Mapeado/Techos/techo_esquina.tscn" id="2_2dpv0"]
 [ext_resource type="PackedScene" uid="uid://sjpj4t7m2nbt" path="res://Mapeado/Paredes/pared1.tscn" id="3_mrlx3"]
-[ext_resource type="PackedScene" uid="uid://cct13a4qij6ab" path="res://Mapeado/Paredes/pared_esquina.tscn" id="4_3wrbm"]
 [ext_resource type="PackedScene" uid="uid://bqhguokb41hfi" path="res://Mapeado/Paredes/pared1_techo.tscn" id="5_exfmi"]
 [ext_resource type="PackedScene" uid="uid://b06ui37g2prpg" path="res://Mapeado/Suelos/suelo1.tscn" id="6_wy67h"]
 [ext_resource type="PackedScene" uid="uid://b2lvd06mk0jlt" path="res://Mapeado/Suelos/suelo2.tscn" id="7_qcxko"]
@@ -11,10 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://cr6giuf2m3w57" path="res://Mapeado/Plataformas/plataforma_movil_y.tscn" id="9_0eo8g"]
 [ext_resource type="PackedScene" uid="uid://bc58het8axtq8" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.tscn" id="10_2nmdq"]
 [ext_resource type="PackedScene" uid="uid://ftr7fpqn7hgk" path="res://Mapeado/Fondos/paralaje.tscn" id="11_ddkmi"]
+[ext_resource type="Script" uid="uid://b564uy783cxcs" path="res://Mundo/Salas/Sala1/area_salida_derecha.gd" id="12_q6t5b"]
 
-[sub_resource type="GDScript" id="GDScript_4mw1m"]
-
-[node name="Sala2" type="Node2D"]
+[node name="Sala3" type="Node2D"]
+script = ExtResource("1_q6t5b")
 
 [node name="Techos" type="Node2D" parent="."]
 position = Vector2(0, 1216)
@@ -33,23 +33,19 @@ rotation = 4.71239
 position = Vector2(0, 1216)
 
 [node name="Terreno1" parent="Paredes" instance=ExtResource("3_mrlx3")]
-position = Vector2(2816, -448)
+position = Vector2(3328, -448)
 rotation = 3.14159
 
 [node name="Terreno2" parent="Paredes" instance=ExtResource("3_mrlx3")]
-position = Vector2(2816, -32)
+position = Vector2(3328, -32)
 rotation = 3.14159
 
 [node name="Terreno3" parent="Paredes" instance=ExtResource("3_mrlx3")]
-position = Vector2(2816, -960)
+position = Vector2(3328, -960)
 rotation = 3.14159
 
 [node name="Terreno5" parent="Paredes" instance=ExtResource("3_mrlx3")]
 position = Vector2(1792, -960)
-
-[node name="Terreno7" parent="Paredes" instance=ExtResource("4_3wrbm")]
-position = Vector2(2816, 576)
-rotation = -1.5708
 
 [node name="Terreno4" parent="Paredes" instance=ExtResource("5_exfmi")]
 position = Vector2(1792, -448)
@@ -72,6 +68,12 @@ position = Vector2(1792, 576)
 [node name="Terreno33" parent="Suelos" instance=ExtResource("7_qcxko")]
 position = Vector2(2304, 576)
 
+[node name="Terreno34" parent="Suelos" instance=ExtResource("7_qcxko")]
+position = Vector2(2816, 576)
+
+[node name="Terreno35" parent="Suelos" instance=ExtResource("7_qcxko")]
+position = Vector2(3328, 576)
+
 [node name="Plataformas" type="Node2D" parent="."]
 position = Vector2(0, 1216)
 
@@ -91,17 +93,21 @@ position = Vector2(1952, 304)
 position = Vector2(1176, 1488)
 
 [node name="Paralaje" parent="." instance=ExtResource("11_ddkmi")]
-visible = false
 z_index = -5
 position = Vector2(1514, 1364)
 
 [node name="GestionMapa" type="Node2D" parent="."]
-position = Vector2(1024, 1088)
+position = Vector2(1536, 1088)
+script = ExtResource("12_q6t5b")
 
-[node name="DeteccionJugador" type="Node2D" parent="GestionMapa"]
-script = SubResource("GDScript_4mw1m")
+[node name="InicioSuperiorSala" type="Marker2D" parent="GestionMapa"]
+position = Vector2(-1536, -1088)
 
-[node name="Salidas" type="Node2D" parent="GestionMapa/DeteccionJugador"]
+[node name="InicioInferiorSala" type="Marker2D" parent="GestionMapa"]
+position = Vector2(-1536, 960)
 
-[node name="SalidaIzquierda" type="Marker2D" parent="GestionMapa/DeteccionJugador/Salidas"]
+[node name="FinSuperiorSala" type="Marker2D" parent="GestionMapa"]
 position = Vector2(2048, -1088)
+
+[node name="FinInferiorSala" type="Marker2D" parent="GestionMapa"]
+position = Vector2(2048, 960)
