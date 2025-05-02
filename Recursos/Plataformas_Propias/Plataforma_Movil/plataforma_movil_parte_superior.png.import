@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lwo5vlj4pmre"
-path="res://.godot/imported/Chests.png-826ce8c1533b4c568adb721496be90a4.ctex"
+uid="uid://dkws6rqu5s7on"
+path="res://.godot/imported/plataforma_movil_parte_superior.png-5632fc7ae1e9bf4b0f22bbcadf6e14a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Recursos/Cofres/Chests.png"
-dest_files=["res://.godot/imported/Chests.png-826ce8c1533b4c568adb721496be90a4.ctex"]
+source_file="res://Recursos/Plataformas_Propias/Plataforma_Movil/plataforma_movil_parte_superior.png"
+dest_files=["res://.godot/imported/plataforma_movil_parte_superior.png-5632fc7ae1e9bf4b0f22bbcadf6e14a2.ctex"]
 
 [params]
 

@@ -35,5 +35,6 @@ texture = ExtResource("3_sla42")
 repeat_size = Vector2(979, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D4"]
+position = Vector2(0, 1.52588e-05)
 scale = Vector2(1.7, 1.7)
 texture = ExtResource("4_3ebps")

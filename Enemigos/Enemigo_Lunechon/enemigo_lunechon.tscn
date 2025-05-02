@@ -1,10 +1,10 @@
 [gd_scene load_steps=44 format=3 uid="uid://bc58het8axtq8"]
 
 [ext_resource type="Script" uid="uid://dm8nnohx7d5bb" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.gd" id="1_sku32"]
-[ext_resource type="Texture2D" uid="uid://c5b6gcpieqt5h" path="res://Recursos/Enemigos/Lunechon/Lunechon_u.png" id="2_lkxyf"]
 [ext_resource type="Texture2D" uid="uid://jgf1kgbvtcd6" path="res://Recursos/Particulas/25.png" id="2_usiae"]
-[ext_resource type="Texture2D" uid="uid://oe4smwj0h0yu" path="res://Recursos/Enemigos/Lunechon/Lunechon_d2.png" id="3_lkxyf"]
+[ext_resource type="Texture2D" uid="uid://ct6vi2pxrbvn4" path="res://Recursos/Enemigos/Lunechon/Lunechon_Arriba.png" id="3_usiae"]
 [ext_resource type="Script" uid="uid://chaic8ncr4g01" path="res://Enemigos/Enemigo_Lunechon/Control/Estados/idle.gd" id="4_hvnms"]
+[ext_resource type="Texture2D" uid="uid://ci3j3lhknec1i" path="res://Recursos/Enemigos/Lunechon/Lunechon_Abajo.png" id="4_j558x"]
 [ext_resource type="Script" uid="uid://bn8l0lgm75w5m" path="res://Enemigos/Enemigo_Lunechon/Control/Estados/walk.gd" id="5_tnmmy"]
 [ext_resource type="PackedScene" uid="uid://d3fxokq75pqtm" path="res://Protagonista/Control_Protagonista/state_machine.tscn" id="7_ikxw4"]
 [ext_resource type="Script" uid="uid://da8j76mehbsxl" path="res://Enemigos/Enemigo_Lunechon/Control/enemigo_lunechon_base_state.gd" id="7_j558x"]
@@ -16,7 +16,7 @@ height = 62.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usiae"]
 radius = 15.0
-height = 66.0
+height = 62.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j558x"]
 atlas = ExtResource("2_usiae")
@@ -74,29 +74,29 @@ region = Rect2(768, 448, 64, 64)
 atlas = ExtResource("2_usiae")
 region = Rect2(832, 448, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mabec"]
-atlas = ExtResource("2_lkxyf")
-region = Rect2(0, 0, 37, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_48cqv"]
+atlas = ExtResource("3_usiae")
+region = Rect2(0, 0, 37, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2o6lo"]
-atlas = ExtResource("2_lkxyf")
-region = Rect2(37, 0, 37, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaelp"]
+atlas = ExtResource("3_usiae")
+region = Rect2(37, 0, 37, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ru6d7"]
-atlas = ExtResource("2_lkxyf")
-region = Rect2(74, 0, 37, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yif2i"]
+atlas = ExtResource("3_usiae")
+region = Rect2(74, 0, 37, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b50dq"]
-atlas = ExtResource("2_lkxyf")
-region = Rect2(0, 0, 37, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf3dv"]
+atlas = ExtResource("3_usiae")
+region = Rect2(0, 0, 37, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xnnv0"]
-atlas = ExtResource("2_lkxyf")
-region = Rect2(37, 0, 37, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4a4w"]
+atlas = ExtResource("3_usiae")
+region = Rect2(37, 0, 37, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_asubo"]
-atlas = ExtResource("2_lkxyf")
-region = Rect2(74, 0, 37, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocilv"]
+atlas = ExtResource("3_usiae")
+region = Rect2(74, 0, 37, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76546"]
 animations = [{
@@ -149,13 +149,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mabec")
+"texture": SubResource("AtlasTexture_48cqv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2o6lo")
+"texture": SubResource("AtlasTexture_uaelp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ru6d7")
+"texture": SubResource("AtlasTexture_yif2i")
 }],
 "loop": true,
 "name": &"Idle",
@@ -163,54 +163,54 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b50dq")
+"texture": SubResource("AtlasTexture_tf3dv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xnnv0")
+"texture": SubResource("AtlasTexture_w4a4w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_asubo")
+"texture": SubResource("AtlasTexture_ocilv")
 }],
 "loop": true,
 "name": &"Run",
 "speed": 6.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p4kmm"]
-atlas = ExtResource("3_lkxyf")
-region = Rect2(0, 0, 37, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ue35"]
+atlas = ExtResource("4_j558x")
+region = Rect2(0, 0, 37, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l64il"]
-atlas = ExtResource("3_lkxyf")
-region = Rect2(37, 0, 37, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrstk"]
+atlas = ExtResource("4_j558x")
+region = Rect2(37, 0, 37, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1j8ki"]
-atlas = ExtResource("3_lkxyf")
-region = Rect2(74, 0, 37, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vxxu"]
+atlas = ExtResource("4_j558x")
+region = Rect2(74, 0, 37, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6o1br"]
-atlas = ExtResource("3_lkxyf")
-region = Rect2(0, 0, 37, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qpo6"]
+atlas = ExtResource("4_j558x")
+region = Rect2(0, 0, 37, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qslra"]
-atlas = ExtResource("3_lkxyf")
-region = Rect2(37, 0, 37, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbwod"]
+atlas = ExtResource("4_j558x")
+region = Rect2(37, 0, 37, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o7avk"]
-atlas = ExtResource("3_lkxyf")
-region = Rect2(74, 0, 37, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ietx"]
+atlas = ExtResource("4_j558x")
+region = Rect2(74, 0, 37, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wjbk8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p4kmm")
+"texture": SubResource("AtlasTexture_6ue35")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l64il")
+"texture": SubResource("AtlasTexture_yrstk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1j8ki")
+"texture": SubResource("AtlasTexture_5vxxu")
 }],
 "loop": true,
 "name": &"Idle",
@@ -218,13 +218,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6o1br")
+"texture": SubResource("AtlasTexture_7qpo6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qslra")
+"texture": SubResource("AtlasTexture_lbwod")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o7avk")
+"texture": SubResource("AtlasTexture_7ietx")
 }],
 "loop": true,
 "name": &"Run",
@@ -354,7 +354,7 @@ collision_mask = 2147483649
 script = ExtResource("1_sku32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 16)
+position = Vector2(0, 14)
 shape = SubResource("CapsuleShape2D_p4kmm")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -372,9 +372,10 @@ position = Vector2(0, 24)
 rotation = 1.5708
 
 [node name="AnimatedSpriteUp" type="AnimatedSprite2D" parent="Animations/AnimatedNodeUp"]
+position = Vector2(1, -3.61999e-06)
 rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_76546")
-animation = &"Idle"
+animation = &"Run"
 
 [node name="AnimatedNodeDown" type="Node2D" parent="Animations"]
 

@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwfsiro15oswg"]
+[gd_scene load_steps=17 format=3 uid="uid://cwfsiro15oswg"]
 
 [ext_resource type="AudioStream" uid="uid://o4nit6bgu4uf" path="res://Music/Floating Dream.wav" id="1_jk831"]
 [ext_resource type="Script" uid="uid://dqulvacvl3lwi" path="res://Mundo/Salas/Sala1/sala_1.gd" id="1_xh6yj"]
 [ext_resource type="Script" uid="uid://c3mqqbe5eddgd" path="res://Mundo/Salas/Sala1/audio_stream_player.gd" id="2_187wa"]
 [ext_resource type="PackedScene" uid="uid://3hlnbss0a84y" path="res://Mapeado/Techos/techo1.tscn" id="4_4lna0"]
 [ext_resource type="PackedScene" uid="uid://sjpj4t7m2nbt" path="res://Mapeado/Paredes/pared1.tscn" id="5_frep1"]
-[ext_resource type="PackedScene" uid="uid://bqhguokb41hfi" path="res://Mapeado/Paredes/pared1_techo.tscn" id="10_jk831"]
 [ext_resource type="PackedScene" uid="uid://b06ui37g2prpg" path="res://Mapeado/Suelos/suelo1.tscn" id="11_uguat"]
 [ext_resource type="PackedScene" uid="uid://b2lvd06mk0jlt" path="res://Mapeado/Suelos/suelo2.tscn" id="12_e3dtt"]
 [ext_resource type="PackedScene" uid="uid://bug433lnnx4wv" path="res://Mapeado/Plataformas/plataforma1.tscn" id="13_6gako"]
@@ -19,7 +18,7 @@
 size = Vector2(96, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjqs2"]
-size = Vector2(16, 96)
+size = Vector2(64, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wlr5b"]
 size = Vector2(20, 96)
@@ -42,57 +41,53 @@ shape = SubResource("RectangleShape2D_sk5ky")
 
 [node name="Paralaje" parent="Fondo" instance=ExtResource("17_b8qxj")]
 z_index = -5
-position = Vector2(496, 1280)
+position = Vector2(490, 1260)
 
 [node name="Techos" type="Node2D" parent="."]
 position = Vector2(512, 1216)
 
 [node name="Terreno2" parent="Techos" instance=ExtResource("4_4lna0")]
-position = Vector2(1280, -448)
+position = Vector2(1472, -320)
 
 [node name="Terreno3" parent="Techos" instance=ExtResource("4_4lna0")]
-position = Vector2(1792, -448)
+position = Vector2(960, -320)
 
 [node name="Terreno4" parent="Techos" instance=ExtResource("18_wqexn")]
-position = Vector2(2304, -32)
+position = Vector2(1792, 64)
+
+[node name="Terreno5" parent="Techos" instance=ExtResource("18_wqexn")]
+position = Vector2(448, -320)
 
 [node name="Paredes" type="Node2D" parent="."]
 position = Vector2(512, 1216)
 
 [node name="Terreno2" parent="Paredes" instance=ExtResource("5_frep1")]
-position = Vector2(-256, -448)
+position = Vector2(-384, -448)
 
 [node name="Terreno3" parent="Paredes" instance=ExtResource("5_frep1")]
-position = Vector2(-256, -960)
+position = Vector2(-384, -960)
 
 [node name="Terreno5" parent="Paredes" instance=ExtResource("5_frep1")]
-position = Vector2(768, -960)
+position = Vector2(320, -960)
 rotation = 3.14159
-
-[node name="Terreno4" parent="Paredes" instance=ExtResource("10_jk831")]
-position = Vector2(768, -448)
-rotation = 1.5708
 
 [node name="Suelos" type="Node2D" parent="."]
 position = Vector2(512, 1216)
 
 [node name="Terreno8" parent="Suelos" instance=ExtResource("11_uguat")]
-position = Vector2(256, 576)
-
-[node name="Terreno8" parent="Suelos/Terreno8" instance=ExtResource("11_uguat")]
-position = Vector2(-512, 0)
+position = Vector2(768, 448)
 
 [node name="Terreno9" parent="Suelos" instance=ExtResource("11_uguat")]
-position = Vector2(1280, 576)
+position = Vector2(1792, 448)
 
 [node name="Terreno10" parent="Suelos" instance=ExtResource("12_e3dtt")]
-position = Vector2(768, 576)
+position = Vector2(256, 448)
 
 [node name="Terreno32" parent="Suelos" instance=ExtResource("12_e3dtt")]
-position = Vector2(1792, 576)
+position = Vector2(1280, 448)
 
-[node name="Terreno33" parent="Suelos" instance=ExtResource("12_e3dtt")]
-position = Vector2(2304, 576)
+[node name="Terreno11" parent="Suelos" instance=ExtResource("11_uguat")]
+position = Vector2(-256, 448)
 
 [node name="Plataformas" type="Node2D" parent="."]
 position = Vector2(512, 1216)
@@ -117,10 +112,11 @@ position = Vector2(1536, 1088)
 script = ExtResource("13_wlr5b")
 
 [node name="AreaSalidaDerecha" type="Area2D" parent="GestionMapa"]
+position = Vector2(512, 384)
 collision_mask = 2147483648
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/AreaSalidaDerecha"]
-position = Vector2(1032, 400)
+position = Vector2(32, 0)
 shape = SubResource("RectangleShape2D_mjqs2")
 
 [node name="AreaSalidaIzquierda" type="Area2D" parent="GestionMapa"]

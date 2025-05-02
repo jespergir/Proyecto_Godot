@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl40l8n2ev2do"
-path="res://.godot/imported/Lunechon_d.png-4d999a300032d71d74ca3fc6e6094a51.ctex"
+uid="uid://ctpl3akamdoei"
+path="res://.godot/imported/Boton.png-eacf1c0c0bad1caa93683f5f48f5bdc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Recursos/Enemigos/Lunechon/Lunechon_d.png"
-dest_files=["res://.godot/imported/Lunechon_d.png-4d999a300032d71d74ca3fc6e6094a51.ctex"]
+source_file="res://Recursos/Interactuables/Boton.png"
+dest_files=["res://.godot/imported/Boton.png-eacf1c0c0bad1caa93683f5f48f5bdc6.ctex"]
 
 [params]
 
