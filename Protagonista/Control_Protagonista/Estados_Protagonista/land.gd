@@ -3,7 +3,7 @@ class_name Land extends PlayerBaseState
 func on_physics_process(delta: float) -> void:
 #region Land
 	# Si la velocidad en y es mayor que 0 y el raycast está colistionando, aterriza
-	if protagonista.velocity.y > 0 and (protagonista.raycast_suelo1.is_colliding() or protagonista.raycast_suelo2.is_colliding()):
+	if protagonista.velocity.y >= 0 and (protagonista.raycast_suelo1.is_colliding() or protagonista.raycast_suelo2.is_colliding()):
 		protagonista.animated_sprite.play("Land")
 #endregion
 #region MoveX

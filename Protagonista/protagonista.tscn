@@ -309,6 +309,17 @@ size = Vector2(24, 64)
 collision_layer = 2147483648
 script = ExtResource("1_0nl2c")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -480.0
+offset_top = -384.0
+offset_right = 480.0
+offset_bottom = 160.0
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -112)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qd3w3")
 animation = &"Idle"

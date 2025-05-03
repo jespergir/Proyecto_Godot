@@ -35,18 +35,17 @@ func receive_damage(attacker_position, damage):
 		protagonista.damage_just_received=true
 
 func _on_area_damage_body_entered(body: Node2D) -> void:
+#region Daño Enemigo
 	if not protagonista.invulnerable and body.is_in_group("Enemigo"):
 		receive_damage(body.global_position, body.DAMAGE)
 		protagonista.invulnerable = true
-
-
-#func _on_area_damage_area_entered(area: Area2D) -> void:
-	#print("Entró área: ", area.name, " | Padre: ", area.get_parent().name)
-	#print("¿Grupo recogible?: ", area.get_parent().is_in_group("Recogible"))
-	#if area.get_parent().is_in_group("Recogible"):
-		#protagonista.coins +=1
-		#protagonista.hud.contador_monedas.text = str(protagonista.coins)
-
+#endregion
+#region Daño Terreno
+	if not protagonista.invulnerable and body.is_in_group("Pinchos"):
+		protagonista.fade_to_black.visible = true
+		receive_damage(body.global_position, body.DAMAGE)
+		protagonista.invulnerable = true
+#endregion
 
 func _on_area_damage_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("Recogible"):

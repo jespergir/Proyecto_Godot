@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bov0gtekoq78m"]
 
 [ext_resource type="Script" uid="uid://vpifng0kfwa5" path="res://HUD/hud.gd" id="1_5mmha"]
-[ext_resource type="Texture2D" uid="uid://d0yyc72fib8qa" path="res://Recursos/BarraSalud/health_bar.png" id="1_xxcah"]
-[ext_resource type="Texture2D" uid="uid://cxthh20n6a88t" path="res://Recursos/BarraSalud/health_bar_background.png" id="2_wncx7"]
+[ext_resource type="Texture2D" uid="uid://d0yyc72fib8qa" path="res://Recursos/Barra_Salud/health_bar.png" id="1_xxcah"]
+[ext_resource type="Texture2D" uid="uid://cxthh20n6a88t" path="res://Recursos/Barra_Salud/health_bar_background.png" id="2_wncx7"]
 [ext_resource type="Texture2D" uid="uid://ck8m140spwlwg" path="res://Recursos/Recogibles/cristal.png" id="4_5mmha"]
 [ext_resource type="FontFile" uid="uid://o3f8482haccu" path="res://Recursos/Fuentes/m6x11plus.ttf" id="4_yyvmb"]
 

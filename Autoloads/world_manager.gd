@@ -65,9 +65,10 @@ func load_room(room_name: String, position_sala_actual: Vector2, ancho_sala_actu
 		posiciones.Izquierda:
 			room_instance.position = position_sala_actual - Vector2(ancho_sala_siguiente, 0)
 		posiciones.Arriba:
-			room_instance.position = position_sala_actual - Vector2(0, alto_sala_siguiente)
-		posiciones.Abajo:
 			room_instance.position = position_sala_actual + Vector2(0, alto_sala_siguiente)
+		posiciones.Abajo:
+			room_instance.position = position_sala_actual - Vector2(0, alto_sala_siguiente)
+
 
 	# Registra la sala cargada en el diccionario
 	rooms[room_name] = room_instance

@@ -1,0 +1,181 @@
+[gd_scene load_steps=20 format=4 uid="uid://cwfsiro15oswg"]
+
+[ext_resource type="AudioStream" uid="uid://o4nit6bgu4uf" path="res://Music/Floating Dream.wav" id="1_jk831"]
+[ext_resource type="Script" uid="uid://dqulvacvl3lwi" path="res://Mundo/Salas/Superficie/Sala1/sala_1.gd" id="1_xh6yj"]
+[ext_resource type="Script" uid="uid://c3mqqbe5eddgd" path="res://Mundo/Salas/Superficie/Sala1/audio_stream_player.gd" id="2_187wa"]
+[ext_resource type="PackedScene" uid="uid://3hlnbss0a84y" path="res://Mapeado/Techos/Superficie/techo1.tscn" id="4_4lna0"]
+[ext_resource type="PackedScene" uid="uid://sjpj4t7m2nbt" path="res://Mapeado/Paredes/Superficie/pared1.tscn" id="5_frep1"]
+[ext_resource type="PackedScene" uid="uid://b06ui37g2prpg" path="res://Mapeado/Suelos/Superficie/suelo1.tscn" id="11_uguat"]
+[ext_resource type="PackedScene" uid="uid://b2lvd06mk0jlt" path="res://Mapeado/Suelos/Superficie/suelo2.tscn" id="12_e3dtt"]
+[ext_resource type="Texture2D" uid="uid://dfgldr24epruu" path="res://Recursos/16-bit-spike-Sheet.png" id="12_m8tu2"]
+[ext_resource type="PackedScene" uid="uid://bug433lnnx4wv" path="res://Mapeado/Plataformas/Superficie/plataforma1.tscn" id="13_6gako"]
+[ext_resource type="Script" uid="uid://dsnys2ydspvkl" path="res://Mundo/Salas/Superficie/Sala1/rigid_body_2d.gd" id="13_okvdm"]
+[ext_resource type="Script" uid="uid://b564uy783cxcs" path="res://Mundo/Salas/Superficie/Sala1/area_salida_derecha.gd" id="13_wlr5b"]
+[ext_resource type="PackedScene" uid="uid://cr6giuf2m3w57" path="res://Mapeado/Plataformas/Superficie/plataforma_movil_y.tscn" id="14_ya3e3"]
+[ext_resource type="PackedScene" uid="uid://dab808f18h73l" path="res://Mapeado/Techos/Superficie/techo_esquina.tscn" id="18_wqexn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk5ky"]
+size = Vector2(1024, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjqs2"]
+size = Vector2(64, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlr5b"]
+size = Vector2(128, 512)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_okvdm"]
+texture = ExtResource("12_m8tu2")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xrhsl"]
+sources/0 = SubResource("TileSetAtlasSource_okvdm")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8tu2"]
+size = Vector2(512, 11)
+
+[node name="Sala1" type="Node2D"]
+script = ExtResource("1_xh6yj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_jk831")
+script = ExtResource("2_187wa")
+
+[node name="AreaMusica" type="Area2D" parent="."]
+position = Vector2(448, 1472)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaMusica"]
+position = Vector2(64, 0)
+shape = SubResource("RectangleShape2D_sk5ky")
+
+[node name="Techos" type="Node2D" parent="."]
+position = Vector2(512, 1216)
+
+[node name="Terreno2" parent="Techos" instance=ExtResource("4_4lna0")]
+position = Vector2(1472, -320)
+
+[node name="Terreno3" parent="Techos" instance=ExtResource("4_4lna0")]
+position = Vector2(960, -320)
+
+[node name="Terreno4" parent="Techos" instance=ExtResource("18_wqexn")]
+position = Vector2(1472, 64)
+
+[node name="Terreno4" parent="Techos/Terreno4" instance=ExtResource("18_wqexn")]
+position = Vector2(512, 0)
+rotation = 3.14159
+
+[node name="Terreno5" parent="Techos" instance=ExtResource("18_wqexn")]
+z_index = 1
+position = Vector2(448, -320)
+
+[node name="Terreno6" parent="Techos" instance=ExtResource("4_4lna0")]
+position = Vector2(1984, -320)
+
+[node name="Paredes" type="Node2D" parent="."]
+position = Vector2(512, 1216)
+
+[node name="Terreno2" parent="Paredes" instance=ExtResource("5_frep1")]
+position = Vector2(-384, -448)
+
+[node name="Terreno3" parent="Paredes" instance=ExtResource("5_frep1")]
+position = Vector2(-384, -960)
+
+[node name="Terreno5" parent="Paredes" instance=ExtResource("5_frep1")]
+position = Vector2(320, -960)
+rotation = 3.14159
+
+[node name="Terreno5" parent="Paredes/Terreno5" instance=ExtResource("5_frep1")]
+position = Vector2(0.00130463, -512)
+
+[node name="Suelos" type="Node2D" parent="."]
+position = Vector2(512, 1216)
+
+[node name="Terreno9" parent="Suelos" instance=ExtResource("11_uguat")]
+position = Vector2(1984, 448)
+
+[node name="Terreno10" parent="Suelos" instance=ExtResource("12_e3dtt")]
+position = Vector2(256, 448)
+
+[node name="Terreno32" parent="Suelos" instance=ExtResource("12_e3dtt")]
+position = Vector2(1472, 448)
+
+[node name="Terreno32" parent="Suelos/Terreno32" instance=ExtResource("12_e3dtt")]
+position = Vector2(-896, 960)
+
+[node name="Terreno11" parent="Suelos" instance=ExtResource("11_uguat")]
+position = Vector2(-256, 448)
+
+[node name="Terreno11" parent="Suelos/Terreno11" instance=ExtResource("11_uguat")]
+position = Vector2(1024, 0)
+
+[node name="Plataformas" type="Node2D" parent="."]
+position = Vector2(512, 1216)
+
+[node name="Plataforma" parent="Plataformas" instance=ExtResource("13_6gako")]
+position = Vector2(544, 256)
+
+[node name="Plataforma2" parent="Plataformas" instance=ExtResource("13_6gako")]
+position = Vector2(672, 160)
+
+[node name="Plataforma3" parent="Plataformas" instance=ExtResource("13_6gako")]
+position = Vector2(960, 160)
+
+[node name="Plataforma_Movil_Y" parent="Plataformas" instance=ExtResource("14_ya3e3")]
+position = Vector2(1152, 256)
+
+[node name="GestionMapa" type="Node2D" parent="."]
+position = Vector2(1536, 1088)
+script = ExtResource("13_wlr5b")
+
+[node name="AreaSalidaDerecha" type="Area2D" parent="GestionMapa"]
+position = Vector2(512, 384)
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/AreaSalidaDerecha"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_mjqs2")
+
+[node name="AreaSalidaIzquierda" type="Area2D" parent="GestionMapa"]
+position = Vector2(-1152, 320)
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/AreaSalidaIzquierda"]
+position = Vector2(-64, -128)
+shape = SubResource("RectangleShape2D_wlr5b")
+
+[node name="InicioSuperiorSala" type="Marker2D" parent="GestionMapa"]
+position = Vector2(-1536, -1088)
+
+[node name="InicioInferiorSala" type="Marker2D" parent="GestionMapa"]
+position = Vector2(-1536, 704)
+
+[node name="FinSuperiorSala" type="Marker2D" parent="GestionMapa"]
+position = Vector2(1216, -1088)
+
+[node name="FinInferiorSala" type="Marker2D" parent="GestionMapa"]
+position = Vector2(1216, 704)
+
+[node name="Terreno32" parent="." instance=ExtResource("12_e3dtt")]
+position = Vector2(1600, 2624)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AABCAF8AAAAAAAAAAABDAF8AAAAAAAAAAABEAF8AAAAAAAAAAABFAF8AAAAAAAAAAABGAF8AAAAAAAAAAABHAF8AAAAAAAAAAABIAF8AAAAAAAAAAABJAF8AAAAAAAAAAABKAF8AAAAAAAAAAABLAF8AAAAAAAAAAABMAF8AAAAAAAAAAABNAF8AAAAAAAAAAABOAF8AAAAAAAAAAABPAF8AAAAAAAAAAABQAF8AAAAAAAAAAABRAF8AAAAAAAAAAABSAF8AAAAAAAAAAABTAF8AAAAAAAAAAABUAF8AAAAAAAAAAABVAF8AAAAAAAAAAABWAF8AAAAAAAAAAABXAF8AAAAAAAAAAABYAF8AAAAAAAAAAABZAF8AAAAAAAAAAABaAF8AAAAAAAAAAABbAF8AAAAAAAAAAABcAF8AAAAAAAAAAABdAF8AAAAAAAAAAABeAF8AAAAAAAAAAABfAF8AAAAAAAAAAABBAF8AAAAAAAAAAABAAF8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_xrhsl")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="TileMapLayer" groups=["Enemigo"]]
+script = ExtResource("13_okvdm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/RigidBody2D"]
+position = Vector2(1280, 1530.5)
+shape = SubResource("RectangleShape2D_m8tu2")
+
+[node name="Marker2D" type="Marker2D" parent="TileMapLayer/RigidBody2D"]
+position = Vector2(928, 1504)
+
+[connection signal="area_entered" from="AreaMusica" to="AudioStreamPlayer" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="AreaMusica" to="AudioStreamPlayer" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="GestionMapa/AreaSalidaDerecha" to="GestionMapa" method="_on_area_salida_derecha_body_entered"]
+[connection signal="body_entered" from="GestionMapa/AreaSalidaIzquierda" to="GestionMapa" method="_on_area_salida_izquierda_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/RigidBody2D" to="TileMapLayer/RigidBody2D" method="_on_body_entered"]

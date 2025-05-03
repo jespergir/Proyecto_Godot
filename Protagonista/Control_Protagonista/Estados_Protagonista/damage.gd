@@ -9,11 +9,13 @@ func start():
 	protagonista.animated_sprite.modulate = Color(0.8,0,0,1)
 #endregion
 	protagonista.damage_just_received = false
-	protagonista.velocity.x = protagonista.knockback_direction * (protagonista.SPEED)
-	protagonista.velocity.y = protagonista.SPEED * -1
+	if protagonista.damaged_by_enemy:
+		protagonista.velocity.x = protagonista.knockback_direction * (protagonista.SPEED)
+		protagonista.velocity.y = protagonista.SPEED * -1
 
 func on_physics_process(delta: float) -> void:
 	if protagonista.knockback_timer <=0 and damage_animation_finished:
+		protagonista.fade_to_black.visible=false
 	#region Modulate
 		protagonista.animated_sprite.modulate = Color(1,1,1,1)
 	#endregion

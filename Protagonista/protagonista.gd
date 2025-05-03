@@ -2,6 +2,8 @@ class_name Protagonista extends CharacterBody2D
 
 @onready var protagonista : Protagonista = self
 
+@onready var fade_to_black : ColorRect = $ColorRect
+
 @onready var area_damage : Area2D = $AreaDamage
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
@@ -28,5 +30,6 @@ var falling_time : float = 0.0
 var knockback_timer = 0
 
 var damage_just_received = false
+var damaged_by_enemy = false
 var invulnerable = false
 var knockback_direction

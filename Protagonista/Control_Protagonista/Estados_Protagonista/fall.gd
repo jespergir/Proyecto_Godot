@@ -20,7 +20,7 @@ func on_physics_process(delta: float) -> void:
 	
 #region Land
 	# Si la velocidad en y es 0 y la protagonista está en el suelo, cambia a Land
-	if protagonista.velocity.y > 0 and (protagonista.raycast_suelo1.is_colliding() or protagonista.raycast_suelo2.is_colliding()):
+	if protagonista.velocity.y >= 0 and (protagonista.raycast_suelo1.is_colliding() or protagonista.raycast_suelo2.is_colliding()):
 		state_machine.change_to("Land")
 		return
 #endregion

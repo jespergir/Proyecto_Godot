@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://ftr7fpqn7hgk"]
+
+[ext_resource type="Texture2D" uid="uid://cqb2q0gqybp5t" path="res://Recursos/Fondos/Parallax Cave/1.png" id="1_tfqjq"]
+[ext_resource type="Texture2D" uid="uid://cdg5n6fn5ivv" path="res://Recursos/Fondos/Parallax Cave/2.png" id="2_kg3ni"]
+[ext_resource type="Texture2D" uid="uid://bayk2bqv5stij" path="res://Recursos/Fondos/Parallax Cave/3fx.png" id="3_xpu1o"]
+[ext_resource type="Texture2D" uid="uid://dwkb8vsp3rgmg" path="res://Recursos/Fondos/Parallax Cave/4.png" id="4_jytqa"]
+[ext_resource type="Texture2D" uid="uid://b28rndgpdsc0f" path="res://Recursos/Fondos/Parallax Cave/5.png" id="5_ujr1h"]
+[ext_resource type="Texture2D" uid="uid://k3ttwsto07sj" path="res://Recursos/Fondos/Parallax Cave/6fx.png" id="6_ksrt1"]
+[ext_resource type="Texture2D" uid="uid://x1clcyy5r3yl" path="res://Recursos/Fondos/Parallax Cave/7.png" id="7_gu3u2"]
+[ext_resource type="Texture2D" uid="uid://6fkpwqxhswlc" path="res://Recursos/Fondos/Parallax Cave/8fx.png" id="8_ypnq6"]
+[ext_resource type="Texture2D" uid="uid://dv40w4hecdmfh" path="res://Recursos/Fondos/Parallax Cave/9.png" id="9_x3s3u"]
+
+[node name="Paralaje_Superficie" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+modulate = Color(0.564706, 0.564706, 0.564706, 1)
+texture = ExtResource("1_tfqjq")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+texture = ExtResource("2_kg3ni")
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.2, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3"]
+texture = ExtResource("3_xpu1o")
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D4"]
+position = Vector2(0, 1.52588e-05)
+texture = ExtResource("4_jytqa")
+
+[node name="Parallax2D5" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D5"]
+texture = ExtResource("5_ujr1h")
+
+[node name="Parallax2D6" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.6, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D6"]
+texture = ExtResource("6_ksrt1")
+
+[node name="Parallax2D7" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.8, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D7"]
+texture = ExtResource("7_gu3u2")
+
+[node name="Parallax2D9" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D9"]
+texture = ExtResource("8_ypnq6")
+
+[node name="Parallax2D8" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D8"]
+texture = ExtResource("9_x3s3u")
