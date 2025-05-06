@@ -352,7 +352,7 @@ target_position = Vector2(0, 48)
 
 [node name="State_Machine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
 script = ExtResource("9_ygnkn")
-default_state = NodePath("Idle")
+default_state = NodePath("Fall")
 
 [node name="PlayerBaseState" type="Node" parent="State_Machine"]
 script = ExtResource("10_hqylf")

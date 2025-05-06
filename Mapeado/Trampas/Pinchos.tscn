@@ -19,7 +19,7 @@ sources/0 = SubResource("TileSetAtlasSource_3keh6")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgjh0"]
 size = Vector2(492, 10)
 
-[node name="Pinchos" type="RigidBody2D" groups=["Pinchos"]]
+[node name="Pinchos" type="StaticBody2D" groups=["Pinchos"]]
 script = ExtResource("1_pos75")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

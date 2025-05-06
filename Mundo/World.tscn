@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://fgvd2m3q6pnw"]
 
-[ext_resource type="PackedScene" uid="uid://cwfsiro15oswg" path="res://Mundo/Salas/Superficie/Sala1/Sala1.tscn" id="1_2vqma"]
+[ext_resource type="PackedScene" uid="uid://cwfsiro15oswg" path="res://Mundo/Salas/Superficie/Sala1/Superficie_Sala1.tscn" id="1_2vqma"]
 [ext_resource type="PackedScene" uid="uid://bov0gtekoq78m" path="res://HUD/Hud.tscn" id="1_7ywfl"]
 [ext_resource type="Script" uid="uid://hfbpay2j30yq" path="res://Mundo/world.gd" id="1_g1or7"]
 [ext_resource type="PackedScene" uid="uid://c8mmgp3r8skl7" path="res://Protagonista/protagonista.tscn" id="3_j40uv"]
@@ -14,13 +14,13 @@ script = ExtResource("1_g1or7")
 
 [node name="Paralaje_Superficie" parent="." instance=ExtResource("5_0vgtm")]
 z_index = -10
-position = Vector2(496, 1200)
+position = Vector2(512, 1216)
 
 [node name="Paralaje_Subterraneo" parent="." instance=ExtResource("6_vhnil")]
 z_index = -9
-position = Vector2(480, 2256)
+position = Vector2(480, 2272)
 
 [node name="Sala1" parent="." instance=ExtResource("1_2vqma")]
 
 [node name="Protagonista" parent="." instance=ExtResource("3_j40uv")]
-position = Vector2(480, 496)
+position = Vector2(480, 384)
