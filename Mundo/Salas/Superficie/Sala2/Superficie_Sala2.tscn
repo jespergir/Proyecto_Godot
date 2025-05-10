@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://uy0a3wmk5t3s"]
+[gd_scene load_steps=26 format=3 uid="uid://uy0a3wmk5t3s"]
 
 [ext_resource type="Script" uid="uid://dqulvacvl3lwi" path="res://Mundo/Salas/Superficie/Sala1/superficie_sala1.gd" id="1_ck03g"]
 [ext_resource type="AudioStream" uid="uid://cq18c4m3ckr37" path="res://Recursos/Music/Evening Harmony.wav" id="2_lfdby"]
@@ -10,13 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://dkf7fh0i1my0l" path="res://Mapeado/Techos/Superficie/techo1_con_suelo.tscn" id="8_thwwp"]
 [ext_resource type="PackedScene" uid="uid://b06ui37g2prpg" path="res://Mapeado/Suelos/Superficie/suelo1.tscn" id="10_he078"]
 [ext_resource type="PackedScene" uid="uid://b2lvd06mk0jlt" path="res://Mapeado/Suelos/Superficie/suelo2.tscn" id="11_7sypr"]
-[ext_resource type="Script" uid="uid://bx21gi3wv3ulq" path="res://Mundo/Salas/Subsuelo1/Sala1/gestion_mapa_subsuelo1_sala1.gd" id="11_c2aso"]
 [ext_resource type="PackedScene" uid="uid://bug433lnnx4wv" path="res://Mapeado/Plataformas/Superficie/plataforma1.tscn" id="11_c5p8b"]
 [ext_resource type="PackedScene" uid="uid://4ycdndk3p276" path="res://Mapeado/Trampas/Pinchos.tscn" id="13_57y7q"]
 [ext_resource type="PackedScene" uid="uid://1kl65tpgodcv" path="res://Recogibles/Cristal.tscn" id="13_gw06n"]
 [ext_resource type="PackedScene" uid="uid://cr6giuf2m3w57" path="res://Mapeado/Plataformas/Superficie/plataforma_movil_y.tscn" id="13_menml"]
 [ext_resource type="PackedScene" uid="uid://bg8qfqasvibpc" path="res://Mapeado/Interactuable/Cofre.tscn" id="14_splta"]
 [ext_resource type="PackedScene" uid="uid://bc58het8axtq8" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.tscn" id="16_avgbu"]
+[ext_resource type="Script" uid="uid://dn513ndo86m8s" path="res://Mundo/Salas/Superficie/Sala2/gestion_mapa.gd" id="17_avgbu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avgbu"]
+size = Vector2(2816, 1792)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gkrtp"]
 texture = ExtResource("4_rdbyc")
@@ -472,17 +475,19 @@ texture = ExtResource("6_12gqt")
 [sub_resource type="TileSet" id="TileSet_h8xhc"]
 sources/0 = SubResource("TileSetAtlasSource_3l4mw")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlr5b"]
-size = Vector2(128, 1536)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2aso"]
-size = Vector2(128, 1536)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5p8b"]
-size = Vector2(256, 128)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2pqh"]
+size = Vector2(298, 474)
 
 [node name="Sala2" type="Node2D"]
 script = ExtResource("1_ck03g")
+
+[node name="AreaSala2" type="Area2D" parent="." groups=["Area_Sala"]]
+position = Vector2(1472, 896)
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaSala2"]
+position = Vector2(-64, 0)
+shape = SubResource("RectangleShape2D_avgbu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_lfdby")
@@ -756,29 +761,7 @@ position = Vector2(752, 1488)
 
 [node name="GestionMapa" type="Node2D" parent="."]
 position = Vector2(1536, 1088)
-script = ExtResource("11_c2aso")
-
-[node name="AreaSalidaIzquierda" type="Area2D" parent="GestionMapa"]
-position = Vector2(-1152, 320)
-collision_mask = 2147483648
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/AreaSalidaIzquierda"]
-position = Vector2(0, -640)
-shape = SubResource("RectangleShape2D_wlr5b")
-
-[node name="AreaSalidaDerecha" type="Area2D" parent="GestionMapa"]
-position = Vector2(704, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/AreaSalidaDerecha"]
-position = Vector2(-320, -320)
-shape = SubResource("RectangleShape2D_c2aso")
-
-[node name="AreaSalidaInferior" type="Area2D" parent="GestionMapa"]
-collision_mask = 2147483648
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/AreaSalidaInferior"]
-position = Vector2(-384, 512)
-shape = SubResource("RectangleShape2D_c5p8b")
+script = ExtResource("17_avgbu")
 
 [node name="InicioSuperiorSala" type="Marker2D" parent="GestionMapa"]
 position = Vector2(-1536, -1088)
@@ -792,7 +775,12 @@ position = Vector2(768, -1088)
 [node name="FinInferiorSala" type="Marker2D" parent="GestionMapa"]
 position = Vector2(768, 704)
 
+[node name="Area2D" type="Area2D" parent="GestionMapa"]
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/Area2D"]
+position = Vector2(139, 227)
+shape = SubResource("RectangleShape2D_y2pqh")
+
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
-[connection signal="body_entered" from="GestionMapa/AreaSalidaIzquierda" to="GestionMapa" method="_on_area_salida_izquierda_body_entered"]
-[connection signal="body_entered" from="GestionMapa/AreaSalidaDerecha" to="GestionMapa" method="_on_area_salida_derecha_body_entered"]
-[connection signal="body_entered" from="GestionMapa/AreaSalidaInferior" to="GestionMapa" method="_on_area_salida_inferior_body_entered"]
+[connection signal="body_entered" from="GestionMapa/Area2D" to="GestionMapa" method="_on_area_2d_body_entered"]

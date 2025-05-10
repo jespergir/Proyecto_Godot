@@ -6,6 +6,7 @@ extends Node2D
 func _ready() -> void:
 	protagonista.hud = $Hud
 	WorldManager.protagonista = $Protagonista  # Usa la ruta real hacia tu nodo jugador
+	SaveManager.protagonista = $Protagonista
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

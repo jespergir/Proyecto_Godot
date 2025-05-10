@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cwfsiro15oswg"]
+[gd_scene load_steps=32 format=4 uid="uid://cwfsiro15oswg"]
 
 [ext_resource type="Script" uid="uid://dqulvacvl3lwi" path="res://Mundo/Salas/Superficie/Sala1/superficie_sala1.gd" id="1_xh6yj"]
 [ext_resource type="Script" uid="uid://c3mqqbe5eddgd" path="res://Mundo/Salas/Superficie/Sala1/audio_stream_player.gd" id="2_187wa"]
@@ -17,9 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://cr6giuf2m3w57" path="res://Mapeado/Plataformas/Superficie/plataforma_movil_y.tscn" id="14_ya3e3"]
 [ext_resource type="PackedScene" uid="uid://bg8qfqasvibpc" path="res://Mapeado/Interactuable/Cofre.tscn" id="15_5ynhw"]
 [ext_resource type="PackedScene" uid="uid://dab808f18h73l" path="res://Mapeado/Techos/Superficie/techo_esquina_con_suelo.tscn" id="18_wqexn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_of6pu"]
-size = Vector2(2848, 1792)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk5ky"]
 size = Vector2(1024, 128)
@@ -501,14 +498,6 @@ size = Vector2(64, 512)
 
 [node name="Sala1" type="Node2D"]
 script = ExtResource("1_xh6yj")
-
-[node name="AreaSala" type="Area2D" parent="." groups=["Area_Sala"]]
-position = Vector2(1472, 896)
-collision_mask = 2147483648
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaSala"]
-position = Vector2(-48, 0)
-shape = SubResource("RectangleShape2D_of6pu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_o1bo0")

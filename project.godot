@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 [autoload]
 
 WorldManager="*res://Autoloads/world_manager.gd"
+SaveManager="*res://Autoloads/save_manager.gd"
 
 [display]
 
@@ -32,6 +33,7 @@ Enemigo=""
 Recogible=""
 Attack=""
 Pinchos=""
+Area_Sala=""
 
 [input]
 

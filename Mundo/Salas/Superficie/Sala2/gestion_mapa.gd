@@ -24,3 +24,7 @@ func _on_area_salida_inferior_body_entered(body: Node2D) -> void:
 		return  # Evita cargar dos veces
 	#loaded = true
 	WorldManager.load_room(next_room, get_parent().global_position, get_parent().ancho, WorldManager.posiciones.Abajo)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	SaveManager.save_game()

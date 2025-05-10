@@ -51,3 +51,7 @@ func _on_area_damage_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("Recogible"):
 		protagonista.coins +=1
 		protagonista.hud.contador_monedas.text = str(protagonista.coins)
+	if area.is_in_group("Area_Sala"):
+		print(area.get_parent().get_scene_file_path())
+		protagonista.nombre_sala_actual = area.get_parent().get_scene_file_path()
+		protagonista.posicion_sala_actual = area.get_parent().global_position

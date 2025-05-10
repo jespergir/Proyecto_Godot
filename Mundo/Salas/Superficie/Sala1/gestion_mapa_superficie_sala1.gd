@@ -21,7 +21,8 @@ func _on_area_salida_derecha_body_entered(body: Node2D) -> void:
 
 
 #
-#func _on_area_salida_izquierda_body_entered(body: Node2D) -> void:
+func _on_area_salida_izquierda_body_entered(body: Node2D) -> void:
+	SaveManager.load_game()
 	#next_room = "res://Mundo/Salas/Superficie/Sala3/Superficie_Sala3.tscn"
 	#if body.is_in_group("Protagonista") and loaded_salida_izquierda:
 		#return  # Evita cargar dos veces

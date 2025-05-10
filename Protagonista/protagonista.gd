@@ -33,3 +33,6 @@ var damage_just_received = false
 var damaged_by_enemy = false
 var invulnerable = false
 var knockback_direction
+
+var nombre_sala_actual
+var posicion_sala_actual
