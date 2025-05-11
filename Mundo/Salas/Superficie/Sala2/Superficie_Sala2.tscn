@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://uy0a3wmk5t3s"]
+[gd_scene load_steps=25 format=3 uid="uid://uy0a3wmk5t3s"]
 
 [ext_resource type="Script" uid="uid://dqulvacvl3lwi" path="res://Mundo/Salas/Superficie/Sala1/superficie_sala1.gd" id="1_ck03g"]
 [ext_resource type="AudioStream" uid="uid://cq18c4m3ckr37" path="res://Recursos/Music/Evening Harmony.wav" id="2_lfdby"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bug433lnnx4wv" path="res://Mapeado/Plataformas/Superficie/plataforma1.tscn" id="11_c5p8b"]
 [ext_resource type="PackedScene" uid="uid://4ycdndk3p276" path="res://Mapeado/Trampas/Pinchos.tscn" id="13_57y7q"]
 [ext_resource type="PackedScene" uid="uid://1kl65tpgodcv" path="res://Recogibles/Cristal.tscn" id="13_gw06n"]
-[ext_resource type="PackedScene" uid="uid://cr6giuf2m3w57" path="res://Mapeado/Plataformas/Superficie/plataforma_movil_y.tscn" id="13_menml"]
 [ext_resource type="PackedScene" uid="uid://bg8qfqasvibpc" path="res://Mapeado/Interactuable/Cofre.tscn" id="14_splta"]
 [ext_resource type="PackedScene" uid="uid://bc58het8axtq8" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.tscn" id="16_avgbu"]
 [ext_resource type="Script" uid="uid://dn513ndo86m8s" path="res://Mundo/Salas/Superficie/Sala2/gestion_mapa.gd" id="17_avgbu"]
@@ -476,12 +475,13 @@ texture = ExtResource("6_12gqt")
 sources/0 = SubResource("TileSetAtlasSource_3l4mw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2pqh"]
-size = Vector2(298, 474)
+size = Vector2(130.5, 1536)
 
 [node name="Sala2" type="Node2D"]
 script = ExtResource("1_ck03g")
 
 [node name="AreaSala2" type="Area2D" parent="." groups=["Area_Sala"]]
+visible = false
 position = Vector2(1472, 896)
 collision_mask = 2147483648
 
@@ -514,27 +514,23 @@ tile_set = SubResource("TileSet_h8xhc")
 position = Vector2(512, 1216)
 
 [node name="Techo1ConSuelo" parent="Techos" instance=ExtResource("8_thwwp")]
-position = Vector2(256, -128)
+position = Vector2(256, -64)
 
 [node name="TechoEsquinaConSuelo" parent="Techos" instance=ExtResource("8_r3gj8")]
-position = Vector2(-256, -128)
+position = Vector2(-256, -64)
 
 [node name="TechoEsquinaConSuelo2" parent="Techos" instance=ExtResource("8_r3gj8")]
-position = Vector2(768, -128)
+position = Vector2(768, -64)
 rotation = 3.14159
 
 [node name="TechoEsquinaConSuelo3" parent="Techos" instance=ExtResource("8_r3gj8")]
-position = Vector2(0, -960)
+position = Vector2(0, -720)
 
 [node name="Techo1ConSuelo2" parent="Techos" instance=ExtResource("8_thwwp")]
-position = Vector2(512, -960)
-
-[node name="TechoEsquinaConSuelo4" parent="Techos" instance=ExtResource("8_r3gj8")]
-position = Vector2(1536, -960)
-rotation = 3.14159
+position = Vector2(512, -720)
 
 [node name="Techo1ConSuelo3" parent="Techos" instance=ExtResource("8_thwwp")]
-position = Vector2(1024, -960)
+position = Vector2(1024, -720)
 rotation = 3.14159
 scale = Vector2(-1, 1)
 
@@ -551,37 +547,28 @@ position = Vector2(-256, 448)
 position = Vector2(256, 448)
 
 [node name="Suelo3" parent="Suelos" instance=ExtResource("10_he078")]
-position = Vector2(1024, 448)
+position = Vector2(768, 448)
 
 [node name="Suelo4" parent="Suelos" instance=ExtResource("11_7sypr")]
-position = Vector2(1536, 448)
+position = Vector2(1280, 448)
 
 [node name="Plataformas" type="Node2D" parent="."]
-position = Vector2(512, 1216)
-
-[node name="PlataformaMovil" parent="Plataformas" instance=ExtResource("13_menml")]
-position = Vector2(640, 640)
-
-[node name="Terreno3" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(960, 256)
+position = Vector2(512, 1264)
 
 [node name="Terreno4" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(1088, 192)
+position = Vector2(992, 192)
 
 [node name="Terreno5" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(1216, 128)
+position = Vector2(1120, 128)
 
 [node name="Terreno6" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(1344, 64)
+position = Vector2(1248, 64)
 
 [node name="Terreno7" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(1472, 0)
+position = Vector2(1376, 0)
 
 [node name="Terreno8" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(1600, -64)
-
-[node name="Terreno10" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(1440, -160)
+position = Vector2(1504, -64)
 
 [node name="Terreno11" parent="Plataformas" instance=ExtResource("11_c5p8b")]
 position = Vector2(1376, -160)
@@ -601,155 +588,119 @@ position = Vector2(1120, -160)
 [node name="Terreno16" parent="Plataformas" instance=ExtResource("11_c5p8b")]
 position = Vector2(1056, -160)
 
-[node name="Terreno17" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(1504, -160)
-
 [node name="Plataforma8" parent="Plataformas" instance=ExtResource("11_c5p8b")]
 position = Vector2(-320, -320)
 
 [node name="Plataforma2" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(-384, -432)
+position = Vector2(-448, -416)
 
 [node name="Plataforma3" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(-304, -544)
+position = Vector2(-352, -528)
 
 [node name="Plataforma4" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(-448, -624)
+position = Vector2(-448, -640)
 
 [node name="Plataforma5" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(-464, -736)
+position = Vector2(-352, -752)
 
 [node name="Plataforma6" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(-432, -848)
+position = Vector2(-448, -864)
 
 [node name="Plataforma7" parent="Plataformas" instance=ExtResource("11_c5p8b")]
 position = Vector2(-128, -320)
 
-[node name="Plataforma9" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(-464, -960)
-
-[node name="Plataforma10" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(-432, -1072)
-
 [node name="Terreno18" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(256, -720)
+position = Vector2(320, -544)
 
 [node name="Terreno19" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(192, -720)
+position = Vector2(256, -544)
 
 [node name="Terreno20" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(128, -720)
+position = Vector2(192, -544)
 
 [node name="Terreno21" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(64, -720)
+position = Vector2(128, -544)
 
 [node name="Terreno22" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(0, -720)
+position = Vector2(64, -544)
 
 [node name="Terreno23" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(-64, -720)
+position = Vector2(0, -544)
 
 [node name="Terreno24" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(-128, -720)
+position = Vector2(-64, -544)
 
 [node name="Terreno25" parent="Plataformas" instance=ExtResource("11_c5p8b")]
-position = Vector2(320, -720)
-
-[node name="Suelo2" parent="Plataformas" instance=ExtResource("11_7sypr")]
-position = Vector2(240, 1440)
-
-[node name="Suelo3" parent="Plataformas" instance=ExtResource("11_7sypr")]
-position = Vector2(-256, 1440)
-
-[node name="Suelo4" parent="Plataformas" instance=ExtResource("11_7sypr")]
-position = Vector2(1248, 1440)
-
-[node name="Suelo5" parent="Plataformas" instance=ExtResource("11_7sypr")]
-position = Vector2(752, 1440)
-
-[node name="Suelo6" parent="Plataformas" instance=ExtResource("11_7sypr")]
-position = Vector2(2256, 1440)
-
-[node name="Suelo7" parent="Plataformas" instance=ExtResource("11_7sypr")]
-position = Vector2(1760, 1440)
+position = Vector2(384, -544)
 
 [node name="Trampas" type="Node2D" parent="."]
 
 [node name="Pinchos" parent="Trampas" instance=ExtResource("13_57y7q")]
-position = Vector2(256, 960)
+position = Vector2(256, 1024)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="Recogibles" type="Node2D" parent="."]
 
 [node name="Cristal" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(384, 864)
+position = Vector2(384, 896)
 
 [node name="Cristal2" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(192, 864)
+position = Vector2(192, 896)
 
 [node name="Cristal3" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(128, 752)
+position = Vector2(64, 800)
 
 [node name="Cristal4" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(208, 640)
+position = Vector2(160, 688)
 
 [node name="Cristal5" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(64, 560)
+position = Vector2(64, 576)
 
 [node name="Cristal6" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(48, 448)
-
-[node name="Cristal7" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(80, 336)
-
-[node name="Cristal8" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(48, 224)
-
-[node name="Cristal9" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(80, 112)
+position = Vector2(160, 464)
 
 [node name="Cristal10" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(288, 96)
+position = Vector2(64, 368)
 
 [node name="Cristal11" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(528, 464)
+position = Vector2(592, 688)
 
 [node name="Cristal12" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(496, 464)
+position = Vector2(560, 688)
 
 [node name="Cristal13" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(464, 464)
+position = Vector2(528, 688)
 
 [node name="Cristal14" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(432, 464)
+position = Vector2(496, 688)
 
 [node name="Cristal15" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(400, 464)
+position = Vector2(464, 688)
 
 [node name="Cristal16" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(368, 464)
+position = Vector2(432, 688)
 
 [node name="Cristal17" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(720, 464)
+position = Vector2(784, 688)
 
 [node name="Cristal18" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(688, 464)
+position = Vector2(752, 688)
 
 [node name="Cristal19" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(656, 464)
+position = Vector2(720, 688)
 
 [node name="Cristal20" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(624, 464)
+position = Vector2(688, 688)
 
 [node name="Cristal21" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(592, 464)
+position = Vector2(656, 688)
 
 [node name="Cristal22" parent="Recogibles" instance=ExtResource("13_gw06n")]
-position = Vector2(560, 464)
+position = Vector2(624, 688)
 
 [node name="Cofre" parent="Recogibles" instance=ExtResource("14_splta")]
-position = Vector2(825, 464)
+position = Vector2(889, 688)
 
 [node name="Enemigos" type="Node2D" parent="."]
 
@@ -770,16 +721,16 @@ position = Vector2(-1536, -1088)
 position = Vector2(-1536, 704)
 
 [node name="FinSuperiorSala" type="Marker2D" parent="GestionMapa"]
-position = Vector2(768, -1088)
+position = Vector2(512, -1088)
 
 [node name="FinInferiorSala" type="Marker2D" parent="GestionMapa"]
-position = Vector2(768, 704)
+position = Vector2(512, 704)
 
 [node name="Area2D" type="Area2D" parent="GestionMapa"]
 collision_mask = 2147483648
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/Area2D"]
-position = Vector2(139, 227)
+position = Vector2(-65.25, -320)
 shape = SubResource("RectangleShape2D_y2pqh")
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

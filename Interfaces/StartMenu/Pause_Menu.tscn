@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4gh4kse8ybqh"]
+
+[ext_resource type="FontFile" uid="uid://o3f8482haccu" path="res://Recursos/Fuentes/m6x11plus.ttf" id="1_wsjsg"]
+
+[node name="StartMenu" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.187176, 0.187176, 0.187176, 0.7)
+
+[node name="BotonGuardar" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 150.0
+offset_right = 576.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("1_wsjsg")
+theme_override_font_sizes/font_size = 30
+text = "Guardar Partida"
+
+[node name="BotonCargar" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 250.0
+offset_right = 576.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource("1_wsjsg")
+theme_override_font_sizes/font_size = 30
+text = "Cargar Partida"
+
+[node name="BotonSalir" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 350.0
+offset_right = 576.0
+offset_bottom = 400.0
+theme_override_fonts/font = ExtResource("1_wsjsg")
+theme_override_font_sizes/font_size = 30
+text = "Salir del juego"

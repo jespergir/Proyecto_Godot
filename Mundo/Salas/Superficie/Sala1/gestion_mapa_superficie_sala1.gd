@@ -20,7 +20,6 @@ func _on_area_salida_derecha_body_entered(body: Node2D) -> void:
 	WorldManager.load_room(next_room, get_parent().global_position, get_parent().ancho, WorldManager.posiciones.Derecha)
 
 
-#
 func _on_area_salida_izquierda_body_entered(body: Node2D) -> void:
 	SaveManager.load_game()
 	#next_room = "res://Mundo/Salas/Superficie/Sala3/Superficie_Sala3.tscn"
@@ -28,19 +27,3 @@ func _on_area_salida_izquierda_body_entered(body: Node2D) -> void:
 		#return  # Evita cargar dos veces
 	##loaded_salida_izquierda = true
 	#WorldManager.load_room(next_room, get_parent().global_position, get_parent().ancho, WorldManager.posiciones.Izquierda)
-#
-#
-#func _on_area_salida_superior_body_entered(body: Node2D) -> void:
-	#next_room = "res://Mundo/Salas/Subsuelo1/Sala1/Subsuelo1_Sala1.tscn"
-	#if body.is_in_group("Protagonista") and loaded_salida_inferior:
-		#return  # Evita cargar dos veces
-	##loaded_salida_inferior = true
-	#WorldManager.load_room(next_room, get_parent().global_position, get_parent().ancho, WorldManager.posiciones.Arriba)
-#
-#
-#func _on_area_salida_inferior_body_entered(body: Node2D) -> void:
-	#next_room = "res://Mundo/Salas/Superficie/Sala1/Superficie_Sala1.tscn"
-	#if body.is_in_group("Protagonista") and loaded_salida_superior:
-		#return  # Evita cargar dos veces
-	#loaded_salida_superior = true
-	#WorldManager.load_room(next_room, get_parent().global_position, get_parent().ancho, WorldManager.posiciones.Abajo)
