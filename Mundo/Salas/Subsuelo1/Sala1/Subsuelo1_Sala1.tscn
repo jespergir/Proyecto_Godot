@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://4ycdndk3p276" path="res://Mapeado/Trampas/Pinchos.tscn" id="13_afag2"]
 [ext_resource type="PackedScene" uid="uid://1kl65tpgodcv" path="res://Recogibles/Cristal.tscn" id="14_wyluo"]
 [ext_resource type="Script" uid="uid://b564uy783cxcs" path="res://Mundo/Salas/Superficie/Sala1/gestion_mapa_superficie_sala1.gd" id="15_8itku"]
-[ext_resource type="PackedScene" uid="uid://bg8qfqasvibpc" path="res://Mapeado/Interactuable/Cofre.tscn" id="16_ub7xx"]
+[ext_resource type="PackedScene" uid="uid://bg8qfqasvibpc" path="res://Mapeado/Interactuable/Cofre/Cofre.tscn" id="16_ub7xx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk5ky"]
 size = Vector2(1024, 128)

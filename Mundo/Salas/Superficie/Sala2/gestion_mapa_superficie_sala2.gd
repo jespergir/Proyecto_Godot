@@ -9,16 +9,15 @@ extends Node2D
 
 var loaded := false
 
-func _on_area_salida_derecha_body_entered(body: Node2D) -> void:
-	next_room = "res://Mundo/Salas/Superficie/Sala1/Sala1.tscn"
+func _on_area_salida_inferior_body_entered(body: Node2D) -> void:
+	next_room = "res://Mundo/Salas/Subsuelo1/Sala1/Sala1.tscn"
 	if body.is_in_group("Protagonista") and loaded:
 		return  # Evita cargar dos veces
 	#loaded = true
-	WorldManager.load_room(next_room, get_parent().global_position, get_parent().ancho, WorldManager.posiciones.Derecha)
-
+	WorldManager.load_room(next_room, get_parent().global_position, get_parent().ancho, WorldManager.posiciones.Abajo)
 
 func _on_area_salida_izquierda_body_entered(body: Node2D) -> void:
-	next_room = "res://Mundo/Salas/Sala3/Sala3.tscn"
+	next_room = "res://Mundo/Salas/Superficie/Sala1/Superficie_Sala1.tscn"
 	if body.is_in_group("Protagonista") and loaded:
 		return  # Evita cargar dos veces
 	#loaded = true

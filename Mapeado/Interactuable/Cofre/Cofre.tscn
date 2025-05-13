@@ -1,6 +1,6 @@
 [gd_scene load_steps=45 format=3 uid="uid://bg8qfqasvibpc"]
 
-[ext_resource type="Script" uid="uid://dy0gd3ctr1tey" path="res://Mapeado/Interactuable/cofre.gd" id="1_j2t70"]
+[ext_resource type="Script" uid="uid://dy0gd3ctr1tey" path="res://Mapeado/Interactuable/Cofre/cofre.gd" id="1_j2t70"]
 [ext_resource type="Texture2D" uid="uid://lwo5vlj4pmre" path="res://Recursos/Interactuables/Chests.png" id="2_mg6pm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f56s5"]

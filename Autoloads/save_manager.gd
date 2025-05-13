@@ -5,16 +5,18 @@ var protagonista : Protagonista
 
 var data := {}
 
+
 #region Save game
 # Función para guardar partida
-func save_game():
+func save_game(save_point_position):
 	# Crea un archivo para escribir la información en él
 	var file := FileAccess.open(save_path, FileAccess.WRITE)
-	
+
 	# Guarda los distintos datos en el diccionario data
 	data["protagonista"] = {
-		"position": [protagonista.global_position.x, protagonista.global_position.y],
+		"position": [save_point_position.x, save_point_position.y],
 		"health": protagonista.health,
+		"coins": protagonista.coins
 	}
 	data["sala"] = {
 		"nombre_sala": protagonista.nombre_sala_actual,
@@ -29,6 +31,7 @@ func save_game():
 #region Load game
 # Función para cargar partida
 func load_game():
+	WorldManager.reset_world()
 	#Si no existe el archivo lo avisa
 	if not FileAccess.file_exists(save_path):
 		print("No save file found.")
@@ -42,7 +45,14 @@ func load_game():
 	# Recupera la posición de la sala y la instancia
 	var room_position_array = data["sala"]["posicion_sala"]
 	var room_position = Vector2(room_position_array[0], room_position_array[1])
-	WorldManager.load_room_from_save(data["sala"]["nombre_sala"], room_position)
+	WorldManager.load_room_by_position(data["sala"]["nombre_sala"], room_position)
+	while(not WorldManager.carga):
+		return
+	posicionar_protagonista()
+	protagonista.health = data["protagonista"]["health"]
+	protagonista.coins = data["protagonista"]["coins"] as int
+	protagonista.hud.contador_monedas.text = str(protagonista.coins)
+	WorldManager.carga=false
 	return true
 #endregion
 
@@ -50,9 +60,6 @@ func load_game():
 func posicionar_protagonista():
 	# Recuperar posición de la protagonista del archivo de guardado
 	var position_array = data["protagonista"]["position"]
-	
 	# Posicionar a la protagonista
 	protagonista.global_position = Vector2(position_array[0], position_array[1])
-	protagonista.health = data["protagonista"]["health"]
-	
 #endregion

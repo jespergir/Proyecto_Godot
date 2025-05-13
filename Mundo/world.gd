@@ -5,9 +5,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	protagonista.hud = $Hud
-	WorldManager.protagonista = $Protagonista  # Usa la ruta real hacia tu nodo jugador
+	WorldManager.protagonista = $Protagonista
 	SaveManager.protagonista = $Protagonista
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	WorldManager.load_room_by_position("res://Mundo/Salas/Superficie/Sala1/Superficie_Sala1.tscn", Vector2(0,0))

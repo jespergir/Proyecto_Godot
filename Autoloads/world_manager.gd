@@ -6,6 +6,7 @@ var protagonista : Protagonista #Se recibe desde el script de World
 enum posiciones {Derecha, Izquierda, Arriba, Abajo} #Enum para las direcciones de las salas a instanciar
 
 var temporizador = 0.0
+var carga = false
 
 func _process(delta): #Cada 2 segundos llama a unload_distant_rooms para descargar salas lejanas de la memoria.
 	temporizador += delta
@@ -48,7 +49,7 @@ func load_room(room_name: String, position_sala_actual: Vector2, ancho_sala_actu
 	if ResourceLoader.load_threaded_get_status(room_name) != ResourceLoader.THREAD_LOAD_LOADED:
 		printerr("Error al cargar la sala: ", room_name)
 		return
-
+		
 	# Recupera la escena ya cargada
 	var scene := ResourceLoader.load_threaded_get(room_name)
 	var room_instance : Sala = scene.instantiate()
@@ -61,7 +62,7 @@ func load_room(room_name: String, position_sala_actual: Vector2, ancho_sala_actu
 	# Calcula su posición final
 	var ancho_sala_siguiente = room_instance.ancho
 	var alto_sala_siguiente = room_instance.alto
-
+	
 #region Match dirección de la siguiente sala
 	#En función de la dirección donde toque instanciar la sala, hará una cosa u otra.
 	match posicion_sala_siguiente:
@@ -78,13 +79,12 @@ func load_room(room_name: String, position_sala_actual: Vector2, ancho_sala_actu
 		posiciones.Abajo:
 			room_instance.position = position_sala_actual - Vector2(0, alto_sala_siguiente)
 #endregion
-			
-	rooms[room_name] = room_instance #Añade la sala al diccionario de salas cargadas
 	
+	rooms[room_name] = room_instance #Añade la sala al diccionario de salas cargadas
 #endregion
 
 #region Load room from save archive
-func load_room_from_save(room_name: String, position_sala: Vector2):
+func load_room_by_position(room_name: String, position_sala: Vector2):
 	
 	if rooms.has(room_name): #Si la sala ya ha sido cargada, no hagas nada.
 		return
@@ -109,9 +109,19 @@ func load_room_from_save(room_name: String, position_sala: Vector2):
 	room_instance.position = position_sala
 	get_node("/root/World").call_deferred("add_child", room_instance)
 	await room_instance.ready  # Espera que el nodo esté listo
-	
-	SaveManager.posicionar_protagonista() # Posiciona a la protagonista
+	carga = true
+	#SaveManager.posicionar_protagonista() # Posiciona a la protagonista
 	
 	rooms[room_name] = room_instance #Añade la sala al diccionario de salas cargadas
-	
 #endregion
+
+func reset_world() -> void:
+	# Elimina todas las salas cargadas
+	for room in rooms.values():
+		if is_instance_valid(room):
+			room.queue_free()
+	rooms.clear()
+
+	# (Opcional) resetea cualquier otro estado interno
+	# protagonista.position = Vector2.ZERO
+	# etc.

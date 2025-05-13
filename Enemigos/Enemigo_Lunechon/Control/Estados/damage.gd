@@ -41,7 +41,6 @@ func on_physics_process(delta: float) -> void:
 
 
 func spawn_cristal(): #Se encarga de instanciar un cristal en la posición en la que muere el enemigo
-	var spawn_position = enemigo.global_position
 	var cristal = enemigo.cristal.instantiate()
 	cristal.global_position = enemigo.item_spawn.global_position
 	get_tree().current_scene.add_child(cristal) # MUY importante: añadirlo directo

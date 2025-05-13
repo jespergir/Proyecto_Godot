@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://uy0a3wmk5t3s"]
+[gd_scene load_steps=27 format=3 uid="uid://uy0a3wmk5t3s"]
 
 [ext_resource type="Script" uid="uid://dqulvacvl3lwi" path="res://Mundo/Salas/Superficie/Sala1/superficie_sala1.gd" id="1_ck03g"]
 [ext_resource type="AudioStream" uid="uid://cq18c4m3ckr37" path="res://Recursos/Music/Evening Harmony.wav" id="2_lfdby"]
@@ -13,9 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://bug433lnnx4wv" path="res://Mapeado/Plataformas/Superficie/plataforma1.tscn" id="11_c5p8b"]
 [ext_resource type="PackedScene" uid="uid://4ycdndk3p276" path="res://Mapeado/Trampas/Pinchos.tscn" id="13_57y7q"]
 [ext_resource type="PackedScene" uid="uid://1kl65tpgodcv" path="res://Recogibles/Cristal.tscn" id="13_gw06n"]
-[ext_resource type="PackedScene" uid="uid://bg8qfqasvibpc" path="res://Mapeado/Interactuable/Cofre.tscn" id="14_splta"]
+[ext_resource type="PackedScene" uid="uid://bg8qfqasvibpc" path="res://Mapeado/Interactuable/Cofre/Cofre.tscn" id="14_splta"]
 [ext_resource type="PackedScene" uid="uid://bc58het8axtq8" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.tscn" id="16_avgbu"]
-[ext_resource type="Script" uid="uid://dn513ndo86m8s" path="res://Mundo/Salas/Superficie/Sala2/gestion_mapa.gd" id="17_avgbu"]
+[ext_resource type="Script" uid="uid://dskqmnccf82qc" path="res://Mundo/Salas/Superficie/Sala2/gestion_mapa_superficie_sala2.gd" id="16_y2pqh"]
+[ext_resource type="PackedScene" uid="uid://udytjj3enka4" path="res://Mapeado/Interactuable/Punto_De_Guardado/punto_de_guardado.tscn" id="17_y2pqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avgbu"]
 size = Vector2(2816, 1792)
@@ -477,6 +478,9 @@ sources/0 = SubResource("TileSetAtlasSource_3l4mw")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2pqh"]
 size = Vector2(130.5, 1536)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_splta"]
+size = Vector2(634, 1533)
+
 [node name="Sala2" type="Node2D"]
 script = ExtResource("1_ck03g")
 
@@ -712,7 +716,7 @@ position = Vector2(752, 1488)
 
 [node name="GestionMapa" type="Node2D" parent="."]
 position = Vector2(1536, 1088)
-script = ExtResource("17_avgbu")
+script = ExtResource("16_y2pqh")
 
 [node name="InicioSuperiorSala" type="Marker2D" parent="GestionMapa"]
 position = Vector2(-1536, -1088)
@@ -733,5 +737,17 @@ collision_mask = 2147483648
 position = Vector2(-65.25, -320)
 shape = SubResource("RectangleShape2D_y2pqh")
 
+[node name="AreaSalidaIzquierda" type="Area2D" parent="GestionMapa"]
+position = Vector2(-1216, 160)
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/AreaSalidaIzquierda"]
+position = Vector2(0, -481.5)
+shape = SubResource("RectangleShape2D_splta")
+
+[node name="PuntoDeGuardado" parent="." instance=ExtResource("17_y2pqh")]
+position = Vector2(1096, 1512)
+
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
 [connection signal="body_entered" from="GestionMapa/Area2D" to="GestionMapa" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="GestionMapa/AreaSalidaIzquierda" to="GestionMapa" method="_on_area_salida_izquierda_body_entered"]
