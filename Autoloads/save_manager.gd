@@ -24,10 +24,13 @@ func save_game(save_point_position):
 		"nombre_sala": protagonista.nombre_sala_actual,
 		"posicion_sala": [protagonista.posicion_sala_actual.x, protagonista.posicion_sala_actual.y]
 	}
-	
+	print("💾 Guardando partida en sala:", protagonista.nombre_sala_actual,
+	  " spawn:", save_point_position,
+	  "   coins:", protagonista.coins)
 	# Escribe los datos en el archivo y lo cierra
 	file.store_string(JSON.stringify(data))
 	file.close()
+
 #endregion
 
 #region Load game
@@ -43,7 +46,9 @@ func load_game():
 	var file := FileAccess.open(save_path, FileAccess.READ)
 	data = JSON.parse_string(file.get_as_text())
 	file.close()
-	
+	print("🔄 Cargando partida sala:", data["sala"]["nombre_sala"],
+	  " posición:", data["sala"]["posicion_sala"])
+
 	# Recupera la posición de la sala y la instancia
 	var room_position_array = data["sala"]["posicion_sala"]
 	var room_position = Vector2(room_position_array[0], room_position_array[1])
@@ -52,7 +57,11 @@ func load_game():
 		return
 	posicionar_protagonista()
 	protagonista.health = data["protagonista"]["health"]
+	print("monedas")
+	print(data["protagonista"]["coins"])
 	protagonista.coins = data["protagonista"]["coins"] as int
+	print("protacoins")
+	print(protagonista.coins)
 	protagonista.hud.contador_monedas.text = str(protagonista.coins)
 	WorldManager.carga=false
 	return true

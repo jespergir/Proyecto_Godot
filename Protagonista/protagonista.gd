@@ -36,3 +36,4 @@ var knockback_direction
 
 var nombre_sala_actual
 var posicion_sala_actual
+signal coins_changed(new_amount)
