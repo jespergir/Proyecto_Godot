@@ -36,10 +36,3 @@ var knockback_direction
 
 var nombre_sala_actual
 var posicion_sala_actual
-
-signal protagonista_ready
-var protagonista_loaded = false
-
-func _ready() -> void:
-	protagonista_loaded = true
-	emit_signal("protagonista_ready")

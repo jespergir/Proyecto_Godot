@@ -5,6 +5,8 @@ var protagonista : Protagonista
 
 var data := {}
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 #region Save game
 # Función para guardar partida
@@ -58,8 +60,11 @@ func load_game():
 
 #region Position main character
 func posicionar_protagonista():
-	# Recuperar posición de la protagonista del archivo de guardado
-	var position_array = data["protagonista"]["position"]
-	# Posicionar a la protagonista
-	protagonista.global_position = Vector2(position_array[0], position_array[1])
+	if WorldManager.new_game: #Si se comienza nueva partida, coloca a la protagonista al inicio
+		protagonista.global_position = Vector2(480, 640)
+	else: #Si no, recupera su posición del archivo de guardado
+		# Recuperar posición de la protagonista del archivo de guardado
+		var position_array = data["protagonista"]["position"]
+		# Posicionar a la protagonista
+		protagonista.global_position = Vector2(position_array[0], position_array[1])
 #endregion

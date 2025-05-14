@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://fgvd2m3q6pnw"]
+
+[ext_resource type="Script" uid="uid://hfbpay2j30yq" path="res://Mundo/world.gd" id="1_vhnil"]
+[ext_resource type="PackedScene" uid="uid://bov0gtekoq78m" path="res://HUD/Hud.tscn" id="2_6v8sh"]
+[ext_resource type="PackedScene" uid="uid://nw6m0svyt0sn" path="res://Mapeado/Fondos/paralaje_superficie.tscn" id="3_4ukyl"]
+[ext_resource type="PackedScene" uid="uid://ftr7fpqn7hgk" path="res://Mapeado/Fondos/paralaje_subterraneo.tscn" id="4_tg74d"]
+[ext_resource type="PackedScene" uid="uid://c8mmgp3r8skl7" path="res://Protagonista/protagonista.tscn" id="5_bj7x8"]
+[ext_resource type="PackedScene" uid="uid://c4gh4kse8ybqh" path="res://Interfaces/PauseMenu/Pause_Menu.tscn" id="6_efva4"]
+[ext_resource type="PackedScene" uid="uid://b3rfnibvkw6j1" path="res://Interfaces/LoadScreen/pantalla_carga.tscn" id="8_4ukyl"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_vhnil")
+
+[node name="Hud" parent="." instance=ExtResource("2_6v8sh")]
+
+[node name="Paralaje_Superficie" parent="." instance=ExtResource("3_4ukyl")]
+z_index = -10
+position = Vector2(512, 1216)
+
+[node name="Paralaje_Subterraneo" parent="." instance=ExtResource("4_tg74d")]
+z_index = -9
+position = Vector2(480, 2272)
+
+[node name="Protagonista" parent="." instance=ExtResource("5_bj7x8")]
+position = Vector2(480, 640)
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_efva4")]
+visible = false
+
+[node name="PantallaCarga" parent="." instance=ExtResource("8_4ukyl")]
+
+[node name="Cargando" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Cargando" to="." method="_on_cargando_timeout"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Metroidvania"
-run/main_scene="uid://fgvd2m3q6pnw"
+run/main_scene="uid://dfkmlw605cunj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
