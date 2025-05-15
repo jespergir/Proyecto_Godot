@@ -7,7 +7,14 @@ var data := {}
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	if GameState.protagonista == null:
+		GameState.connect("protagonista_ready", Callable(self, "_on_protagonista_ready"))
+	else:
+		_on_protagonista_ready()
+
+func _on_protagonista_ready():
 	protagonista = GameState.protagonista
+	
 
 #region Save game
 # Función para guardar partida
