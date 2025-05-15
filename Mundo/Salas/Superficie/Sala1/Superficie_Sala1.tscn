@@ -497,6 +497,7 @@ size = Vector2(64, 512)
 script = ExtResource("1_xh6yj")
 
 [node name="AreaSala" type="Area2D" parent="." groups=["Area_Sala"]]
+visible = false
 position = Vector2(1472, 896)
 collision_layer = 1073741824
 

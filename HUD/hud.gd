@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _on_protagonista_ready():
 	protagonista = GameState.protagonista
-	protagonista.connect("coin_recolected", Callable(self, "_on_coin_recolected"))
+	protagonista.connect("coins_changed", Callable(self, "_on_coin_recolected"))
 	protagonista.connect("health_changed", Callable(self, "_on_health_changed"))
 
 func _on_coin_recolected():

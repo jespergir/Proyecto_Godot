@@ -37,17 +37,18 @@ var knockback_direction
 var nombre_sala_actual
 var posicion_sala_actual
 
-signal coin_recolected
+signal coins_changed
 signal health_changed
 
 func _ready() -> void:
 	GameState.protagonista = self
 
-func recolectar_moneda():
-	coins += 1
-	emit_signal("coin_recolected")
+func actualizar_monedas():
+	emit_signal("coins_changed")
 	
-	
+func actualizar_vida():
+	emit_signal("health_changed")
+
 func receive_damage(attacker_position, damage):
 	protagonista.health-=damage
 	emit_signal("health_changed")

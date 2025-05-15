@@ -15,7 +15,6 @@ func _ready() -> void:
 func _on_protagonista_ready():
 	protagonista = GameState.protagonista
 	
-
 #region Save game
 # Función para guardar partida
 func save_game(save_point_position):
@@ -62,7 +61,7 @@ func load_game():
 	var room_position = Vector2(room_position_array[0], room_position_array[1])
 	WorldManager.load_room_by_position(data["sala"]["nombre_sala"], room_position)
 	while(not WorldManager.carga):
-		return
+		await get_tree().process_frame
 	posicionar_protagonista()
 	protagonista.health = data["protagonista"]["health"]
 	print("monedas")
@@ -70,7 +69,8 @@ func load_game():
 	protagonista.coins = data["protagonista"]["coins"] as int
 	print("protacoins")
 	print(protagonista.coins)
-	protagonista.hud.contador_monedas.text = str(protagonista.coins)
+	protagonista.actualizar_monedas()
+	protagonista.actualizar_vida()
 	WorldManager.carga=false
 	return true
 #endregion
