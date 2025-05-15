@@ -37,9 +37,22 @@ var knockback_direction
 var nombre_sala_actual
 var posicion_sala_actual
 
-signal protagonista_ready
-var protagonista_loaded = false
+signal coins_changed
+signal health_changed
 
 func _ready() -> void:
-	protagonista_loaded = true
-	emit_signal("protagonista_ready")
+	GameState.protagonista = self
+
+func actualizar_monedas():
+	emit_signal("coins_changed")
+	
+func actualizar_vida():
+	emit_signal("health_changed")
+
+func receive_damage(attacker_position, damage):
+	protagonista.health-=damage
+	emit_signal("health_changed")
+	
+	if protagonista.knockback_timer <=0:
+		protagonista.knockback_direction = sign(protagonista.global_position.x - attacker_position.x)
+		protagonista.damage_just_received=true

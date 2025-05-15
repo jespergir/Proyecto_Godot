@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dab808f18h73l" path="res://Mapeado/Techos/Superficie/techo_esquina_con_suelo.tscn" id="18_wqexn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of6pu"]
-size = Vector2(2848, 1792)
+size = Vector2(2368, 1792)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk5ky"]
 size = Vector2(448, 128)
@@ -499,10 +499,10 @@ script = ExtResource("1_xh6yj")
 [node name="AreaSala" type="Area2D" parent="." groups=["Area_Sala"]]
 visible = false
 position = Vector2(1472, 896)
-collision_mask = 2147483648
+collision_layer = 1073741824
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaSala"]
-position = Vector2(-48, 0)
+position = Vector2(-288, 0)
 shape = SubResource("RectangleShape2D_of6pu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

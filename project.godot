@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Project Metroidvania"
-run/main_scene="uid://fgvd2m3q6pnw"
+run/main_scene="uid://dfkmlw605cunj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
 
 WorldManager="*res://Autoloads/world_manager.gd"
 SaveManager="*res://Autoloads/save_manager.gd"
+GameState="*res://Autoloads/game_state.gd"
 
 [display]
 
@@ -25,6 +26,11 @@ window/size/viewport_width=960
 window/size/viewport_height=540
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [global_group]
 

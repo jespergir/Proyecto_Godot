@@ -5,7 +5,16 @@ var protagonista : Protagonista
 
 var data := {}
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	if GameState.protagonista == null:
+		GameState.connect("protagonista_ready", Callable(self, "_on_protagonista_ready"))
+	else:
+		_on_protagonista_ready()
 
+func _on_protagonista_ready():
+	protagonista = GameState.protagonista
+	
 #region Save game
 # Función para guardar partida
 func save_game(save_point_position):
@@ -22,10 +31,13 @@ func save_game(save_point_position):
 		"nombre_sala": protagonista.nombre_sala_actual,
 		"posicion_sala": [protagonista.posicion_sala_actual.x, protagonista.posicion_sala_actual.y]
 	}
-	
+	print("💾 Guardando partida en sala:", protagonista.nombre_sala_actual,
+	  " spawn:", save_point_position,
+	  "   coins:", protagonista.coins)
 	# Escribe los datos en el archivo y lo cierra
 	file.store_string(JSON.stringify(data))
 	file.close()
+
 #endregion
 
 #region Load game
@@ -41,25 +53,35 @@ func load_game():
 	var file := FileAccess.open(save_path, FileAccess.READ)
 	data = JSON.parse_string(file.get_as_text())
 	file.close()
-	
+	print("🔄 Cargando partida sala:", data["sala"]["nombre_sala"],
+	  " posición:", data["sala"]["posicion_sala"])
+
 	# Recupera la posición de la sala y la instancia
 	var room_position_array = data["sala"]["posicion_sala"]
 	var room_position = Vector2(room_position_array[0], room_position_array[1])
 	WorldManager.load_room_by_position(data["sala"]["nombre_sala"], room_position)
 	while(not WorldManager.carga):
-		return
+		await get_tree().process_frame
 	posicionar_protagonista()
 	protagonista.health = data["protagonista"]["health"]
+	print("monedas")
+	print(data["protagonista"]["coins"])
 	protagonista.coins = data["protagonista"]["coins"] as int
-	protagonista.hud.contador_monedas.text = str(protagonista.coins)
+	print("protacoins")
+	print(protagonista.coins)
+	protagonista.actualizar_monedas()
+	protagonista.actualizar_vida()
 	WorldManager.carga=false
 	return true
 #endregion
 
 #region Position main character
 func posicionar_protagonista():
-	# Recuperar posición de la protagonista del archivo de guardado
-	var position_array = data["protagonista"]["position"]
-	# Posicionar a la protagonista
-	protagonista.global_position = Vector2(position_array[0], position_array[1])
+	if WorldManager.new_game: #Si se comienza nueva partida, coloca a la protagonista al inicio
+		protagonista.global_position = Vector2(480, 640)
+	else: #Si no, recupera su posición del archivo de guardado
+		# Recuperar posición de la protagonista del archivo de guardado
+		var position_array = data["protagonista"]["position"]
+		# Posicionar a la protagonista
+		protagonista.global_position = Vector2(position_array[0], position_array[1])
 #endregion
