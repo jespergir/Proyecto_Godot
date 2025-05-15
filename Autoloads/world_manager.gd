@@ -3,6 +3,7 @@ extends Node
 var rooms: Dictionary = {}
 
 var protagonista : Protagonista
+var world
 enum posiciones {Derecha, Izquierda, Arriba, Abajo} #Enum para las direcciones de las salas a instanciar
 
 var temporizador = 0.0
@@ -17,10 +18,19 @@ func _ready():
 		GameState.connect("protagonista_ready", Callable(self, "_on_protagonista_ready"))
 	else:
 		_on_protagonista_ready()
+	if GameState.world == null:
+		GameState.connect("world_ready", Callable(self, "_on_world_ready"))
+	else:
+		_on_world_ready()
 
 func _on_protagonista_ready():
 	protagonista = GameState.protagonista
-	
+	if new_game:
+		protagonista.iniciar_variables()
+
+func _on_world_ready():
+	world = GameState.world
+
 
 func _process(delta): #Cada 2 segundos llama a unload_distant_rooms para descargar salas lejanas de la memoria.
 	if jugando:
@@ -125,7 +135,9 @@ func load_room_by_position(room_name: String, position_sala: Vector2):
 	get_node("/root/World").call_deferred("add_child", room_instance)
 	await room_instance.ready  # Espera que el nodo esté listo
 	carga = true
-	SaveManager.posicionar_protagonista() # Posiciona a la protagonista
+	world.get_tree().paused = not get_tree().paused
+	world.cargando.start()
+	posicionar_protagonista() # Posiciona a la protagonista
 	
 	rooms[room_name] = room_instance #Añade la sala al diccionario de salas cargadas
 #endregion
@@ -136,3 +148,26 @@ func reset_world() -> void:
 		if is_instance_valid(room):
 			room.queue_free()
 	rooms.clear()
+
+func start_game():
+	get_tree().change_scene_to_file("res://Mundo/World.tscn")
+	load_room_by_position("res://Mundo/Salas/Superficie/Sala1/Superficie_Sala1.tscn", Vector2(0,0))
+	new_game=true
+	jugando = true
+
+func load_game():
+	get_tree().change_scene_to_file("res://Mundo/World.tscn")
+	SaveManager.load_game()
+	WorldManager.new_game=false
+	WorldManager.jugando = true
+
+#region Position main character
+func posicionar_protagonista():
+	if WorldManager.new_game: #Si se comienza nueva partida, coloca a la protagonista al inicio
+		protagonista.global_position = Vector2(480, 640)
+	#else: #Si no, recupera su posición del archivo de guardado
+		## Recuperar posición de la protagonista del archivo de guardado
+		#var position_array = data["protagonista"]["position"]
+		## Posicionar a la protagonista
+		#protagonista.global_position = Vector2(position_array[0], position_array[1])
+#endregion

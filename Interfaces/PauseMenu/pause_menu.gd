@@ -13,7 +13,6 @@ func _ready() -> void:
 
 #Cuando se pulsa el botón de pausa, pausa el juego
 func _unhandled_input(event: InputEvent) -> void:
-	
 	if Input.is_action_just_pressed("Pause"):
 		toggle_pause()
 
@@ -27,12 +26,7 @@ func _on_timer_timeout() -> void:
 
 #Si se pulsa el botón, pausa el juego, resetea el mundo, cambia la escena, carga la partida y fija el estado de los booleanos.
 func _on_boton_cargar_button_down() -> void:
-	toggle_pause()
-	WorldManager.reset_world()
-	get_tree().change_scene_to_file("res://Mundo/World.tscn")
-	SaveManager.load_game()
-	WorldManager.new_game = false
-	WorldManager.jugando = true
+	WorldManager.load_game()
 
 #Si se pulsa, sale del juego
 func _on_boton_salir_button_down() -> void:
