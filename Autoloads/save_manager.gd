@@ -5,6 +5,8 @@ var protagonista : Protagonista
 
 var data := {}
 
+func _ready() -> void:
+	protagonista = GameState.protagonista
 
 #region Save game
 # Función para guardar partida
