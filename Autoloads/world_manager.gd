@@ -2,7 +2,7 @@ extends Node
 
 var rooms: Dictionary = {}
 
-var protagonista : Protagonista #Se recibe desde el script de World
+var protagonista : Protagonista
 enum posiciones {Derecha, Izquierda, Arriba, Abajo} #Enum para las direcciones de las salas a instanciar
 
 var temporizador = 0.0
@@ -11,8 +11,16 @@ var carga = false
 var jugando = false
 var new_game = false
 
-func _ready() -> void:
+func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS #Hace que esta escena no sea pausable
+	if GameState.protagonista == null:
+		GameState.connect("protagonista_ready", Callable(self, "_on_protagonista_ready"))
+	else:
+		_on_protagonista_ready()
+
+func _on_protagonista_ready():
+	protagonista = GameState.protagonista
+	
 
 func _process(delta): #Cada 2 segundos llama a unload_distant_rooms para descargar salas lejanas de la memoria.
 	if jugando:

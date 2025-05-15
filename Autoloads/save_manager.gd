@@ -7,6 +7,7 @@ var data := {}
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	protagonista = GameState.protagonista
 
 #region Save game
 # Función para guardar partida

@@ -9,9 +9,10 @@ extends Node2D
 func _ready() -> void:
 	WorldManager.reset_world()
 	cargando.process_mode = Node.PROCESS_MODE_ALWAYS
-	protagonista.hud = hud
-	WorldManager.protagonista = $Protagonista
-	SaveManager.protagonista = $Protagonista
+	GameState.world = self
+	#protagonista.hud = hud
+	#WorldManager.protagonista = $Protagonista
+	#SaveManager.protagonista = $Protagonista
 
 	if WorldManager.new_game:
 		WorldManager.load_room_by_position("res://Mundo/Salas/Superficie/Sala1/Superficie_Sala1.tscn", Vector2(0,0))
