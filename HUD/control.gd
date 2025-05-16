@@ -4,9 +4,9 @@ var salas_visitadas: Dictionary = {}
 var sala_actual: String = ""
 var mapa_salas = MinimapManager.mapa_salas
 
-const TILE_SIZE = 32
-const MINIMAP_WIDTH = TILE_SIZE * 5
-const MINIMAP_HEIGHT = TILE_SIZE * 3
+const TILE_SIZE = 22
+const MINIMAP_WIDTH = TILE_SIZE * 6
+const MINIMAP_HEIGHT = TILE_SIZE * 4
 
 var current_offset = Vector2.ZERO
 var target_offset = Vector2.ZERO
@@ -14,10 +14,10 @@ var ANIM_SPEED = 8.0
 const GAP = 4
 const SQUARE_SIZE = TILE_SIZE - GAP
 
-func _ready():
-	self.clip_contents = true
-	MinimapManager.set_minimap_node(self)
-	# El centrado se hace después de recibir los datos
+#func _ready():
+	#self.clip_contents = true
+	#MinimapManager.set_minimap_node(self)
+	## El centrado se hace después de recibir los datos
 
 func centrar_y_redibujar_minimapa():
 	target_offset = calcular_offset_centrado()
@@ -83,11 +83,11 @@ func _draw():
 	var size = Vector2(MINIMAP_WIDTH, MINIMAP_HEIGHT)
 	var offset = current_offset
 
-	var border_color = Color("e5da99")
-	var color_sala = Color("222c42")
-	var color_sala_actual = Color("ffd700")
-	var glow_color = Color("b7ae70", 0.4)
-	var conexion_color = Color("e5da99")
+	var border_color = Color("5673fc")
+	var color_sala = Color("2e4096")
+	var color_sala_actual = Color("7d234d")
+	#var glow_color = Color("b7ae70", 0.4)
+	var conexion_color = Color("ffffff")
 
 	var bounds = _get_map_bounds()
 	var min_x = bounds["min_x"]
@@ -124,12 +124,12 @@ func _draw():
 	var sala_actual_pos = (sala_actual_pos_rel + offset).round() + Vector2(GAP/2.0, GAP/2.0)
 	var actual_rect = Rect2(sala_actual_pos, Vector2(SQUARE_SIZE, SQUARE_SIZE))
 	if actual_rect.intersects(Rect2(Vector2.ZERO, size)):
-		draw_rect(actual_rect.grow(2), glow_color.lightened(0.2), true)
+		#draw_rect(actual_rect.grow(2), glow_color.lightened(0.2), true)
 		draw_rect(actual_rect, color_sala_actual, true)
 		draw_rect(actual_rect, border_color, false, 1)
 		draw_circle(sala_actual_pos + Vector2(SQUARE_SIZE/2.0, SQUARE_SIZE/2.0), SQUARE_SIZE/4.0, Color.WHITE)
 
-	draw_rect(Rect2(Vector2.ZERO, size), border_color, false, 2)
+	#draw_rect(Rect2(Vector2.ZERO, size), border_color, false, 2)
 
 func set_sala_actual(id_sala):
 	sala_actual = id_sala
@@ -142,37 +142,37 @@ func set_sala_actual(id_sala):
 var debug_pos = Vector2(0, 0)
 
 #region Depuración minimapa
-#func _ready():
-	#self.clip_contents = true
-	## Crea la primera sala al iniciar para test
-	#var sala_id = "debug_%d_%d" % [debug_pos.x, debug_pos.y]
-	#mapa_salas[sala_id] = debug_pos
-	#salas_visitadas[sala_id] = true
-	#sala_actual = sala_id
-	#target_offset = calcular_offset_centrado()
-	#current_offset = target_offset
-	#queue_redraw()
-#
-#func _unhandled_input(event):
-	## Permite moverse por el minimapa en modo test usando WASD o flechas
-	#if event is InputEventKey and event.pressed:
-		#var dir = Vector2.ZERO
-		#if event.keycode == KEY_RIGHT or event.keycode == KEY_D:
-			#dir = Vector2(1, 0)
-		#elif event.keycode == KEY_LEFT or event.keycode == KEY_A:
-			#dir = Vector2(-1, 0)
-		#elif event.keycode == KEY_UP or event.keycode == KEY_W:
-			#dir = Vector2(0, -1)
-		#elif event.keycode == KEY_DOWN or event.keycode == KEY_S:
-			#dir = Vector2(0, 1)
-#
-		#if dir != Vector2.ZERO:
-			#debug_pos += dir
-			#var sala_id = "debug_%d_%d" % [debug_pos.x, debug_pos.y]
-			#if not mapa_salas.has(sala_id):
-				#mapa_salas[sala_id] = debug_pos
-			#salas_visitadas[sala_id] = true
-			#sala_actual = sala_id
-			#target_offset = calcular_offset_centrado()
-			#queue_redraw()
+func _ready():
+	self.clip_contents = true
+	# Crea la primera sala al iniciar para test
+	var sala_id = "debug_%d_%d" % [debug_pos.x, debug_pos.y]
+	mapa_salas[sala_id] = debug_pos
+	salas_visitadas[sala_id] = true
+	sala_actual = sala_id
+	target_offset = calcular_offset_centrado()
+	current_offset = target_offset
+	queue_redraw()
+
+func _unhandled_input(event):
+	# Permite moverse por el minimapa en modo test usando WASD o flechas
+	if event is InputEventKey and event.pressed:
+		var dir = Vector2.ZERO
+		if event.keycode == KEY_RIGHT or event.keycode == KEY_D:
+			dir = Vector2(1, 0)
+		elif event.keycode == KEY_LEFT or event.keycode == KEY_A:
+			dir = Vector2(-1, 0)
+		elif event.keycode == KEY_UP or event.keycode == KEY_W:
+			dir = Vector2(0, -1)
+		elif event.keycode == KEY_DOWN or event.keycode == KEY_S:
+			dir = Vector2(0, 1)
+
+		if dir != Vector2.ZERO:
+			debug_pos += dir
+			var sala_id = "debug_%d_%d" % [debug_pos.x, debug_pos.y]
+			if not mapa_salas.has(sala_id):
+				mapa_salas[sala_id] = debug_pos
+			salas_visitadas[sala_id] = true
+			sala_actual = sala_id
+			target_offset = calcular_offset_centrado()
+			queue_redraw()
 #endregion

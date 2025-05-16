@@ -52,16 +52,16 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -181.0
-offset_top = 22.0
-offset_right = -21.0
-offset_bottom = 118.0
+offset_left = -157.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = 113.0
 grow_horizontal = 0
 script = ExtResource("6_hx80y")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 z_index = -1
 layout_mode = 0
-offset_right = 160.0
-offset_bottom = 96.0
-color = Color(0, 0, 0.223529, 1)
+offset_right = 132.0
+offset_bottom = 88.0
+color = Color(0.188525, 0.190745, 0.196832, 0.639216)
