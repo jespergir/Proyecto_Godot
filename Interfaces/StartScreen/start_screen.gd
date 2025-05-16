@@ -13,16 +13,11 @@ func _ready() -> void:
 
 #Cuando se pulsa el botón comenzar, cambia de escena y cambia los booleanos correspondientes
 func _on_boton_comenzar_button_down() -> void:
-	get_tree().change_scene_to_file("res://Mundo/World.tscn")
-	WorldManager.new_game=true
-	WorldManager.jugando = true
+	WorldManager.start_game()
 
 #Cuando se pulsa el botón cargar, cambia de escena y cambia los booleanos correspondientes
 func _on_boton_cargar_button_down() -> void:
-	get_tree().change_scene_to_file("res://Mundo/World.tscn")
-	SaveManager.load_game()
-	WorldManager.new_game=false
-	WorldManager.jugando = true
+	WorldManager.load_game()
 
 #Cuando se pulsa el botón salir, cierra el juego
 func _on_boton_salir_button_down() -> void:

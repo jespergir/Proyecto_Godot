@@ -13,8 +13,8 @@ class_name Protagonista extends CharacterBody2D
 @onready var attack1_collision : CollisionShape2D = $Attack1/Attack1Collision
 @onready var hud : Hud
 
-var health = 100
-var coins = 0
+var health
+var coins
 var damage = 25
 const SPEED = 300.0 #Velocidad del personaje
 const JUMP_VELOCITY = -475.0 #Fuerza del salto
@@ -56,3 +56,9 @@ func receive_damage(attacker_position, damage):
 	if protagonista.knockback_timer <=0:
 		protagonista.knockback_direction = sign(protagonista.global_position.x - attacker_position.x)
 		protagonista.damage_just_received=true
+
+func iniciar_variables():
+	coins=0
+	health=100
+	actualizar_monedas()
+	actualizar_vida()

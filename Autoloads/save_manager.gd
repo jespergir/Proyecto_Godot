@@ -44,44 +44,27 @@ func save_game(save_point_position):
 # Función para cargar partida
 func load_game():
 	WorldManager.reset_world()
-	#Si no existe el archivo lo avisa
+
+	# Si no existe el archivo lo avisa
 	if not FileAccess.file_exists(save_path):
 		print("No save file found.")
 		return false
-	
-	# Recupera el archivo de cuardado y lo convierte en string
+
+	# Recupera el archivo de guardado y lo convierte en string
 	var file := FileAccess.open(save_path, FileAccess.READ)
 	data = JSON.parse_string(file.get_as_text())
 	file.close()
-	print("🔄 Cargando partida sala:", data["sala"]["nombre_sala"],
-	  " posición:", data["sala"]["posicion_sala"])
 
-	# Recupera la posición de la sala y la instancia
+	print("🔄 Cargando partida sala:", data["sala"]["nombre_sala"],
+		" posición:", data["sala"]["posicion_sala"])
+
+	# Prepara los datos necesarios
 	var room_position_array = data["sala"]["posicion_sala"]
 	var room_position = Vector2(room_position_array[0], room_position_array[1])
-	WorldManager.load_room_by_position(data["sala"]["nombre_sala"], room_position)
-	while(not WorldManager.carga):
-		await get_tree().process_frame
-	posicionar_protagonista()
-	protagonista.health = data["protagonista"]["health"]
-	print("monedas")
-	print(data["protagonista"]["coins"])
-	protagonista.coins = data["protagonista"]["coins"] as int
-	print("protacoins")
-	print(protagonista.coins)
-	protagonista.actualizar_monedas()
-	protagonista.actualizar_vida()
-	WorldManager.carga=false
-	return true
-#endregion
+	var protagonista_data = data["protagonista"]
 
-#region Position main character
-func posicionar_protagonista():
-	if WorldManager.new_game: #Si se comienza nueva partida, coloca a la protagonista al inicio
-		protagonista.global_position = Vector2(480, 640)
-	else: #Si no, recupera su posición del archivo de guardado
-		# Recuperar posición de la protagonista del archivo de guardado
-		var position_array = data["protagonista"]["position"]
-		# Posicionar a la protagonista
-		protagonista.global_position = Vector2(position_array[0], position_array[1])
+	# Carga la sala y pasa los datos de la protagonista
+	WorldManager.load_room_by_position(data["sala"]["nombre_sala"], room_position, protagonista_data)
+
+	return true
 #endregion
