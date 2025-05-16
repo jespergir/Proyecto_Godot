@@ -4,6 +4,9 @@ signal protagonista_ready
 signal world_ready
 signal hud_ready
 
+signal juego_pausado
+signal juego_reanudado
+
 var protagonista:
 	set(value):
 		protagonista = value
@@ -23,13 +26,19 @@ var hud:
 	get:
 		return hud
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+#Cuando se pulsa el botón de pausa, pausa el juego
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Pause"):
+		toggle_pause()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func toggle_pause():
+	if get_tree().paused:
+		get_tree().paused = false
+		emit_signal("juego_reanudado")
+	else:
+		get_tree().paused = true
+		emit_signal("juego_pausado")

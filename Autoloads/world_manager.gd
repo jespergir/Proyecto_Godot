@@ -61,7 +61,6 @@ func unload_distant_rooms():
 #region Load room while playing
 #Función para cargar salas en tiempo de ejecución
 func load_room(room_name: String, position_sala_actual: Vector2, ancho_sala_actual, posicion_sala_siguiente):
-	
 	if rooms.has(room_name): #Si la sala ya ha sido cargada, no hagas nada.
 		return
 
