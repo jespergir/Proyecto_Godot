@@ -27,6 +27,7 @@ func _on_timer_timeout() -> void:
 #Si se pulsa el botón, pausa el juego, resetea el mundo, cambia la escena, carga la partida y fija el estado de los booleanos.
 func _on_boton_cargar_button_down() -> void:
 	WorldManager.load_game()
+	
 
 #Si se pulsa, sale del juego
 func _on_boton_salir_button_down() -> void:

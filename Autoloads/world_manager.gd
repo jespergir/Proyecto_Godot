@@ -12,6 +12,8 @@ var carga = false
 var jugando = false
 var new_game = false
 
+signal partida_cargada
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS #Hace que esta escena no sea pausable
 	if GameState.protagonista == null:
@@ -109,37 +111,34 @@ func load_room(room_name: String, position_sala_actual: Vector2, ancho_sala_actu
 #endregion
 
 #region Load room from save archive
-func load_room_by_position(room_name: String, position_sala: Vector2):
-	
-	if rooms.has(room_name): #Si la sala ya ha sido cargada, no hagas nada.
+func load_room_by_position(room_name: String, position_sala: Vector2, protagonista_data := {}):
+	if rooms.has(room_name):
 		return
-		
-	# Solicita la carga en segundo plano
+
 	ResourceLoader.load_threaded_request(room_name)
-	
-	# Espera hasta que la carga haya terminado
+
 	while ResourceLoader.load_threaded_get_status(room_name) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		await Engine.get_main_loop().process_frame
-		
-	# Verifica si se cargó correctamente
+
 	if ResourceLoader.load_threaded_get_status(room_name) != ResourceLoader.THREAD_LOAD_LOADED:
 		printerr("Error al cargar la sala: ", room_name)
 		return
-		
-	# Recupera la escena ya cargada
+
 	var scene := ResourceLoader.load_threaded_get(room_name)
 	var room_instance : Sala = scene.instantiate()
-	
-	# Posiciona la sala en su sitio
 	room_instance.position = position_sala
 	get_node("/root/World").call_deferred("add_child", room_instance)
-	await room_instance.ready  # Espera que el nodo esté listo
+	await room_instance.ready
+	await get_tree().process_frame
 	carga = true
 	world.get_tree().paused = not get_tree().paused
 	world.cargando.start()
-	posicionar_protagonista() # Posiciona a la protagonista
-	
-	rooms[room_name] = room_instance #Añade la sala al diccionario de salas cargadas
+
+	# ✅ Pasamos los datos del guardado
+	posicionar_protagonista(protagonista_data)
+	emit_signal("partida_cargada")
+	rooms[room_name] = room_instance
+
 #endregion
 
 func reset_world() -> void:
@@ -150,24 +149,36 @@ func reset_world() -> void:
 	rooms.clear()
 
 func start_game():
-	get_tree().change_scene_to_file("res://Mundo/World.tscn")
-	load_room_by_position("res://Mundo/Salas/Superficie/Sala1/Superficie_Sala1.tscn", Vector2(0,0))
 	new_game=true
 	jugando = true
+	get_tree().change_scene_to_file("res://Mundo/World.tscn")
+	load_room_by_position("res://Mundo/Salas/Superficie/Sala1/Superficie_Sala1.tscn", Vector2(0,0))
+
 
 func load_game():
+	new_game=false
+	jugando = true
 	get_tree().change_scene_to_file("res://Mundo/World.tscn")
 	SaveManager.load_game()
-	WorldManager.new_game=false
-	WorldManager.jugando = true
+
 
 #region Position main character
-func posicionar_protagonista():
-	if WorldManager.new_game: #Si se comienza nueva partida, coloca a la protagonista al inicio
+func posicionar_protagonista(data := {}):
+	if WorldManager.new_game:
 		protagonista.global_position = Vector2(480, 640)
-	#else: #Si no, recupera su posición del archivo de guardado
-		## Recuperar posición de la protagonista del archivo de guardado
-		#var position_array = data["protagonista"]["position"]
-		## Posicionar a la protagonista
-		#protagonista.global_position = Vector2(position_array[0], position_array[1])
+	else:
+		
+		if "position" in data:
+			print(data["position"])
+			var pos_array = data["position"]
+			protagonista.global_position = Vector2(pos_array[0], pos_array[1])
+		
+		if "health" in data:
+			protagonista.health = data["health"]
+		
+		if "coins" in data:
+			protagonista.coins = data["coins"] as int
+		protagonista.actualizar_monedas()
+		protagonista.actualizar_vida()
+
 #endregion
