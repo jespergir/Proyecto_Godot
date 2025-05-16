@@ -31,6 +31,11 @@ func save_game(save_point_position):
 		"nombre_sala": protagonista.nombre_sala_actual,
 		"posicion_sala": [protagonista.posicion_sala_actual.x, protagonista.posicion_sala_actual.y]
 	}
+	data["minimapa"] = {
+	"salas_visitadas": MinimapManager.salas_visitadas,
+	"sala_actual": MinimapManager.sala_actual
+	}
+
 	print("💾 Guardando partida en sala:", protagonista.nombre_sala_actual,
 	  " spawn:", save_point_position,
 	  "   coins:", protagonista.coins)
@@ -54,6 +59,14 @@ func load_game():
 	var file := FileAccess.open(save_path, FileAccess.READ)
 	data = JSON.parse_string(file.get_as_text())
 	file.close()
+	if data.has("minimapa"):
+		MinimapManager.salas_visitadas = data["minimapa"].get("salas_visitadas", {})
+		MinimapManager.sala_actual = data["minimapa"].get("sala_actual", "")
+	# Refresca el minimapa visual si está cargado
+	if MinimapManager.minimap_node:
+		MinimapManager.minimap_node.salas_visitadas = MinimapManager.salas_visitadas.duplicate()
+		MinimapManager.minimap_node.sala_actual = MinimapManager.sala_actual
+		MinimapManager.minimap_node.centrar_y_redibujar_minimapa()
 
 	print("🔄 Cargando partida sala:", data["sala"]["nombre_sala"],
 		" posición:", data["sala"]["posicion_sala"])

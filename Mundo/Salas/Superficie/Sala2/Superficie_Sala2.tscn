@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://uy0a3wmk5t3s"]
 
-[ext_resource type="Script" uid="uid://dqulvacvl3lwi" path="res://Mundo/Salas/Superficie/Sala1/superficie_sala1.gd" id="1_ck03g"]
+[ext_resource type="Script" uid="uid://bdyl188s4mvur" path="res://Mundo/Salas/Superficie/Sala2/superficie_sala2.gd" id="1_avgbu"]
 [ext_resource type="AudioStream" uid="uid://cq18c4m3ckr37" path="res://Recursos/Music/Evening Harmony.wav" id="2_lfdby"]
 [ext_resource type="Script" uid="uid://c3mqqbe5eddgd" path="res://Mundo/Salas/Superficie/Sala1/audio_stream_player.gd" id="3_six6r"]
 [ext_resource type="Texture2D" uid="uid://d1bvxwfsr6uje" path="res://Recursos/Tiles/Tiles.png" id="4_rdbyc"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://udytjj3enka4" path="res://Mapeado/Interactuable/Punto_De_Guardado/punto_de_guardado.tscn" id="17_y2pqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avgbu"]
-size = Vector2(2816, 1792)
+size = Vector2(2048, 1792)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gkrtp"]
 texture = ExtResource("4_rdbyc")
@@ -482,15 +482,14 @@ size = Vector2(130.5, 1536)
 size = Vector2(634, 1533)
 
 [node name="Sala2" type="Node2D"]
-script = ExtResource("1_ck03g")
+script = ExtResource("1_avgbu")
 
 [node name="AreaSala2" type="Area2D" parent="." groups=["Area_Sala"]]
-visible = false
 position = Vector2(1472, 896)
 collision_layer = 1073741825
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaSala2"]
-position = Vector2(-64, 0)
+position = Vector2(-448, 0)
 shape = SubResource("RectangleShape2D_avgbu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -506,8 +505,6 @@ tile_set = SubResource("TileSet_o1bo0")
 
 [node name="Capa2" type="TileMapLayer" parent="Decoraciones/Arreglos"]
 tile_set = SubResource("TileSet_snyw7")
-
-[node name="Colisiones" type="StaticBody2D" parent="Decoraciones/Arreglos"]
 
 [node name="Frontal" type="Node2D" parent="Decoraciones"]
 

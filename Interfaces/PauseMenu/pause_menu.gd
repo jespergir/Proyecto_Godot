@@ -19,7 +19,7 @@ func _on_boton_reanudar_button_down() -> void:
 
 #Espera 0.1 segundos y deshace la pausa.
 func _on_timer_timeout() -> void:
-	WorldManager.toggle_pause()
+	GameState.toggle_pause()
 
 #Si se pulsa el botón, pausa el juego, resetea el mundo, cambia la escena, carga la partida y fija el estado de los booleanos.
 func _on_boton_cargar_button_down() -> void:
