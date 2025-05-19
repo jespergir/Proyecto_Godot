@@ -314,6 +314,7 @@ script = ExtResource("1_0nl2c")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
+z_index = 1
 offset_left = -480.0
 offset_top = -384.0
 offset_right = 480.0
@@ -324,6 +325,7 @@ color = Color(0, 0, 0, 1)
 position = Vector2(0, -112)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_qd3w3")
 animation = &"Idle"
 

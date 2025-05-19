@@ -21,9 +21,6 @@ position = Vector2(512, 1216)
 z_index = -9
 position = Vector2(480, 2064)
 
-[node name="Protagonista" parent="." instance=ExtResource("5_bj7x8")]
-position = Vector2(480, 640)
-
 [node name="PauseMenu" parent="." instance=ExtResource("6_efva4")]
 visible = false
 
@@ -31,5 +28,8 @@ visible = false
 
 [node name="Cargando" type="Timer" parent="."]
 one_shot = true
+
+[node name="Protagonista" parent="." instance=ExtResource("5_bj7x8")]
+position = Vector2(480, 640)
 
 [connection signal="timeout" from="Cargando" to="." method="_on_cargando_timeout"]

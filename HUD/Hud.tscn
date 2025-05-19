@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bov0gtekoq78m"]
+[gd_scene load_steps=8 format=3 uid="uid://bov0gtekoq78m"]
 
 [ext_resource type="Script" uid="uid://vpifng0kfwa5" path="res://HUD/hud.gd" id="1_5mmha"]
 [ext_resource type="Texture2D" uid="uid://d0yyc72fib8qa" path="res://Recursos/Barra_Salud/health_bar.png" id="1_xxcah"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ck8m140spwlwg" path="res://Recursos/Recogibles/cristal.png" id="4_5mmha"]
 [ext_resource type="FontFile" uid="uid://o3f8482haccu" path="res://Recursos/Fuentes/m6x11plus.ttf" id="4_yyvmb"]
 [ext_resource type="Script" uid="uid://4am50ngwhm1u" path="res://HUD/control.gd" id="6_hx80y"]
+[ext_resource type="Texture2D" uid="uid://dw8lfakop2i76" path="res://Recursos/Pxiel Art UI borders.png" id="7_g1itk"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_5mmha")
@@ -47,21 +48,34 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="."]
+[node name="Minimapa" type="Node2D" parent="."]
+position = Vector2(803, 25)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Minimapa"]
+modulate = Color(0.282353, 0.376471, 0.690196, 1)
+offset_left = -4.0
+offset_top = -3.0
+offset_right = 136.0
+offset_bottom = 91.0
+texture = ExtResource("7_g1itk")
+region_rect = Rect2(18, 146, 92, 92)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 11
+patch_margin_bottom = 12
+
+[node name="ColorRect" type="ColorRect" parent="Minimapa"]
+z_index = -1
+offset_right = 132.0
+offset_bottom = 88.0
+color = Color(0.188525, 0.190745, 0.196832, 0.639216)
+
+[node name="Control" type="Control" parent="Minimapa"]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -157.0
-offset_top = 25.0
-offset_right = -25.0
-offset_bottom = 113.0
-grow_horizontal = 0
-script = ExtResource("6_hx80y")
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-z_index = -1
-layout_mode = 0
 offset_right = 132.0
 offset_bottom = 88.0
-color = Color(0.188525, 0.190745, 0.196832, 0.639216)
+grow_horizontal = 0
+script = ExtResource("6_hx80y")

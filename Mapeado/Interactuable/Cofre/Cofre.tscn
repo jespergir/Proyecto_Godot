@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bg8qfqasvibpc"]
+[gd_scene load_steps=46 format=3 uid="uid://bg8qfqasvibpc"]
 
 [ext_resource type="Script" uid="uid://dy0gd3ctr1tey" path="res://Mapeado/Interactuable/Cofre/cofre.gd" id="1_j2t70"]
 [ext_resource type="Texture2D" uid="uid://lwo5vlj4pmre" path="res://Recursos/Interactuables/Chests.png" id="2_mg6pm"]
@@ -184,7 +184,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a35bb")
 }],
-"loop": true,
+"loop": false,
 "name": &"BlackIdle",
 "speed": 5.0
 }, {
@@ -204,7 +204,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_au74d")
 }],
-"loop": true,
+"loop": false,
 "name": &"BlackOpen",
 "speed": 5.0
 }, {
@@ -224,7 +224,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d402g")
 }],
-"loop": true,
+"loop": false,
 "name": &"GoldenIdle",
 "speed": 5.0
 }, {
@@ -244,7 +244,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8uy6e")
 }],
-"loop": true,
+"loop": false,
 "name": &"GoldenOpen",
 "speed": 5.0
 }, {
@@ -264,7 +264,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hh28b")
 }],
-"loop": true,
+"loop": false,
 "name": &"SpecialIdle",
 "speed": 5.0
 }, {
@@ -284,7 +284,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6kenh")
 }],
-"loop": true,
+"loop": false,
 "name": &"SpecialOpen",
 "speed": 5.0
 }, {
@@ -304,7 +304,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3vrer")
 }],
-"loop": true,
+"loop": false,
 "name": &"WoodIdle",
 "speed": 5.0
 }, {
@@ -324,10 +324,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_psyfi")
 }],
-"loop": true,
+"loop": false,
 "name": &"WoodOpen",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xghwu"]
+size = Vector2(68.6667, 70)
 
 [node name="Cofre" type="StaticBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -341,4 +344,13 @@ shape = SubResource("RectangleShape2D_f56s5")
 sprite_frames = SubResource("SpriteFrames_lufl4")
 animation = &"BlackIdle"
 autoplay = "BlackIdle"
-frame_progress = 0.927206
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-9, -19)
+shape = SubResource("RectangleShape2D_xghwu")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
