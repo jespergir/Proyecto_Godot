@@ -31,7 +31,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 #Cuando se pulsa el botón de pausa, pausa el juego
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent):
 	if Input.is_action_just_pressed("Pause"):
 		toggle_pause()
 

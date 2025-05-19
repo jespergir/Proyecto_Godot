@@ -7,6 +7,7 @@ var minimap_node: Control = null
 var mapa_salas := {
 	"sala_0_0": Vector2(0, 0),
 	"sala_1_0": Vector2(1, 0),
+	"sala_1_1": Vector2(1, 1),
 	# ... etc ...
 }
 

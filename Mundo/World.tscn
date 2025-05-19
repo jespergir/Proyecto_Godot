@@ -19,7 +19,7 @@ position = Vector2(512, 1216)
 
 [node name="Paralaje_Subterraneo" parent="." instance=ExtResource("4_tg74d")]
 z_index = -9
-position = Vector2(480, 2272)
+position = Vector2(480, 2064)
 
 [node name="Protagonista" parent="." instance=ExtResource("5_bj7x8")]
 position = Vector2(480, 640)

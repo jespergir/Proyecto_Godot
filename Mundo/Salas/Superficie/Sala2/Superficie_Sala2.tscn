@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://uy0a3wmk5t3s"]
+[gd_scene load_steps=28 format=3 uid="uid://uy0a3wmk5t3s"]
 
 [ext_resource type="Script" uid="uid://bdyl188s4mvur" path="res://Mundo/Salas/Superficie/Sala2/superficie_sala2.gd" id="1_avgbu"]
 [ext_resource type="AudioStream" uid="uid://cq18c4m3ckr37" path="res://Recursos/Music/Evening Harmony.wav" id="2_lfdby"]
@@ -371,6 +371,9 @@ texture = ExtResource("5_fjw75")
 [sub_resource type="TileSet" id="TileSet_snyw7"]
 sources/0 = SubResource("TileSetAtlasSource_he461")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkhia"]
+size = Vector2(192, 197)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3l4mw"]
 texture = ExtResource("6_12gqt")
 0:0/0 = 0
@@ -476,7 +479,7 @@ texture = ExtResource("6_12gqt")
 sources/0 = SubResource("TileSetAtlasSource_3l4mw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2pqh"]
-size = Vector2(130.5, 1536)
+size = Vector2(2177.75, 536)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_splta"]
 size = Vector2(634, 1533)
@@ -485,6 +488,7 @@ size = Vector2(634, 1533)
 script = ExtResource("1_avgbu")
 
 [node name="AreaSala2" type="Area2D" parent="." groups=["Area_Sala"]]
+visible = false
 position = Vector2(1472, 896)
 collision_layer = 1073741825
 
@@ -505,6 +509,16 @@ tile_set = SubResource("TileSet_o1bo0")
 
 [node name="Capa2" type="TileMapLayer" parent="Decoraciones/Arreglos"]
 tile_set = SubResource("TileSet_snyw7")
+
+[node name="Node" type="StaticBody2D" parent="Decoraciones/Arreglos"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Decoraciones/Arreglos/Node"]
+position = Vector2(1440, 1693.5)
+shape = SubResource("RectangleShape2D_tkhia")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Decoraciones/Arreglos/Node"]
+position = Vector2(1760, 1688)
+shape = SubResource("RectangleShape2D_tkhia")
 
 [node name="Frontal" type="Node2D" parent="Decoraciones"]
 
@@ -551,7 +565,7 @@ position = Vector2(256, 448)
 position = Vector2(768, 448)
 
 [node name="Suelo4" parent="Suelos" instance=ExtResource("11_7sypr")]
-position = Vector2(1280, 448)
+position = Vector2(1408, 448)
 
 [node name="Plataformas" type="Node2D" parent="."]
 position = Vector2(512, 1264)
@@ -634,6 +648,25 @@ position = Vector2(-64, -544)
 [node name="Terreno25" parent="Plataformas" instance=ExtResource("11_c5p8b")]
 position = Vector2(384, -544)
 
+[node name="Terreno9" parent="Plataformas" instance=ExtResource("11_c5p8b")]
+z_index = -1
+position = Vector2(1024, 280)
+
+[node name="Terreno10" parent="Plataformas" instance=ExtResource("11_c5p8b")]
+z_index = -1
+position = Vector2(1152, 344)
+
+[node name="Terreno17" parent="Plataformas" instance=ExtResource("11_c5p8b")]
+z_index = -1
+position = Vector2(1024, 408)
+
+[node name="Terreno26" parent="Plataformas" instance=ExtResource("11_c5p8b")]
+z_index = -1
+position = Vector2(1152, 472)
+
+[node name="Terreno27" parent="Plataformas" instance=ExtResource("11_c5p8b")]
+position = Vector2(1024, 536)
+
 [node name="Trampas" type="Node2D" parent="."]
 
 [node name="Pinchos" parent="Trampas" instance=ExtResource("13_57y7q")]
@@ -711,34 +744,34 @@ position = Vector2(768, 912)
 [node name="Enemigo_Lunechon2" parent="Enemigos" instance=ExtResource("16_avgbu")]
 position = Vector2(752, 1488)
 
-[node name="GestionMapa" type="Node2D" parent="."]
+[node name="GestionMapaSala2" type="Node2D" parent="."]
 position = Vector2(1536, 1088)
 script = ExtResource("16_y2pqh")
 
-[node name="InicioSuperiorSala" type="Marker2D" parent="GestionMapa"]
+[node name="InicioSuperiorSala" type="Marker2D" parent="GestionMapaSala2"]
 position = Vector2(-1536, -1088)
 
-[node name="InicioInferiorSala" type="Marker2D" parent="GestionMapa"]
+[node name="InicioInferiorSala" type="Marker2D" parent="GestionMapaSala2"]
 position = Vector2(-1536, 704)
 
-[node name="FinSuperiorSala" type="Marker2D" parent="GestionMapa"]
-position = Vector2(512, -1088)
+[node name="FinSuperiorSala" type="Marker2D" parent="GestionMapaSala2"]
+position = Vector2(640, -1088)
 
-[node name="FinInferiorSala" type="Marker2D" parent="GestionMapa"]
-position = Vector2(512, 704)
+[node name="FinInferiorSala" type="Marker2D" parent="GestionMapaSala2"]
+position = Vector2(640, 704)
 
-[node name="Area2D" type="Area2D" parent="GestionMapa"]
+[node name="AreaSalidaDerecha" type="Area2D" parent="GestionMapaSala2"]
 collision_mask = 2147483648
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/Area2D"]
-position = Vector2(-65.25, -320)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapaSala2/AreaSalidaDerecha"]
+position = Vector2(-448.875, 436)
 shape = SubResource("RectangleShape2D_y2pqh")
 
-[node name="AreaSalidaIzquierda" type="Area2D" parent="GestionMapa"]
+[node name="AreaSalidaIzquierda" type="Area2D" parent="GestionMapaSala2"]
 position = Vector2(-1216, 160)
 collision_mask = 2147483648
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapa/AreaSalidaIzquierda"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GestionMapaSala2/AreaSalidaIzquierda"]
 position = Vector2(0, -481.5)
 shape = SubResource("RectangleShape2D_splta")
 
@@ -746,5 +779,5 @@ shape = SubResource("RectangleShape2D_splta")
 position = Vector2(1096, 1512)
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
-[connection signal="body_entered" from="GestionMapa/Area2D" to="GestionMapa" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="GestionMapa/AreaSalidaIzquierda" to="GestionMapa" method="_on_area_salida_izquierda_body_entered"]
+[connection signal="body_entered" from="GestionMapaSala2/AreaSalidaDerecha" to="GestionMapaSala2" method="_on_area_salida_derecha_body_entered"]
+[connection signal="body_entered" from="GestionMapaSala2/AreaSalidaIzquierda" to="GestionMapaSala2" method="_on_area_salida_izquierda_body_entered"]

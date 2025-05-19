@@ -14,10 +14,10 @@ var ANIM_SPEED = 8.0
 const GAP = 4
 const SQUARE_SIZE = TILE_SIZE - GAP
 
-#func _ready():
-	#self.clip_contents = true
-	#MinimapManager.set_minimap_node(self)
-	## El centrado se hace después de recibir los datos
+func _ready():
+	self.clip_contents = true
+	MinimapManager.set_minimap_node(self)
+	# El centrado se hace después de recibir los datos
 
 func centrar_y_redibujar_minimapa():
 	target_offset = calcular_offset_centrado()
@@ -138,41 +138,41 @@ func set_sala_actual(id_sala):
 
 
 
-# Posición del cursor de depuración (no afecta al mapa real)
-var debug_pos = Vector2(0, 0)
-
-#region Depuración minimapa
-func _ready():
-	self.clip_contents = true
-	# Crea la primera sala al iniciar para test
-	var sala_id = "debug_%d_%d" % [debug_pos.x, debug_pos.y]
-	mapa_salas[sala_id] = debug_pos
-	salas_visitadas[sala_id] = true
-	sala_actual = sala_id
-	target_offset = calcular_offset_centrado()
-	current_offset = target_offset
-	queue_redraw()
-
-func _unhandled_input(event):
-	# Permite moverse por el minimapa en modo test usando WASD o flechas
-	if event is InputEventKey and event.pressed:
-		var dir = Vector2.ZERO
-		if event.keycode == KEY_RIGHT or event.keycode == KEY_D:
-			dir = Vector2(1, 0)
-		elif event.keycode == KEY_LEFT or event.keycode == KEY_A:
-			dir = Vector2(-1, 0)
-		elif event.keycode == KEY_UP or event.keycode == KEY_W:
-			dir = Vector2(0, -1)
-		elif event.keycode == KEY_DOWN or event.keycode == KEY_S:
-			dir = Vector2(0, 1)
-
-		if dir != Vector2.ZERO:
-			debug_pos += dir
-			var sala_id = "debug_%d_%d" % [debug_pos.x, debug_pos.y]
-			if not mapa_salas.has(sala_id):
-				mapa_salas[sala_id] = debug_pos
-			salas_visitadas[sala_id] = true
-			sala_actual = sala_id
-			target_offset = calcular_offset_centrado()
-			queue_redraw()
-#endregion
+## Posición del cursor de depuración (no afecta al mapa real)
+#var debug_pos = Vector2(0, 0)
+#
+##region Depuración minimapa
+#func _ready():
+	#self.clip_contents = true
+	## Crea la primera sala al iniciar para test
+	#var sala_id = "debug_%d_%d" % [debug_pos.x, debug_pos.y]
+	#mapa_salas[sala_id] = debug_pos
+	#salas_visitadas[sala_id] = true
+	#sala_actual = sala_id
+	#target_offset = calcular_offset_centrado()
+	#current_offset = target_offset
+	#queue_redraw()
+#
+#func _unhandled_input(event):
+	## Permite moverse por el minimapa en modo test usando WASD o flechas
+	#if event is InputEventKey and event.pressed:
+		#var dir = Vector2.ZERO
+		#if event.keycode == KEY_RIGHT or event.keycode == KEY_D:
+			#dir = Vector2(1, 0)
+		#elif event.keycode == KEY_LEFT or event.keycode == KEY_A:
+			#dir = Vector2(-1, 0)
+		#elif event.keycode == KEY_UP or event.keycode == KEY_W:
+			#dir = Vector2(0, -1)
+		#elif event.keycode == KEY_DOWN or event.keycode == KEY_S:
+			#dir = Vector2(0, 1)
+#
+		#if dir != Vector2.ZERO:
+			#debug_pos += dir
+			#var sala_id = "debug_%d_%d" % [debug_pos.x, debug_pos.y]
+			#if not mapa_salas.has(sala_id):
+				#mapa_salas[sala_id] = debug_pos
+			#salas_visitadas[sala_id] = true
+			#sala_actual = sala_id
+			#target_offset = calcular_offset_centrado()
+			#queue_redraw()
+##endregion

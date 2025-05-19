@@ -1,9 +1,11 @@
-class_name Sala2 extends Sala
+class_name Sala3 extends Sala
+
+var namesala = "sala_1_1"
 
 func _ready() -> void:
-	ancho = $GestionMapa/FinSuperiorSala.position.x - $GestionMapa/InicioSuperiorSala.position.x
-	alto = $GestionMapa/FinSuperiorSala.position.y - $GestionMapa/FinInferiorSala.position.y
+	ancho = $GestionMapaSala3/FinSuperiorSala.position.x - $GestionMapaSala3/InicioSuperiorSala.position.x
+	alto = $GestionMapaSala3/FinSuperiorSala.position.y - $GestionMapaSala3/FinInferiorSala.position.y
 
 func calcular_dimensiones():
-	ancho = $GestionMapa/FinSuperiorSala.position.x - $GestionMapa/InicioSuperiorSala.position.x
-	alto = $GestionMapa/FinSuperiorSala.position.y - $GestionMapa/FinInferiorSala.position.y
+	ancho = $GestionMapaSala3/FinSuperiorSala.position.x - $GestionMapaSala3/InicioSuperiorSala.position.x
+	alto = $GestionMapaSala3/FinSuperiorSala.position.y - $GestionMapaSala3/FinInferiorSala.position.y

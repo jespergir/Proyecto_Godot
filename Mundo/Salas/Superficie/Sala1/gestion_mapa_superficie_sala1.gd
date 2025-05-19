@@ -17,4 +17,4 @@ func _on_area_salida_derecha_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Protagonista") and loaded_salida_derecha:
 		return  # Evita cargar dos veces
 	#loaded_salida_derecha = true
-	WorldManager.load_room(next_room, get_parent().global_position, get_parent().ancho, WorldManager.posiciones.Derecha)
+	WorldManager.load_room(next_room, get_parent().global_position, get_parent().ancho, get_parent().alto, WorldManager.posiciones.Derecha)
