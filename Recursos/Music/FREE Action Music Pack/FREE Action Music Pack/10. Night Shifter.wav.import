@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://21tuwt532yhe"
+path="res://.godot/imported/10. Night Shifter.wav-07f1e76ba2778fa3e7b5e49160b860db.sample"
+
+[deps]
+
+source_file="res://Recursos/Music/FREE Action Music Pack/FREE Action Music Pack/10. Night Shifter.wav"
+dest_files=["res://.godot/imported/10. Night Shifter.wav-07f1e76ba2778fa3e7b5e49160b860db.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

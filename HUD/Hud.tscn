@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ck8m140spwlwg" path="res://Recursos/Recogibles/cristal.png" id="4_5mmha"]
 [ext_resource type="FontFile" uid="uid://o3f8482haccu" path="res://Recursos/Fuentes/m6x11plus.ttf" id="4_yyvmb"]
 [ext_resource type="Script" uid="uid://4am50ngwhm1u" path="res://HUD/control.gd" id="6_hx80y"]
-[ext_resource type="Texture2D" uid="uid://dw8lfakop2i76" path="res://Recursos/Pxiel Art UI borders.png" id="7_g1itk"]
+[ext_resource type="Texture2D" uid="uid://dw8lfakop2i76" path="res://Recursos/Minimapa/Pxiel Art UI borders.png" id="7_g1itk"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_5mmha")

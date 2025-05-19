@@ -1,9 +1,8 @@
-[gd_scene load_steps=69 format=3 uid="uid://cvfyeuxnfuuip"]
+[gd_scene load_steps=68 format=3 uid="uid://cvfyeuxnfuuip"]
 
-[ext_resource type="Script" uid="uid://dm8nnohx7d5bb" path="res://Enemigos/Enemigo_Lunechon/enemigo_lunechon.gd" id="1_ef2e8"]
-[ext_resource type="Texture2D" uid="uid://cm01rhw7w2lk3" path="res://Recursos/Boss attack sin fondo.png" id="2_0hccb"]
+[ext_resource type="Texture2D" uid="uid://cm01rhw7w2lk3" path="res://Recursos/Enemigos/Peeposs/Boss attack sin fondo.png" id="2_0hccb"]
 [ext_resource type="Texture2D" uid="uid://jgf1kgbvtcd6" path="res://Recursos/Particulas/25.png" id="2_3axb1"]
-[ext_resource type="Texture2D" uid="uid://15xgucea78s1" path="res://Recursos/Boss idle sin fondo.png" id="3_6e2et"]
+[ext_resource type="Texture2D" uid="uid://15xgucea78s1" path="res://Recursos/Enemigos/Peeposs/Boss idle sin fondo.png" id="3_6e2et"]
 [ext_resource type="Texture2D" uid="uid://l0ngbicrgtq0" path="res://Recursos/Particulas/03.png" id="5_hkhp8"]
 [ext_resource type="PackedScene" uid="uid://d3fxokq75pqtm" path="res://Protagonista/Control_Protagonista/state_machine.tscn" id="5_yotae"]
 [ext_resource type="Texture2D" uid="uid://dd7w2eutscvs1" path="res://Recursos/Particulas/24.png" id="6_wix5a"]
@@ -440,7 +439,6 @@ _data = {
 
 [node name="Enemigo_Peeposs" type="CharacterBody2D" groups=["Enemigo"]]
 collision_mask = 2147483649
-script = ExtResource("1_ef2e8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
@@ -461,8 +459,7 @@ position = Vector2(0, 24)
 position = Vector2(-2.27374e-13, 1)
 sprite_frames = SubResource("SpriteFrames_76546")
 animation = &"Attack"
-frame = 9
-frame_progress = 1.0
+autoplay = "Idle"
 
 [node name="AnimatedSpriteCristal" type="AnimatedSprite2D" parent="Animations"]
 position = Vector2(0.000336409, -34)
@@ -488,8 +485,8 @@ target_position = Vector2(0, 39.5)
 position = Vector2(0, 22)
 target_position = Vector2(20.5, 0)
 
-[node name="State_Machine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("5_yotae")]
-default_state = NodePath("Idle")
+[node name="State_Machine" parent="." instance=ExtResource("5_yotae")]
+script = null
 
 [node name="EnemigoLunechonBaseState" type="Node" parent="State_Machine"]
 

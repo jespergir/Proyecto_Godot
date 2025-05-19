@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://fgvd2m3q6pnw"]
+[gd_scene load_steps=9 format=3 uid="uid://fgvd2m3q6pnw"]
 
 [ext_resource type="Script" uid="uid://hfbpay2j30yq" path="res://Mundo/world.gd" id="1_vhnil"]
 [ext_resource type="PackedScene" uid="uid://bov0gtekoq78m" path="res://HUD/Hud.tscn" id="2_6v8sh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c8mmgp3r8skl7" path="res://Protagonista/protagonista.tscn" id="5_bj7x8"]
 [ext_resource type="PackedScene" uid="uid://c4gh4kse8ybqh" path="res://Interfaces/PauseMenu/Pause_Menu.tscn" id="6_efva4"]
 [ext_resource type="PackedScene" uid="uid://b3rfnibvkw6j1" path="res://Interfaces/LoadScreen/pantalla_carga.tscn" id="8_4ukyl"]
+[ext_resource type="Script" uid="uid://dgjqkv4tn2ph" path="res://Mundo/audio_stream_player.gd" id="8_tg74d"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_vhnil")
@@ -32,4 +33,8 @@ one_shot = true
 [node name="Protagonista" parent="." instance=ExtResource("5_bj7x8")]
 position = Vector2(480, 640)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("8_tg74d")
+
 [connection signal="timeout" from="Cargando" to="." method="_on_cargando_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

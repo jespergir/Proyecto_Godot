@@ -3,6 +3,7 @@ extends Node
 signal protagonista_ready
 signal world_ready
 signal hud_ready
+signal audio_ready
 
 signal juego_pausado
 signal juego_reanudado
@@ -25,6 +26,13 @@ var hud:
 		emit_signal("hud_ready")
 	get:
 		return hud
+
+var audio :AudioStreamPlayer:
+	set(value):
+		audio = value
+		emit_signal("audio_ready")
+	get:
+		return audio
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

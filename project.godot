@@ -20,6 +20,7 @@ WorldManager="*res://Autoloads/world_manager.gd"
 SaveManager="*res://Autoloads/save_manager.gd"
 GameState="*res://Autoloads/game_state.gd"
 MinimapManager="*res://Autoloads/minimap_manager.gd"
+AudioManager="*res://Autoloads/audio_manager.gd"
 
 [display]
 

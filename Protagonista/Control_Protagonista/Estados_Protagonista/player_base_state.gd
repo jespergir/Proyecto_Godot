@@ -30,6 +30,7 @@ func _on_area_damage_body_entered(body: Node2D) -> void:
 #region Daño Enemigo
 	if not protagonista.invulnerable and body.is_in_group("Enemigo"):
 		protagonista.receive_damage(body.global_position, body.DAMAGE)
+		protagonista.damaged_by_enemy = true
 		protagonista.invulnerable = true
 #endregion
 #region Daño Terreno

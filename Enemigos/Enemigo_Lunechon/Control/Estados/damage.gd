@@ -1,5 +1,4 @@
 class_name EnemigoLunechonDamage extends EnemigoLunechonBaseState
-
 var deathstarted = false
 var deathfinished = false
 
@@ -7,10 +6,7 @@ func start(): #Al comienzo, inicia el contador del empujón de retroceso (knockb
 	enemigo.knockback_timer = enemigo.KNOCKBACK_TIME #Inicia el contador de tiempo de retoceso
 	enemigo.animated_sprite1.modulate = Color(0.8,0,0,1) #Les aplica a los sprites color rojo para reflejar el daño
 	enemigo.animated_sprite2.modulate = Color(0.8,0,0,1)
-	if enemigo.direction < enemigo.knockback_direction:
-		enemigo.velocity.x = enemigo.knockback_direction * (enemigo.SPEED/2) #Le aplica al enemigo empuje hacia atrás
-	else:
-		enemigo.velocity.x += enemigo.knockback_direction * (enemigo.SPEED/2) #Le aplica al enemigo empuje hacia atrás 
+	enemigo.velocity.x = enemigo.knockback_direction * (enemigo.SPEED/2) #Le aplica al enemigo empuje hacia atrás 
 		
 func on_physics_process(delta: float) -> void:
 	

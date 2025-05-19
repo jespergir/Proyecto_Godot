@@ -1,7 +1,7 @@
 extends Control
 
-var sala_sprite := preload("res://Recursos/sala_peq.png")
-var sala_actual_sprite := preload("res://Recursos/sala_actual_peq.png")
+var sala_sprite := preload("res://Recursos/Minimapa/sala.png")
+var sala_actual_sprite := preload("res://Recursos/Minimapa/sala_actual.png")
 
 var salas_visitadas: Dictionary = {}
 var sala_actual: String = ""

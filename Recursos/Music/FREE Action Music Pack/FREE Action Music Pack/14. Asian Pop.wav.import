@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dprk2u13n4nbr"
+path="res://.godot/imported/14. Asian Pop.wav-0760bdf39430601a9cd5d188e3c2b18c.sample"
+
+[deps]
+
+source_file="res://Recursos/Music/FREE Action Music Pack/FREE Action Music Pack/14. Asian Pop.wav"
+dest_files=["res://.godot/imported/14. Asian Pop.wav-0760bdf39430601a9cd5d188e3c2b18c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

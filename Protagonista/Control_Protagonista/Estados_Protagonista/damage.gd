@@ -12,6 +12,7 @@ func start():
 	if protagonista.damaged_by_enemy:
 		protagonista.velocity.x = protagonista.knockback_direction * (protagonista.SPEED)
 		protagonista.velocity.y = protagonista.SPEED * -1
+		protagonista.damaged_by_enemy = false
 
 func on_physics_process(delta: float) -> void:
 	if protagonista.knockback_timer <=0 and damage_animation_finished:

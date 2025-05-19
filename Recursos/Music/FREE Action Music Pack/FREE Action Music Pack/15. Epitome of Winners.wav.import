@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3jri0e7f381e"
+path="res://.godot/imported/15. Epitome of Winners.wav-0fa9eead761cbf97f1b9df2efcf2f8df.sample"
+
+[deps]
+
+source_file="res://Recursos/Music/FREE Action Music Pack/FREE Action Music Pack/15. Epitome of Winners.wav"
+dest_files=["res://.godot/imported/15. Epitome of Winners.wav-0fa9eead761cbf97f1b9df2efcf2f8df.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

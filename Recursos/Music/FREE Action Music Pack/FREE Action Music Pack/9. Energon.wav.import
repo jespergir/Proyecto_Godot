@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8iqogxsja2qu"
+path="res://.godot/imported/9. Energon.wav-af51a3608dffa9109d46a3807ec58cbc.sample"
+
+[deps]
+
+source_file="res://Recursos/Music/FREE Action Music Pack/FREE Action Music Pack/9. Energon.wav"
+dest_files=["res://.godot/imported/9. Energon.wav-af51a3608dffa9109d46a3807ec58cbc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
