@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfkmlw605cunj"]
+[gd_scene load_steps=7 format=3 uid="uid://dfkmlw605cunj"]
 
 [ext_resource type="FontFile" uid="uid://o3f8482haccu" path="res://Recursos/Fuentes/m6x11plus.ttf" id="1_6lir0"]
 [ext_resource type="Script" uid="uid://d0dgwkajafe6m" path="res://Interfaces/StartScreen/start_screen.gd" id="1_b61oc"]
+[ext_resource type="AudioStream" uid="uid://yqix4mtdud4k" path="res://Recursos/Music/SonidosInterfaz/Modern5.mp3" id="2_4i1h3"]
 [ext_resource type="Texture2D" uid="uid://cwx7yrceg5ixg" path="res://Recursos/Pantalla_Inicio.png" id="2_y5p2p"]
+[ext_resource type="AudioStream" uid="uid://bbmfeflgodsce" path="res://Recursos/Music/SonidosInterfaz/Modern8.mp3" id="3_37hbu"]
 [ext_resource type="AudioStream" uid="uid://dprk2u13n4nbr" path="res://Recursos/Music/FREE Action Music Pack/FREE Action Music Pack/14. Asian Pop.wav" id="4_xyg7q"]
 
 [node name="Start_Screen" type="CanvasLayer"]
 script = ExtResource("1_b61oc")
+
+[node name="AudioStreamPlayerFocus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4i1h3")
+
+[node name="AudioStreamPlayerDown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_37hbu")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -58,5 +66,8 @@ volume_db = -8.0
 autoplay = true
 
 [connection signal="button_down" from="Control/VBoxContainer/BotonComenzar" to="." method="_on_boton_comenzar_button_down"]
+[connection signal="focus_entered" from="Control/VBoxContainer/BotonComenzar" to="." method="_on_focus_entered"]
 [connection signal="button_down" from="Control/VBoxContainer/BotonCargar" to="." method="_on_boton_cargar_button_down"]
+[connection signal="focus_entered" from="Control/VBoxContainer/BotonCargar" to="." method="_on_focus_entered"]
 [connection signal="button_down" from="Control/VBoxContainer/BotonSalir" to="." method="_on_boton_salir_button_down"]
+[connection signal="focus_entered" from="Control/VBoxContainer/BotonSalir" to="." method="_on_focus_entered"]

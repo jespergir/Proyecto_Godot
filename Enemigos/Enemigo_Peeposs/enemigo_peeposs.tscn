@@ -1,17 +1,24 @@
-[gd_scene load_steps=68 format=3 uid="uid://cvfyeuxnfuuip"]
+[gd_scene load_steps=73 format=3 uid="uid://cvfyeuxnfuuip"]
 
+[ext_resource type="Script" uid="uid://d0x8jjo2r8imf" path="res://Enemigos/Enemigo_Peeposs/enemigo_peeposs.gd" id="1_6e2et"]
 [ext_resource type="Texture2D" uid="uid://cm01rhw7w2lk3" path="res://Recursos/Enemigos/Peeposs/Boss attack sin fondo.png" id="2_0hccb"]
 [ext_resource type="Texture2D" uid="uid://jgf1kgbvtcd6" path="res://Recursos/Particulas/25.png" id="2_3axb1"]
 [ext_resource type="Texture2D" uid="uid://15xgucea78s1" path="res://Recursos/Enemigos/Peeposs/Boss idle sin fondo.png" id="3_6e2et"]
 [ext_resource type="Texture2D" uid="uid://l0ngbicrgtq0" path="res://Recursos/Particulas/03.png" id="5_hkhp8"]
 [ext_resource type="PackedScene" uid="uid://d3fxokq75pqtm" path="res://Protagonista/Control_Protagonista/state_machine.tscn" id="5_yotae"]
 [ext_resource type="Texture2D" uid="uid://dd7w2eutscvs1" path="res://Recursos/Particulas/24.png" id="6_wix5a"]
+[ext_resource type="Script" uid="uid://c384vg31h38rx" path="res://Enemigos/Enemigo_Peeposs/Control/enemigo_peeposs_base_state.gd" id="7_got46"]
+[ext_resource type="Script" uid="uid://bpjleh0c0lc3k" path="res://Enemigos/Enemigo_Peeposs/Control/Estados/idle.gd" id="8_r5q3f"]
+[ext_resource type="Script" uid="uid://n7uh7ogn8atp" path="res://Enemigos/Enemigo_Peeposs/Control/Estados/move.gd" id="10_54hfu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54hfu"]
 size = Vector2(36, 58)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6e2et"]
 size = Vector2(40, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5q3f"]
+size = Vector2(174, 550)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ih65w"]
 atlas = ExtResource("2_0hccb")
@@ -439,16 +446,24 @@ _data = {
 
 [node name="Enemigo_Peeposs" type="CharacterBody2D" groups=["Enemigo"]]
 collision_mask = 2147483649
+script = ExtResource("1_6e2et")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_54hfu")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="AreaDamage" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDamage"]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_6e2et")
+
+[node name="AreaStart" type="Area2D" parent="."]
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaStart"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_r5q3f")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 24)
@@ -475,23 +490,21 @@ libraries = {
 &"": SubResource("AnimationLibrary_6mkkk")
 }
 
-[node name="NodeRayCastEntorno" type="Node2D" parent="."]
+[node name="State_Machine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("5_yotae")]
+default_state = NodePath("Idle")
 
-[node name="RayCastSuelo" type="RayCast2D" parent="NodeRayCastEntorno"]
-position = Vector2(14, 13)
-target_position = Vector2(0, 39.5)
-
-[node name="RayCastPared" type="RayCast2D" parent="NodeRayCastEntorno"]
-position = Vector2(0, 22)
-target_position = Vector2(20.5, 0)
-
-[node name="State_Machine" parent="." instance=ExtResource("5_yotae")]
-script = null
-
-[node name="EnemigoLunechonBaseState" type="Node" parent="State_Machine"]
+[node name="EnemigoPeepossBaseState" type="Node" parent="State_Machine"]
+script = ExtResource("7_got46")
 
 [node name="Idle" type="Node" parent="State_Machine"]
+script = ExtResource("8_r5q3f")
 
-[node name="Walk" type="Node" parent="State_Machine"]
+[node name="Move" type="Node" parent="State_Machine"]
+script = ExtResource("10_54hfu")
+
+[node name="Attack" type="Node" parent="State_Machine"]
 
 [node name="Damage" type="Node" parent="State_Machine"]
+
+[connection signal="area_entered" from="AreaDamage" to="State_Machine/EnemigoPeepossBaseState" method="_on_area_damage_area_entered"]
+[connection signal="body_entered" from="AreaStart" to="State_Machine/Idle" method="_on_area_start_body_entered"]

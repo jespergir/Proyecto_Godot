@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4gh4kse8ybqh"]
+[gd_scene load_steps=5 format=3 uid="uid://c4gh4kse8ybqh"]
 
 [ext_resource type="Script" uid="uid://bdl052yn6vcmb" path="res://Interfaces/PauseMenu/pause_menu.gd" id="1_5tdet"]
 [ext_resource type="FontFile" uid="uid://o3f8482haccu" path="res://Recursos/Fuentes/m6x11plus.ttf" id="1_wsjsg"]
+[ext_resource type="AudioStream" uid="uid://yqix4mtdud4k" path="res://Recursos/Music/SonidosInterfaz/Modern5.mp3" id="3_pmoff"]
+[ext_resource type="AudioStream" uid="uid://bbmfeflgodsce" path="res://Recursos/Music/SonidosInterfaz/Modern8.mp3" id="4_xfw67"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 script = ExtResource("1_5tdet")
@@ -49,7 +51,16 @@ text = "Salir del juego"
 wait_time = 0.1
 one_shot = true
 
+[node name="AudioStreamPlayerFocus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pmoff")
+
+[node name="AudioStreamPlayerDown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xfw67")
+
 [connection signal="button_down" from="Control/VBoxContainer/BotonReanudar" to="." method="_on_boton_reanudar_button_down"]
+[connection signal="focus_entered" from="Control/VBoxContainer/BotonReanudar" to="." method="_on_focus_entered"]
 [connection signal="button_down" from="Control/VBoxContainer/BotonCargar" to="." method="_on_boton_cargar_button_down"]
+[connection signal="focus_entered" from="Control/VBoxContainer/BotonCargar" to="." method="_on_focus_entered"]
 [connection signal="button_down" from="Control/VBoxContainer/BotonSalir" to="." method="_on_boton_salir_button_down"]
+[connection signal="focus_entered" from="Control/VBoxContainer/BotonSalir" to="." method="_on_focus_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
