@@ -12,9 +12,11 @@ script = ExtResource("1_b61oc")
 
 [node name="AudioStreamPlayerFocus" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_4i1h3")
+volume_db = 10.0
 
 [node name="AudioStreamPlayerDown" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_37hbu")
+volume_db = 10.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

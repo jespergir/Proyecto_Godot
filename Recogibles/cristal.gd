@@ -11,7 +11,6 @@ func _on_area2d_body_entered(body: Node2D) -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "Disapear":
-		await audio.finished
 		call_deferred("queue_free") #Hacer desaparecer el item tras cogerlo.
 
 

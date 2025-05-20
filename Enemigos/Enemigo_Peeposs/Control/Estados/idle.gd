@@ -12,3 +12,4 @@ func physics_process(delta):
 func _on_area_start_body_entered(body: Node2D) -> void:
 	if body.name == "Protagonista":
 		state_machine.change_to("Move") # Pasamos al siguiente estado: movimiento
+		enemigo.area_start_collision.disabled = true

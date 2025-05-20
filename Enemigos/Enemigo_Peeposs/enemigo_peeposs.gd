@@ -8,6 +8,7 @@ var cristal : PackedScene = load("res://Recogibles/Cristal.tscn")
 @onready var animated_sprite_boss : Node2D = $Animations/AnimatedSpriteBoss
 @onready var animated_sprite_cristal : Node2D = $Animations/AnimatedSpriteCristal
 @onready var animation_player : AnimationPlayer = $Animations/AnimationPlayer
+@onready var area_start_collision = $AreaStart/CollisionShape2D
 @onready var protagonista = GameState.protagonista
 
 const SPEED = 150.0 #Velocidad del personaje

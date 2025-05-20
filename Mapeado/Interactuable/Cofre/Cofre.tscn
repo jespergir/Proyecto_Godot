@@ -184,7 +184,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a35bb")
 }],
-"loop": false,
+"loop": true,
 "name": &"BlackIdle",
 "speed": 5.0
 }, {
@@ -330,7 +330,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xghwu"]
-size = Vector2(68.6667, 70)
+size = Vector2(94.6667, 36.6667)
 
 [node name="Cofre" type="StaticBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -344,12 +344,14 @@ shape = SubResource("RectangleShape2D_f56s5")
 sprite_frames = SubResource("SpriteFrames_lufl4")
 animation = &"BlackIdle"
 autoplay = "BlackIdle"
+frame = 4
+frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2147483648
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-9, -19)
+position = Vector2(-22, -2.33333)
 shape = SubResource("RectangleShape2D_xghwu")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

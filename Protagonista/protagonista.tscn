@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c8mmgp3r8skl7"]
+[gd_scene load_steps=58 format=3 uid="uid://c8mmgp3r8skl7"]
 
 [ext_resource type="Script" uid="uid://c1lxgi5xqgdt6" path="res://Protagonista/protagonista.gd" id="1_0nl2c"]
 [ext_resource type="Texture2D" uid="uid://b5boduif34ogy" path="res://Recursos/Protagonista/Walking_KG_2.png" id="2_31hdc"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://ul7av5u4mnvo" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/land.gd" id="14_y74jy"]
 [ext_resource type="Script" uid="uid://d3woqmec1e275" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/attack1.gd" id="15_31hdc"]
 [ext_resource type="Script" uid="uid://cd3figtt8u61j" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/damage.gd" id="16_wwtkg"]
+[ext_resource type="AudioStream" uid="uid://cw00m81koji1s" path="res://Recursos/Music/WHOOSH_ARM_SWING_01.wav" id="18_4jmt6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xftmy"]
 atlas = ExtResource("2_ytoek")
@@ -389,6 +390,9 @@ script = ExtResource("15_31hdc")
 
 [node name="Damage" type="Node" parent="State_Machine"]
 script = ExtResource("16_wwtkg")
+
+[node name="AudioAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_4jmt6")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Land" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Attack1" method="_on_animated_sprite_2d_animation_finished"]

@@ -2,6 +2,10 @@ class_name Attack1 extends PlayerBaseState
 
 var attack_animation_finished=false
 
+func start():
+	if not protagonista.audio_attack.playing:
+		protagonista.audio_attack.play()
+
 func on_physics_process(delta: float) -> void:
 	
 	protagonista.animated_sprite.play("Attack1")

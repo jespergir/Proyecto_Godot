@@ -53,9 +53,11 @@ one_shot = true
 
 [node name="AudioStreamPlayerFocus" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_pmoff")
+volume_db = 10.0
 
 [node name="AudioStreamPlayerDown" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_xfw67")
+volume_db = 10.0
 
 [connection signal="button_down" from="Control/VBoxContainer/BotonReanudar" to="." method="_on_boton_reanudar_button_down"]
 [connection signal="focus_entered" from="Control/VBoxContainer/BotonReanudar" to="." method="_on_focus_entered"]

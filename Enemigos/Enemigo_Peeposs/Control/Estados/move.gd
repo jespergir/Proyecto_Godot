@@ -35,16 +35,16 @@ func on_physics_process(delta: float) -> void:
 	)
 	enemigo.global_position = center_position + offset
 
-	# Temporizador para lanzar ataque
-	attack_timer += delta
-	if attack_timer >= attack_interval:
-		state_machine.change_to("Attack")
-		return
-
-	# Daño
-	if enemigo.damage_just_received:
-		state_machine.change_to("Damage")
-		return
+	## Temporizador para lanzar ataque
+	#attack_timer += delta
+	#if attack_timer >= attack_interval:
+		#state_machine.change_to("Attack")
+		#return
+#
+	## Daño
+	#if enemigo.damage_just_received:
+		#state_machine.change_to("Damage")
+		#return
 		
 	handle_states(delta)
 	enemigo.move_and_slide()

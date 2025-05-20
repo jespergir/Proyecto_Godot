@@ -3,7 +3,7 @@ extends AudioStreamPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameState.audio = self
-	volume_db = -12
+	volume_db = -18
 	stream = AudioManager.musicainicio
 
 func _on_finished() -> void:

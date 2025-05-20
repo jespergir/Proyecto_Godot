@@ -1,19 +1,157 @@
-[gd_scene load_steps=5 format=3 uid="uid://udytjj3enka4"]
+[gd_scene load_steps=24 format=3 uid="uid://udytjj3enka4"]
 
 [ext_resource type="Script" uid="uid://cvvy8al1fwm84" path="res://Mapeado/Interactuable/Punto_De_Guardado/punto_de_guardado.gd" id="1_88fq6"]
 [ext_resource type="Texture2D" uid="uid://iypwhqb3txo0" path="res://Recursos/Tiles/Props-01.png" id="2_5d7qf"]
+[ext_resource type="FontFile" uid="uid://o3f8482haccu" path="res://Recursos/Fuentes/m6x11plus.ttf" id="2_88fq6"]
+[ext_resource type="Texture2D" uid="uid://cxl0niic2rmri" path="res://Recursos/Particulas/06.png" id="3_5d7qf"]
+[ext_resource type="AudioStream" uid="uid://c4qo7cm563fki" path="res://Recursos/Music/SonidosInterfaz/Modern9.mp3" id="5_5d7qf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghhbl"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gccik"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1moee"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yop3b"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4m77"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0jvk"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0ywu"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe2ul"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(448, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2djxu"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(512, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hovnj"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(576, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37lnl"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(640, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fnth"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(704, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e8m1"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(768, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yogre"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(832, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dt3y"]
+atlas = ExtResource("3_5d7qf")
+region = Rect2(896, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dc54"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghhbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gccik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1moee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yop3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4m77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0jvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0ywu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe2ul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2djxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hovnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37lnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fnth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e8m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yogre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dt3y")
+}],
+"loop": false,
+"name": &"guardar",
+"speed": 15.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1moee"]
 size = Vector2(32, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yop3b"]
-size = Vector2(144, 56)
+size = Vector2(32, 48)
 
 [node name="PuntoDeGuardado" type="StaticBody2D"]
 z_index = -1
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_88fq6")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -60.0
+offset_top = -124.0
+offset_right = 71.0
+offset_bottom = -101.0
+theme_override_colors/font_color = Color(7.07522e-06, 0.92749, 0.0673877, 0.623529)
+theme_override_fonts/font = ExtResource("2_88fq6")
+theme_override_font_sizes/font_size = 21
+text = "¡Partida Guardada!"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -112)
+scale = Vector2(3.5, 1)
+sprite_frames = SubResource("SpriteFrames_2dc54")
+animation = &"guardar"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1moee")
@@ -27,7 +165,12 @@ region_rect = Rect2(0, 33, 32, 48)
 collision_mask = 2147483648
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_yop3b")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5d7qf")
+volume_db = 10.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
