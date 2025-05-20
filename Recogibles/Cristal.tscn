@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://1kl65tpgodcv"]
+[gd_scene load_steps=25 format=3 uid="uid://1kl65tpgodcv"]
 
 [ext_resource type="Texture2D" uid="uid://ck8m140spwlwg" path="res://Recursos/Recogibles/cristal.png" id="1_fjoja"]
 [ext_resource type="Script" uid="uid://dqw84b0fxqoge" path="res://Recogibles/cristal.gd" id="1_i6nsg"]
 [ext_resource type="Texture2D" uid="uid://cxtqg0o7cjdtp" path="res://Recursos/Particulas/26.png" id="3_a506b"]
+[ext_resource type="AudioStream" uid="uid://bjhntxphimmy1" path="res://Recursos/Music/SonidosInterfaz/Modern12.mp3" id="4_air0g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6nsg"]
 radius = 6.0
@@ -210,6 +211,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_mk37k")
 }
 autoplay = "levitate"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_air0g")
+volume_db = 10.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area2d_body_entered"]
