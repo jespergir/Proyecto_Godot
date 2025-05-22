@@ -10,6 +10,10 @@ var cristal : PackedScene = load("res://Recogibles/Cristal.tscn")
 @onready var animation_player : AnimationPlayer = $Animations/AnimationPlayer
 @onready var area_start_collision = $AreaStart/CollisionShape2D
 @onready var protagonista = GameState.protagonista
+@onready var top = $"../MarkerTop"
+@onready var bot = $"../MarkerBot"
+@onready var left = $"../MarkerLeft"
+@onready var right = $"../MarkerRight"
 
 const SPEED = 150.0 #Velocidad del personaje
 const DAMAGE = 40
