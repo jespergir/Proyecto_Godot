@@ -51,8 +51,8 @@ func actualizar_monedas():
 func actualizar_vida():
 	emit_signal("health_changed")
 
-func receive_damage(attacker_position, damage):
-	protagonista.health-=damage
+func receive_damage(attacker_position, received_damage):
+	protagonista.health-=received_damage
 	emit_signal("health_changed")
 	
 	if protagonista.knockback_timer <=0:

@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://o3f8482haccu" path="res://Recursos/Fuentes/m6x11plus.ttf" id="1_6lir0"]
 [ext_resource type="Script" uid="uid://d0dgwkajafe6m" path="res://Interfaces/StartScreen/start_screen.gd" id="1_b61oc"]
 [ext_resource type="AudioStream" uid="uid://yqix4mtdud4k" path="res://Recursos/Music/SonidosInterfaz/Modern5.mp3" id="2_4i1h3"]
-[ext_resource type="Texture2D" uid="uid://cwx7yrceg5ixg" path="res://Recursos/Pantalla_Inicio.png" id="2_y5p2p"]
+[ext_resource type="Texture2D" uid="uid://cwx7yrceg5ixg" path="res://Recursos/Otros/Pantalla_Inicio.png" id="2_y5p2p"]
 [ext_resource type="AudioStream" uid="uid://bbmfeflgodsce" path="res://Recursos/Music/SonidosInterfaz/Modern8.mp3" id="3_37hbu"]
 [ext_resource type="AudioStream" uid="uid://dprk2u13n4nbr" path="res://Recursos/Music/FREE Action Music Pack/FREE Action Music Pack/14. Asian Pop.wav" id="4_xyg7q"]
 
@@ -66,6 +66,10 @@ text = "Salir del juego"
 stream = ExtResource("4_xyg7q")
 volume_db = -12.0
 autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 
 [connection signal="button_down" from="Control/VBoxContainer/BotonComenzar" to="." method="_on_boton_comenzar_button_down"]
 [connection signal="focus_entered" from="Control/VBoxContainer/BotonComenzar" to="." method="_on_focus_entered"]

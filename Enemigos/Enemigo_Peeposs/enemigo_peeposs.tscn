@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://c384vg31h38rx" path="res://Enemigos/Enemigo_Peeposs/Control/enemigo_peeposs_base_state.gd" id="7_got46"]
 [ext_resource type="Script" uid="uid://bpjleh0c0lc3k" path="res://Enemigos/Enemigo_Peeposs/Control/Estados/idle.gd" id="8_r5q3f"]
 [ext_resource type="Script" uid="uid://n7uh7ogn8atp" path="res://Enemigos/Enemigo_Peeposs/Control/Estados/move.gd" id="10_54hfu"]
-[ext_resource type="Script" uid="uid://mlbkwowixowk" path="res://Enemigos/Enemigo_Peeposs/attack.gd" id="11_0hccb"]
+[ext_resource type="Script" uid="uid://mlbkwowixowk" path="res://Enemigos/Enemigo_Peeposs/Control/Estados/attack.gd" id="11_0hccb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54hfu"]
 size = Vector2(36, 58)

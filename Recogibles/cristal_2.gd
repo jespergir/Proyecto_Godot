@@ -1,6 +1,5 @@
 extends Area2D
 
-@onready var sprite : Sprite2D = $Sprite2D
 @onready var audio = $AudioStreamPlayer
 
 const DAMAGE = 20

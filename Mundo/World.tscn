@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ftr7fpqn7hgk" path="res://Mapeado/Fondos/paralaje_subterraneo.tscn" id="4_tg74d"]
 [ext_resource type="PackedScene" uid="uid://c8mmgp3r8skl7" path="res://Protagonista/protagonista.tscn" id="5_bj7x8"]
 [ext_resource type="PackedScene" uid="uid://c4gh4kse8ybqh" path="res://Interfaces/PauseMenu/Pause_Menu.tscn" id="6_efva4"]
-[ext_resource type="PackedScene" uid="uid://b3rfnibvkw6j1" path="res://Interfaces/LoadScreen/pantalla_carga.tscn" id="8_4ukyl"]
+[ext_resource type="PackedScene" uid="uid://b3rfnibvkw6j1" path="res://Interfaces/LoadScreen/Load_Screen.tscn" id="8_4ukyl"]
 [ext_resource type="Script" uid="uid://dgjqkv4tn2ph" path="res://Mundo/audio_stream_player.gd" id="8_tg74d"]
 
 [node name="World" type="Node2D"]

@@ -1,12 +1,48 @@
-[gd_scene load_steps=8 format=3 uid="uid://l3e44j2e7ft7"]
+[gd_scene load_steps=13 format=3 uid="uid://l3e44j2e7ft7"]
 
 [ext_resource type="Script" uid="uid://dkji8xk2eio6u" path="res://Recogibles/cristal_2.gd" id="1_2j6p8"]
-[ext_resource type="Texture2D" uid="uid://ck8m140spwlwg" path="res://Recursos/Recogibles/cristal.png" id="2_h0d6p"]
+[ext_resource type="Texture2D" uid="uid://cyllpkpd3ees4" path="res://Recursos/Proyectiles/Yellow Effect Bullet Impact Explosion 32x32.png" id="2_33k0g"]
 [ext_resource type="AudioStream" uid="uid://bjhntxphimmy1" path="res://Recursos/Music/SonidosInterfaz/Modern12.mp3" id="4_jt3mg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6nsg"]
 radius = 6.0
 height = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33k0g"]
+atlas = ExtResource("2_33k0g")
+region = Rect2(192, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j6p8"]
+atlas = ExtResource("2_33k0g")
+region = Rect2(224, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0d6p"]
+atlas = ExtResource("2_33k0g")
+region = Rect2(256, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlnj0"]
+atlas = ExtResource("2_33k0g")
+region = Rect2(288, 480, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hohx7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33k0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j6p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0d6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlnj0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="Animation" id="Animation_a506b"]
 length = 0.001
@@ -46,17 +82,18 @@ _data = {
 }
 
 [node name="Cristal2" type="Area2D" groups=["Enemigo"]]
-scale = Vector2(2, 2)
+scale = Vector2(0.8, 0.8)
 collision_layer = 2147483656
 script = ExtResource("1_2j6p8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_i6nsg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.736499, 0.000447038, 0.743102, 1)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_h0d6p")
+sprite_frames = SubResource("SpriteFrames_hohx7")
+autoplay = "default"
+frame_progress = 0.532907
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

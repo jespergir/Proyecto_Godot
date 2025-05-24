@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://blat15q4tewhj"]
 
-[ext_resource type="Script" uid="uid://bquxwqw0upnqv" path="res://Interfaces/LoadScreen/pantalla_carga.gd" id="1_cjq8n"]
+[ext_resource type="Script" uid="uid://wdfntbjnl6lq" path="res://Interfaces/EndScreen/pantalla_fin.gd" id="1_lrowm"]
 [ext_resource type="FontFile" uid="uid://o3f8482haccu" path="res://Recursos/Fuentes/m6x11plus.ttf" id="2_rmr1j"]
-[ext_resource type="Texture2D" uid="uid://byk4ke18kto8l" path="res://Recursos/cabeza_peeposs.png" id="3_3b16y"]
+[ext_resource type="Texture2D" uid="uid://byk4ke18kto8l" path="res://Recursos/Otros/cabeza_peeposs.png" id="3_3b16y"]
 [ext_resource type="AudioStream" uid="uid://21tuwt532yhe" path="res://Recursos/Music/FREE Action Music Pack/FREE Action Music Pack/10. Night Shifter.wav" id="4_lrowm"]
 
 [sub_resource type="Animation" id="Animation_y7b2b"]
@@ -188,7 +188,7 @@ _data = {
 }
 
 [node name="PantallaFin" type="CanvasLayer"]
-script = ExtResource("1_cjq8n")
+script = ExtResource("1_lrowm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 960.0

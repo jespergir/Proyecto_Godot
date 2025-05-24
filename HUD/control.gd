@@ -70,8 +70,8 @@ func _get_map_bounds():
 	return { "min_x":min_x, "min_y":min_y, "max_x":max_x, "max_y":max_y }
 
 func calcular_offset_centrado() -> Vector2:
-	var size = Vector2(MINIMAP_WIDTH, MINIMAP_HEIGHT)
-	var center = size / 2.0
+	var mapsize = Vector2(MINIMAP_WIDTH, MINIMAP_HEIGHT)
+	var center = mapsize / 2.0
 	if sala_actual == "" or not mapa_salas.has(sala_actual):
 		return Vector2.ZERO
 	var b = _get_map_bounds()
@@ -79,14 +79,14 @@ func calcular_offset_centrado() -> Vector2:
 	var map_h = (b.max_y - b.min_y + 1) * TILE_SIZE
 	var rel = (mapa_salas[sala_actual] - Vector2(b.min_x, b.min_y)) * TILE_SIZE
 	var off = center - rel - Vector2(TILE_SIZE, TILE_SIZE)/2.0
-	if map_w <= size.x:
-		off.x = (size.x - map_w)/2.0
+	if map_w <= mapsize.x:
+		off.x = (mapsize.x - map_w)/2.0
 	else:
-		off.x = clamp(off.x, size.x - map_w, 0)
-	if map_h <= size.y:
-		off.y = (size.y - map_h)/2.0
+		off.x = clamp(off.x, mapsize.x - map_w, 0)
+	if map_h <= mapsize.y:
+		off.y = (mapsize.y - map_h)/2.0
 	else:
-		off.y = clamp(off.y, size.y - map_h, 0)
+		off.y = clamp(off.y, mapsize.y - map_h, 0)
 	return off
 
 func _process(delta):
