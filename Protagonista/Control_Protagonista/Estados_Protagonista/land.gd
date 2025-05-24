@@ -34,8 +34,16 @@ func on_physics_process(delta: float) -> void:
 		state_machine.change_to("Attack1")
 		return
 #endregion
+	
+#region Death
+	if protagonista.health <= 0:
+		state_machine.change_to("Death")
+		return
+#endregion
+	
 	handle_states(delta)
 	protagonista.move_and_slide()
+	
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if protagonista.animated_sprite.animation == "Land":

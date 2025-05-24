@@ -52,6 +52,12 @@ func on_physics_process(delta: float) -> void:
 			return
 #endregion
 	
+#region Death
+	if protagonista.health <= 0:
+		state_machine.change_to("Death")
+		return
+#endregion
+	
 	handle_states(delta)
 	protagonista.move_and_slide()
 

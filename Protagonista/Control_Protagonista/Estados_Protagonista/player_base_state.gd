@@ -9,7 +9,7 @@ var protagonista : Protagonista:
 var gravity:float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func handle_states(delta):
-	
+
 	if protagonista.is_on_floor() and protagonista.coyote_timer<=0: #Comprueba que está en el suelo.
 		protagonista.protagonista.coyote_timer = protagonista.COYOTE_TIME #Cuando está en el suelo el timer vale el tiempo total de coyote time.
 	else:
@@ -41,6 +41,11 @@ func _on_area_damage_body_entered(body: Node2D) -> void:
 #endregion
 
 func _on_area_damage_area_entered(area: Area2D) -> void:
+	if not protagonista.invulnerable and area.is_in_group("Enemigo"):
+		print("medio")
+		protagonista.receive_damage(area.global_position, area.DAMAGE)
+		protagonista.damaged_by_enemy = true
+		protagonista.invulnerable = true
 	if area.get_parent().is_in_group("Recogible"):
 		protagonista.coins+=1
 		protagonista.actualizar_monedas()

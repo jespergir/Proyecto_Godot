@@ -119,7 +119,7 @@ animations = [{
 radius = 8.0
 height = 20.0
 
-[node name="Cristal" type="RigidBody2D" groups=["Recogible"]]
+[node name="CristalSinLevitacion" type="RigidBody2D" groups=["Recogible"]]
 collision_layer = 8
 script = ExtResource("1_0ec4x")
 

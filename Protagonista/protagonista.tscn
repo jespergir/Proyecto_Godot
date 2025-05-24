@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c8mmgp3r8skl7"]
+[gd_scene load_steps=66 format=3 uid="uid://c8mmgp3r8skl7"]
 
 [ext_resource type="Script" uid="uid://c1lxgi5xqgdt6" path="res://Protagonista/protagonista.gd" id="1_0nl2c"]
 [ext_resource type="Texture2D" uid="uid://b5boduif34ogy" path="res://Recursos/Protagonista/Walking_KG_2.png" id="2_31hdc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3igtoi2chuvf" path="res://Recursos/Protagonista/Attack_KG_1.png" id="2_ytoek"]
 [ext_resource type="Texture2D" uid="uid://bksiesv4r2p88" path="res://Recursos/Protagonista/Hurt_KG_2.png" id="3_31hdc"]
 [ext_resource type="Texture2D" uid="uid://qv4uiomvqwa3" path="res://Recursos/Protagonista/Fall_KG_2.png" id="3_y74jy"]
+[ext_resource type="Texture2D" uid="uid://dfmvf88ptdsm" path="res://Recursos/Protagonista/Dying_KG_2.png" id="4_xubla"]
 [ext_resource type="Texture2D" uid="uid://dnrxbdstpeffa" path="res://Recursos/Protagonista/Jump_KG_2.png" id="5_y74jy"]
 [ext_resource type="Texture2D" uid="uid://dxv5itqgdphti" path="res://Recursos/Protagonista/Landing_KG_2.png" id="6_y74jy"]
 [ext_resource type="Script" uid="uid://cu4po5s4endh1" path="res://Protagonista/Control_Protagonista/state_machine.gd" id="9_ygnkn"]
@@ -18,6 +19,7 @@
 [ext_resource type="Script" uid="uid://d3woqmec1e275" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/attack1.gd" id="15_31hdc"]
 [ext_resource type="Script" uid="uid://cd3figtt8u61j" path="res://Protagonista/Control_Protagonista/Estados_Protagonista/damage.gd" id="16_wwtkg"]
 [ext_resource type="AudioStream" uid="uid://cw00m81koji1s" path="res://Recursos/Music/WHOOSH_ARM_SWING_01.wav" id="18_4jmt6"]
+[ext_resource type="Script" uid="uid://dtjmha31dkkru" path="res://Protagonista/death.gd" id="19_xftmy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xftmy"]
 atlas = ExtResource("2_ytoek")
@@ -58,6 +60,30 @@ region = Rect2(200, 0, 100, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6grni"]
 atlas = ExtResource("3_31hdc")
 region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doy3w"]
+atlas = ExtResource("4_xubla")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wync4"]
+atlas = ExtResource("4_xubla")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwpnl"]
+atlas = ExtResource("4_xubla")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qycpp"]
+atlas = ExtResource("4_xubla")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17507"]
+atlas = ExtResource("4_xubla")
+region = Rect2(400, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te60p"]
+atlas = ExtResource("4_xubla")
+region = Rect2(500, 0, 100, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yg2x0"]
 atlas = ExtResource("3_y74jy")
@@ -199,6 +225,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_doy3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wync4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwpnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qycpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17507")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te60p")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yg2x0")
 }, {
 "duration": 1.0,
@@ -328,7 +377,8 @@ position = Vector2(0, -112)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_qd3w3")
-animation = &"Idle"
+animation = &"Death"
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -391,13 +441,22 @@ script = ExtResource("15_31hdc")
 [node name="Damage" type="Node" parent="State_Machine"]
 script = ExtResource("16_wwtkg")
 
+[node name="Death" type="Node" parent="State_Machine"]
+script = ExtResource("19_xftmy")
+
 [node name="AudioAttack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_4jmt6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Land" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Attack1" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Damage" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="State_Machine/Death" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="State_Machine/Attack1" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="AreaEntorno" to="State_Machine/PlayerBaseState" method="_on_area_entorno_area_entered"]
 [connection signal="area_entered" from="AreaDamage" to="State_Machine/PlayerBaseState" method="_on_area_damage_area_entered"]
 [connection signal="body_entered" from="AreaDamage" to="State_Machine/PlayerBaseState" method="_on_area_damage_body_entered"]
+[connection signal="timeout" from="Timer" to="State_Machine/Death" method="_on_timer_timeout"]

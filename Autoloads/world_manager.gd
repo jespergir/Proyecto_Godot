@@ -44,8 +44,10 @@ func _process(delta): #Cada 2 segundos llama a unload_distant_rooms para descarg
 #region Unload rooms while playing
 #Función para liberar salas lejanas de la memoria
 func unload_distant_rooms(): 
+	if not is_instance_valid(protagonista):
+		return
 	var posicion_protagonista = protagonista.global_position #Referencia la posición global de la protagonista.
-	
+
 	for room_name in rooms.keys(): #Recorre el diccionario de las salas
 		var room = rooms[room_name]
 		if not is_instance_valid(room): #Si una sala del diccionario ya no es una instancia válida, salta esa vuelta del bucle

@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://cvfyeuxnfuuip"]
+[gd_scene load_steps=75 format=3 uid="uid://cvfyeuxnfuuip"]
 
 [ext_resource type="Script" uid="uid://d0x8jjo2r8imf" path="res://Enemigos/Enemigo_Peeposs/enemigo_peeposs.gd" id="1_6e2et"]
 [ext_resource type="Texture2D" uid="uid://cm01rhw7w2lk3" path="res://Recursos/Enemigos/Peeposs/Boss attack sin fondo.png" id="2_0hccb"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c384vg31h38rx" path="res://Enemigos/Enemigo_Peeposs/Control/enemigo_peeposs_base_state.gd" id="7_got46"]
 [ext_resource type="Script" uid="uid://bpjleh0c0lc3k" path="res://Enemigos/Enemigo_Peeposs/Control/Estados/idle.gd" id="8_r5q3f"]
 [ext_resource type="Script" uid="uid://n7uh7ogn8atp" path="res://Enemigos/Enemigo_Peeposs/Control/Estados/move.gd" id="10_54hfu"]
+[ext_resource type="Script" uid="uid://mlbkwowixowk" path="res://Enemigos/Enemigo_Peeposs/attack.gd" id="11_0hccb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54hfu"]
 size = Vector2(36, 58)
@@ -19,6 +20,66 @@ size = Vector2(40, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5q3f"]
 size = Vector2(174, 355)
+
+[sub_resource type="Animation" id="Animation_0hccb"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations/AnimatedSpriteBoss:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animations/AnimatedSpriteBoss:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_hkhp8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations/AnimatedSpriteBoss:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animations/AnimatedSpriteBoss:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wix5a"]
+_data = {
+&"Death": SubResource("Animation_0hccb"),
+&"RESET": SubResource("Animation_hkhp8")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ih65w"]
 atlas = ExtResource("2_0hccb")
@@ -167,7 +228,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack",
-"speed": 6.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -385,7 +446,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_lwfj7")
 }],
 "loop": false,
-"name": &"explosion",
+"name": &"charge",
 "speed": 10.0
 }, {
 "frames": [{
@@ -436,14 +497,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="Animation" id="Animation_4whhn"]
-length = 0.001
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6mkkk"]
-_data = {
-&"RESET": SubResource("Animation_4whhn")
-}
-
 [node name="Enemigo_Peeposs" type="CharacterBody2D" groups=["Enemigo"]]
 collision_layer = 0
 collision_mask = 2147483649
@@ -471,25 +524,26 @@ position = Vector2(0, 24)
 
 [node name="Animations" type="Node2D" parent="."]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_wix5a")
+}
+
 [node name="AnimatedSpriteBoss" type="AnimatedSprite2D" parent="Animations"]
 position = Vector2(-2.27374e-13, 1)
 sprite_frames = SubResource("SpriteFrames_76546")
 animation = &"Attack"
 autoplay = "Idle"
+frame = 9
+frame_progress = 1.0
 
 [node name="AnimatedSpriteCristal" type="AnimatedSprite2D" parent="Animations"]
+visible = false
 position = Vector2(0.000336409, -34)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_041ki")
-animation = &"waves"
-frame = 13
-frame_progress = 1.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_6mkkk")
-}
+animation = &"charge"
 
 [node name="State_Machine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("5_yotae")]
 default_state = NodePath("Idle")
@@ -504,8 +558,20 @@ script = ExtResource("8_r5q3f")
 script = ExtResource("10_54hfu")
 
 [node name="Attack" type="Node" parent="State_Machine"]
+script = ExtResource("11_0hccb")
 
-[node name="Damage" type="Node" parent="State_Machine"]
+[node name="KnockbackTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 
 [connection signal="area_entered" from="AreaDamage" to="State_Machine/EnemigoPeepossBaseState" method="_on_area_damage_area_entered"]
 [connection signal="body_entered" from="AreaStart" to="State_Machine/Idle" method="_on_area_start_body_entered"]
+[connection signal="animation_finished" from="Animations/AnimationPlayer" to="State_Machine/Move" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Animations/AnimatedSpriteBoss" to="State_Machine/Attack" method="_on_animated_sprite_boss_animation_finished"]
+[connection signal="animation_finished" from="Animations/AnimatedSpriteCristal" to="State_Machine/Attack" method="_on_animated_sprite_cristal_animation_finished"]
+[connection signal="timeout" from="KnockbackTimer" to="State_Machine/Move" method="_on_knockback_timer_timeout"]
+[connection signal="timeout" from="Timer" to="State_Machine/Move" method="_on_timer_timeout"]

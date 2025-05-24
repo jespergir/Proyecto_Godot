@@ -13,8 +13,9 @@ class_name Protagonista extends CharacterBody2D
 @onready var attack1_collision : CollisionShape2D = $Attack1/Attack1Collision
 @onready var hud : Hud
 @onready var audio_attack = $AudioAttack
+@onready var timer : Timer = $Timer
 
-var health
+var health = 100
 var coins
 var damage = 25
 const SPEED = 300.0 #Velocidad del personaje

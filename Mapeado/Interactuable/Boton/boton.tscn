@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://da1pvr5g17vp3"]
+[gd_scene load_steps=23 format=3 uid="uid://da1pvr5g17vp3"]
 
 [ext_resource type="Script" uid="uid://doanok0qinttg" path="res://Mapeado/Interactuable/Boton/boton.gd" id="1_lee7e"]
 [ext_resource type="Texture2D" uid="uid://ctpl3akamdoei" path="res://Recursos/Interactuables/Boton.png" id="2_lee7e"]
@@ -116,11 +116,68 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4jvkr"]
-radius = 26.6667
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_lee7e"]
-radius = 28.8598
+radius = 17.3845
+
+[sub_resource type="Animation" id="Animation_lee7e"]
+resource_name = "pulsar"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 12)]
+}
+
+[sub_resource type="Animation" id="Animation_1sg3c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v1dre"]
+_data = {
+&"RESET": SubResource("Animation_1sg3c"),
+&"pulsar": SubResource("Animation_lee7e")
+}
 
 [node name="Boton" type="StaticBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -130,16 +187,21 @@ script = ExtResource("1_lee7e")
 sprite_frames = SubResource("SpriteFrames_lufl4")
 animation = &"Boton"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 15.3333)
-shape = SubResource("CircleShape2D_4jvkr")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0.666667, 10, -26.6667, 10, -23.3333, 0.666667, -15.3333, -8, -2.66667, -12.6667, 4.66667, -12.6667, 14.6667, -8, 22, -1.33333, 26, 6, 26, 10)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2147483648
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 15.3333)
+position = Vector2(-3.8147e-06, -4)
 shape = SubResource("CircleShape2D_lee7e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v1dre")
+}
+speed_scale = 2.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

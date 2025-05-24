@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 @onready var color_rect = $ColorRect
-@onready var timer = $Timer
 
 var color1 = Color.DARK_VIOLET
 var color2 = Color.DARK_SLATE_BLUE

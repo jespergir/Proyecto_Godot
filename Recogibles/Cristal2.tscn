@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://l3e44j2e7ft7"]
+
+[ext_resource type="Script" uid="uid://dkji8xk2eio6u" path="res://Recogibles/cristal_2.gd" id="1_2j6p8"]
+[ext_resource type="Texture2D" uid="uid://ck8m140spwlwg" path="res://Recursos/Recogibles/cristal.png" id="2_h0d6p"]
+[ext_resource type="AudioStream" uid="uid://bjhntxphimmy1" path="res://Recursos/Music/SonidosInterfaz/Modern12.mp3" id="4_jt3mg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6nsg"]
+radius = 6.0
+height = 14.0
+
+[sub_resource type="Animation" id="Animation_a506b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i6nsg"]
+resource_name = "levitate"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mk37k"]
+_data = {
+&"RESET": SubResource("Animation_a506b"),
+&"levitate": SubResource("Animation_i6nsg")
+}
+
+[node name="Cristal2" type="Area2D" groups=["Enemigo"]]
+scale = Vector2(2, 2)
+collision_layer = 2147483656
+script = ExtResource("1_2j6p8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_i6nsg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.736499, 0.000447038, 0.743102, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_h0d6p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mk37k")
+}
+autoplay = "levitate"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jt3mg")
+volume_db = 10.0
