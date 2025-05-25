@@ -17,10 +17,11 @@ var radius_x := 0.0
 var radius_y := 0.0
 
 # Flags de muerte
-var deathstarted = false
-var deathfinished = false
+var death = false
 
 func start():
+	if death:
+		return
 	# 1) Se obtienen las posiciones de los marcadores para calcular la elipse
 	var left   = enemigo.left.global_position
 	var right  = enemigo.right.global_position
@@ -40,7 +41,8 @@ func start():
 	loops_done = 0
 
 func on_physics_process(delta: float) -> void:
-
+	if death:
+		return
 #region Damage
 	if enemigo.damage_just_received: #Si ha recibido daño...
 		if enemigo.knockback_timer.is_stopped():
@@ -79,8 +81,7 @@ func _on_knockback_timer_timeout() -> void:
 
 #region Fin de animación Death
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	enemigo.animated_sprite_boss.visible = false
-	enemigo.animated_sprite_cristal.visible = false
+	death = true
 	enemigo.timer.start() #Inicia temporizador para transición
 #endregion
 
